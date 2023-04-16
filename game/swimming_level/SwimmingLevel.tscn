@@ -1,0 +1,96 @@
+[gd_scene load_steps=22 format=3 uid="uid://caj70e46d2om2"]
+
+[ext_resource type="PackedScene" uid="uid://qbmx03iibuuu" path="res://addons/godot-xr-tools/staging/scene_base.tscn" id="1_v0xyk"]
+[ext_resource type="Environment" uid="uid://duexmj7fck5s2" path="res://game/swimming_level/environment/water_environment.tres" id="2_q1xwq"]
+[ext_resource type="Texture2D" uid="uid://6x7gsys4nei1" path="res://assets/ambientcg/ground022/Ground022_1K_Color.jpg" id="3_0bka4"]
+[ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="3_wco0a"]
+[ext_resource type="PackedScene" uid="uid://l2n30mpbkdyw" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_hand_low.tscn" id="4_rx5a6"]
+[ext_resource type="Texture2D" uid="uid://oktboiduin1r" path="res://assets/ambientcg/ground022/Ground022_1K_AmbientOcclusion.jpg" id="4_uh71l"]
+[ext_resource type="Texture2D" uid="uid://idigq4xq1crw" path="res://assets/ambientcg/ground022/Ground022_1K_Displacement.jpg" id="5_fbel1"]
+[ext_resource type="PackedScene" uid="uid://b6bk2pj8vbj28" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="5_qr1ft"]
+[ext_resource type="Texture2D" uid="uid://dv0o40efsavwj" path="res://assets/ambientcg/ground022/Ground022_1K_NormalGL.jpg" id="6_2ik4v"]
+[ext_resource type="Texture2D" uid="uid://cvqs0xc8xh4ce" path="res://assets/ambientcg/ground022/Ground022_1K_Roughness.jpg" id="7_4e4e5"]
+[ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="7_d7cbf"]
+[ext_resource type="PackedScene" uid="uid://ceb25cst7u1iu" path="res://game/swimming_level/movement/movement_swimming.tscn" id="7_estlf"]
+[ext_resource type="AudioStream" uid="uid://dbld744ykmvdc" path="res://assets/freesound/366159__dcsfx__underwater-loop-amb.mp3" id="8_f4da5"]
+[ext_resource type="PackedScene" path="res://components/helpers/zone_switch_area.tscn" id="14_w58jp"]
+[ext_resource type="PackedScene" uid="uid://u2lpx3sbcxup" path="res://components/objects/ocean_surface.tscn" id="15_dltsg"]
+[ext_resource type="PackedScene" uid="uid://b0q5vd8k2h61f" path="res://components/objects/boat.tscn" id="16_76w17"]
+[ext_resource type="PackedScene" uid="uid://dv1o21oj8u43h" path="res://components/objects/rock_small.tscn" id="17_8t3x7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iegai"]
+size = Vector3(1000, 1, 1000)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y8asm"]
+albedo_texture = ExtResource("3_0bka4")
+roughness_texture = ExtResource("7_4e4e5")
+normal_enabled = true
+normal_texture = ExtResource("6_2ik4v")
+ao_enabled = true
+ao_texture = ExtResource("4_uh71l")
+heightmap_enabled = true
+heightmap_texture = ExtResource("5_fbel1")
+uv1_scale = Vector3(0.2, 0.2, 0.2)
+uv1_triplanar = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_elhyk"]
+material = SubResource("StandardMaterial3D_y8asm")
+size = Vector2(1000, 1000)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2vvth"]
+size = Vector3(1000, 1, 1000)
+
+[node name="UnderWater" instance=ExtResource("1_v0xyk")]
+environment = ExtResource("2_q1xwq")
+
+[node name="LeftHand" parent="XROrigin3D/LeftHand" index="0" instance=ExtResource("3_wco0a")]
+
+[node name="RightHand" parent="XROrigin3D/RightHand" index="0" instance=ExtResource("4_rx5a6")]
+
+[node name="MovementTurn" parent="XROrigin3D/RightHand" index="1" instance=ExtResource("5_qr1ft")]
+
+[node name="PlayerBody" parent="XROrigin3D" index="3" instance=ExtResource("7_d7cbf")]
+
+[node name="MovementSwimming" parent="XROrigin3D" index="4" instance=ExtResource("7_estlf")]
+
+[node name="WaterSound" type="AudioStreamPlayer" parent="XROrigin3D" index="5"]
+stream = ExtResource("8_f4da5")
+autoplay = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="1"]
+environment = ExtResource("2_q1xwq")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 7, 0)
+light_color = Color(0.698039, 0.827451, 1, 1)
+light_energy = 0.5
+
+[node name="BackToBoat" parent="." index="3" instance=ExtResource("14_w58jp")]
+zone_scene = "res://game/start_level/start_level.tscn"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BackToBoat" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 35, 0)
+shape = SubResource("BoxShape3D_iegai")
+
+[node name="OceanSurface" parent="." index="4" instance=ExtResource("15_dltsg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 40, 0)
+
+[node name="Boat" parent="." index="5" instance=ExtResource("16_76w17")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 40, 0)
+
+[node name="SeaFloor" type="Node3D" parent="." index="6"]
+
+[node name="Sand" type="StaticBody3D" parent="SeaFloor" index="0"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SeaFloor/Sand" index="0"]
+mesh = SubResource("PlaneMesh_elhyk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SeaFloor/Sand" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_2vvth")
+
+[node name="RockSmall" parent="SeaFloor" index="1" instance=ExtResource("17_8t3x7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 4)
+
+[node name="RockSmall2" parent="SeaFloor" index="2" instance=ExtResource("17_8t3x7")]
+transform = Transform3D(0.642788, 0, 0.766044, 0, 1, 0, -0.766044, 0, 0.642788, -2.6, -0.2, 2.4)

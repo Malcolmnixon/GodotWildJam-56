@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ceb25cst7u1iu"]
+
+[ext_resource type="Script" path="res://game/swimming_level/movement/movement_swimming.gd" id="1_ee8kn"]
+
+[node name="MovementSwimming" type="Node" groups=["movement_providers"]]
+script = ExtResource("1_ee8kn")

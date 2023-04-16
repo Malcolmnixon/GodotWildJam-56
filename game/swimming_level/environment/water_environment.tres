@@ -1,0 +1,8 @@
+[gd_resource type="Environment" format=3 uid="uid://duexmj7fck5s2"]
+
+[resource]
+background_mode = 1
+background_color = Color(0.0588235, 0.27451, 0.415686, 1)
+ambient_light_color = Color(0.0588235, 0.27451, 0.415686, 1)
+fog_enabled = true
+fog_light_color = Color(0.0980392, 0.384314, 0.572549, 1)
