@@ -9,6 +9,11 @@ extends XRToolsMovementProvider
 ##
 
 
+enum SwimmingType { 
+	PHYSICAL, 	# Use physical mostion for input
+	ANALOG,		# Use joystick for input
+}
+
 ## Enumeration of controller to use for swimming
 enum SwimmingController {
 	LEFT,		## Use left controller
@@ -32,6 +37,9 @@ enum SwimmingBearing {
 ## Movement provider order
 @export var order : int = 30
 
+## Swing behaviour type 
+@export var type: SwimmingType = SwimmingType.PHYSICAL
+
 ## Flight controller
 @export var controller : SwimmingController = SwimmingController.LEFT
 
@@ -53,14 +61,23 @@ enum SwimmingBearing {
 ## Guidance effect (virtual fins/wings)
 @export var guidance : float = 0.1
 
+## Minimum velocity to reach before physical swimming starts
+@export var physical_threshold: float = 0.1
+
+## Velocity multiplier for physical swimming
+@export var physical_multiplier: float = 0.1
+
 ## Swimming controller
 var _controller : XRController3D
-
 
 # Node references
 @onready var _camera := XRHelpers.get_xr_camera(self)
 @onready var _left_controller := XRHelpers.get_left_controller(self)
 @onready var _right_controller := XRHelpers.get_right_controller(self)
+
+var velocity_percision = 5 
+@onready var _left_averager = XRToolsVelocityAverager.new(velocity_percision)
+@onready var _right_averager = XRToolsVelocityAverager.new(velocity_percision)
 
 
 # Add support for is_xr_class on XRTools classes
@@ -81,59 +98,91 @@ func _ready():
 
 # Process physics movement for flight
 func physics_movement(delta: float, player_body: XRToolsPlayerBody, disabled: bool):
-	# Disable flying if requested, or if no controller
-	if disabled or !enabled or !_controller.get_is_active():
-		return
+	
+		if type == SwimmingType.PHYSICAL: 
+			
+			# set averagers
+			_left_averager.add_transform(delta, _left_controller.transform)
+			_right_averager.add_transform(delta, _right_controller.transform)
+			
+			# velocities 
+			var l_vel = _left_averager.linear_velocity()
+			var r_vel = _right_averager.linear_velocity()
+			
+			# combined velocity lengths 
+			var c_length = l_vel.length() + r_vel.length()
+			
+			# velocity checks for forward and back movement 
+			var back = l_vel.x > physical_threshold and r_vel.x < -physical_threshold
+			var forward = l_vel.x < -physical_threshold and r_vel.x > physical_threshold
 
-	# Select the pitch vector
-	var pitch_vector: Vector3
-	if pitch == SwimmingPitch.HEAD:
-		# Use the vertical part of the 'head' forwards vector
-		pitch_vector = -_camera.transform.basis.z.y * player_body.up_player_vector
-	else:
-		# Use the vertical part of the 'controller' forwards vector
-		pitch_vector = -_controller.transform.basis.z.y * player_body.up_player_vector
+			var swim_velocity := player_body.velocity
+			
+			# Accelerate swim velocity towards the camera 
+			if forward: 
+				swim_velocity += -_camera.global_transform.basis.z * physical_multiplier * c_length
+			
+			# Apply drag 
+			swim_velocity *= 1.0 - drag * delta
+			
+			# Apply swim velocity to player body 
+			player_body.velocity = player_body.move_body(swim_velocity)
+			
+			return true
+		else: 
+			# Disable flying if requested, or if no controller
+			if disabled or !enabled or !_controller.get_is_active():
+				return
 
-	# Select the bearing vector
-	var bearing_vector: Vector3
-	if bearing == SwimmingBearing.HEAD:
-		# Use the horizontal part of the 'head' forwards vector
-		bearing_vector = -player_body.up_player_plane.project(
-				_camera.global_transform.basis.z)
-	elif bearing == SwimmingBearing.CONTROLLER:
-		# Use the horizontal part of the 'controller' forwards vector
-		bearing_vector = -player_body.up_player_plane.project(
-				_controller.global_transform.basis.z)
-	else:
-		# Use the horizontal part of the 'body' forwards vector
-		var left := _left_controller.global_transform.origin
-		var right := _right_controller.global_transform.origin
-		var left_to_right := right - left
-		bearing_vector = player_body.up_player_plane.project(
-				left_to_right.rotated(player_body.up_player_vector, PI/2))
+			# Select the pitch vector
+			var pitch_vector: Vector3
+			if pitch == SwimmingPitch.HEAD:
+				# Use the vertical part of the 'head' forwards vector
+				pitch_vector = -_camera.transform.basis.z.y * player_body.up_player_vector
+			else:
+				# Use the vertical part of the 'controller' forwards vector
+				pitch_vector = -_controller.transform.basis.z.y * player_body.up_player_vector
 
-	# Construct the flight bearing
-	var forwards := (bearing_vector.normalized() + pitch_vector).normalized()
-	var side := forwards.cross(player_body.up_player_vector)
+			# Select the bearing vector
+			var bearing_vector: Vector3
+			if bearing == SwimmingBearing.HEAD:
+				# Use the horizontal part of the 'head' forwards vector
+				bearing_vector = -player_body.up_player_plane.project(
+						_camera.global_transform.basis.z)
+			elif bearing == SwimmingBearing.CONTROLLER:
+				# Use the horizontal part of the 'controller' forwards vector
+				bearing_vector = -player_body.up_player_plane.project(
+						_controller.global_transform.basis.z)
+			else:
+				# Use the horizontal part of the 'body' forwards vector
+				var left := _left_controller.global_transform.origin
+				var right := _right_controller.global_transform.origin
+				var left_to_right := right - left
+				bearing_vector = player_body.up_player_plane.project(
+						left_to_right.rotated(player_body.up_player_vector, PI/2))
 
-	# Construct the target velocity
-	var joy_forwards := _controller.get_vector2("primary").y
-	var joy_side := _controller.get_vector2("primary").x
-	var heading := forwards * joy_forwards + side * joy_side
+			# Construct the flight bearing
+			var forwards := (bearing_vector.normalized() + pitch_vector).normalized()
+			var side := forwards.cross(player_body.up_player_vector)
 
-	# Calculate the flight velocity
-	var flight_velocity := player_body.velocity
-	flight_velocity *= 1.0 - drag * delta
-	flight_velocity = flight_velocity.lerp(heading * speed_scale, speed_traction * delta)
+			# Construct the target velocity
+			var joy_forwards := _controller.get_vector2("primary").y
+			var joy_side := _controller.get_vector2("primary").x
+			var heading := forwards * joy_forwards + side * joy_side
 
-	# Apply virtual guidance effect
-	if guidance > 0.0:
-		var velocity_forwards := forwards * flight_velocity.length()
-		flight_velocity = flight_velocity.lerp(velocity_forwards, guidance * delta)
+			# Calculate the flight velocity
+			var flight_velocity := player_body.velocity
+			flight_velocity *= 1.0 - drag * delta
+			flight_velocity = flight_velocity.lerp(heading * speed_scale, speed_traction * delta)
 
-	# If exclusive then perform the exclusive move-and-slide
-	player_body.velocity = player_body.move_body(flight_velocity)
-	return true
+			# Apply virtual guidance effect
+			if guidance > 0.0:
+				var velocity_forwards := forwards * flight_velocity.length()
+				flight_velocity = flight_velocity.lerp(velocity_forwards, guidance * delta)
+
+			# If exclusive then perform the exclusive move-and-slide
+			player_body.velocity = player_body.move_body(flight_velocity)
+			return true
 
 # This method verifies the movement provider has a valid configuration.
 func _get_configuration_warnings() -> PackedStringArray:
