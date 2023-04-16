@@ -1,8 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://caj70e46d2om2"]
+[gd_scene load_steps=23 format=3 uid="uid://caj70e46d2om2"]
 
 [ext_resource type="PackedScene" uid="uid://qbmx03iibuuu" path="res://addons/godot-xr-tools/staging/scene_base.tscn" id="1_v0xyk"]
 [ext_resource type="Environment" uid="uid://duexmj7fck5s2" path="res://game/swimming_level/environment/water_environment.tres" id="2_q1xwq"]
 [ext_resource type="Texture2D" uid="uid://6x7gsys4nei1" path="res://assets/ambientcg/ground022/Ground022_1K_Color.jpg" id="3_0bka4"]
+[ext_resource type="Script" path="res://components/helpers/depth_affector.gd" id="3_c5nfx"]
 [ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="3_wco0a"]
 [ext_resource type="PackedScene" uid="uid://l2n30mpbkdyw" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_hand_low.tscn" id="4_rx5a6"]
 [ext_resource type="Texture2D" uid="uid://oktboiduin1r" path="res://assets/ambientcg/ground022/Ground022_1K_AmbientOcclusion.jpg" id="4_uh71l"]
@@ -43,6 +44,13 @@ size = Vector3(1000, 1, 1000)
 [node name="UnderWater" instance=ExtResource("1_v0xyk")]
 environment = ExtResource("2_q1xwq")
 
+[node name="EnviromentDepthAffector" type="Node" parent="." index="0" node_paths=PackedStringArray("enviroment", "directional_light")]
+script = ExtResource("3_c5nfx")
+depth_top = 40.0
+depth_bottom = 0.0
+enviroment = NodePath("../WorldEnvironment")
+directional_light = NodePath("../DirectionalLight3D")
+
 [node name="LeftHand" parent="XROrigin3D/LeftHand" index="0" instance=ExtResource("3_wco0a")]
 
 [node name="RightHand" parent="XROrigin3D/RightHand" index="0" instance=ExtResource("4_rx5a6")]
@@ -52,33 +60,36 @@ environment = ExtResource("2_q1xwq")
 [node name="PlayerBody" parent="XROrigin3D" index="3" instance=ExtResource("7_d7cbf")]
 
 [node name="MovementSwimming" parent="XROrigin3D" index="4" instance=ExtResource("7_estlf")]
+type = 0
+physical_threshold = 0.1
+physical_multiplier = 0.1
 
 [node name="WaterSound" type="AudioStreamPlayer" parent="XROrigin3D" index="5"]
 stream = ExtResource("8_f4da5")
 autoplay = true
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="1"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="2"]
 environment = ExtResource("2_q1xwq")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="2"]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 7, 0)
 light_color = Color(0.698039, 0.827451, 1, 1)
 light_energy = 0.5
 
-[node name="BackToBoat" parent="." index="3" instance=ExtResource("14_w58jp")]
+[node name="BackToBoat" parent="." index="4" instance=ExtResource("14_w58jp")]
 zone_scene = "res://game/start_level/start_level.tscn"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BackToBoat" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 35, 0)
 shape = SubResource("BoxShape3D_iegai")
 
-[node name="OceanSurface" parent="." index="4" instance=ExtResource("15_dltsg")]
+[node name="OceanSurface" parent="." index="5" instance=ExtResource("15_dltsg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 40, 0)
 
-[node name="Boat" parent="." index="5" instance=ExtResource("16_76w17")]
+[node name="Boat" parent="." index="6" instance=ExtResource("16_76w17")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 40, 0)
 
-[node name="SeaFloor" type="Node3D" parent="." index="6"]
+[node name="SeaFloor" type="Node3D" parent="." index="7"]
 
 [node name="Sand" type="StaticBody3D" parent="SeaFloor" index="0"]
 

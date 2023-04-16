@@ -4,3 +4,6 @@
 
 [node name="MovementSwimming" type="Node" groups=["movement_providers"]]
 script = ExtResource("1_ee8kn")
+type = null
+physical_threshold = null
+physical_multiplier = null
