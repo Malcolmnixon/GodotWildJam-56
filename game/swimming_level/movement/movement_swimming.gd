@@ -117,7 +117,7 @@ func physics_movement(delta: float, player_body: XRToolsPlayerBody, disabled: bo
 			var c_length = l_vel.length() + r_vel.length()
 			
 			# velocity checks for forward and back movement 
-			var swim_input = Vector3(l_vel.x, 0, 0).dot(Vector3(r_vel.x, 0, 0)) < -physical_threshold
+			var swim_input = Vector3(l_vel.x, 0, l_vel.z).dot(Vector3(r_vel.x, 0, r_vel.z)) < -physical_threshold
 	
 			var swim_velocity := player_body.velocity
 			var swim_transform := Transform3D()

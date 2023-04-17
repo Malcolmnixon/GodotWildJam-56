@@ -2,7 +2,6 @@
 
 [ext_resource type="Shader" path="res://assets/shaders/foliage.gdshader" id="1_n4mk2"]
 [ext_resource type="Texture2D" uid="uid://c4uqbsi2f2pha" path="res://assets/kelp/kelp.png" id="2_oyl6t"]
-[ext_resource type="Texture2D" uid="uid://cfkghu3jddu74" path="res://assets/kelp/kelp_kelp.png" id="3_4b7yi"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wbbne"]
 render_priority = 0
@@ -39,6 +38,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_aojq7")
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_s0ws0"]
+load_path = "res://.godot/imported/kelp_kelp.png-61aa7ffc6328106dbe36945c2bc53919.s3tc.ctex"
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sisg1"]
 resource_name = "kelp"
 transparency = 2
@@ -46,7 +48,7 @@ alpha_scissor_threshold = 0.0849057
 alpha_antialiasing_mode = 0
 cull_mode = 2
 vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("3_4b7yi")
+albedo_texture = SubResource("CompressedTexture2D_s0ws0")
 roughness = 0.5
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_pacn4"]
