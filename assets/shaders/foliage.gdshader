@@ -10,5 +10,7 @@ void fragment() {
 }
 
 void vertex() { 
-	//VERTEX.x = cos(TIME + (VERTEX.x - VERTEX.z)); 
+	float node_offset = NODE_POSITION_WORLD.x + NODE_POSITION_WORLD.z;
+	VERTEX.x += cos(TIME * VERTEX.x + node_offset) * 0.1; 
+	VERTEX.x += cos(TIME * VERTEX.y + node_offset) * 0.1; 
 }

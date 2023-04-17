@@ -105,6 +105,10 @@ func physics_movement(delta: float, player_body: XRToolsPlayerBody, disabled: bo
 	
 		if type == SwimmingType.PHYSICAL: 
 			
+			var swim_player: AudioStreamPlayer3D = $"../XRCamera3D/RandomStreamPlayer"
+			
+			
+			
 			# velocities 
 			var l_vel = _left_averager.linear_velocity()
 			var r_vel = _right_averager.linear_velocity()
@@ -113,8 +117,7 @@ func physics_movement(delta: float, player_body: XRToolsPlayerBody, disabled: bo
 			var c_length = l_vel.length() + r_vel.length()
 			
 			# velocity checks for forward and back movement 
-			var forward = l_vel.x < -physical_threshold and r_vel.x > physical_threshold
-			var back = l_vel.x > physical_threshold and r_vel.x < -physical_threshold
+			var swim_input = Vector3(l_vel.x, 0, 0).dot(Vector3(r_vel.x, 0, 0)) < -physical_threshold
 	
 			var swim_velocity := player_body.velocity
 			var swim_transform := Transform3D()
@@ -126,9 +129,11 @@ func physics_movement(delta: float, player_body: XRToolsPlayerBody, disabled: bo
 			)
 			
 			# Accelerate swim velocity towards the camera 
-			if forward: 
+			if swim_input: 
 				swim_velocity += -swim_transform.basis.z * physical_multiplier * c_length
-			
+				
+				if !swim_player.playing: 
+					swim_player.play_random()
 			# Apply drag 
 			swim_velocity *= 1.0 - drag * delta
 			
