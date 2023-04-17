@@ -7,19 +7,10 @@ var player_body: XRToolsPlayerBody
 func _ready():
 	pass # Replace with function body.
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	if is_instance_valid(player_body): 
 		player_body.velocity += target_velocity
-
-func _on_xr_tools_wind_area_area_entered(area):
-	pass # Replace with function body.
-
-
-func _on_xr_tools_wind_area_area_exited(area):
-	pass # Replace with function body.
-
 
 func _on_xr_tools_wind_area_body_entered(body):
 	if body is XRToolsPlayerBody: 

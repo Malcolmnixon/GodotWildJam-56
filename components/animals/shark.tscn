@@ -350,3 +350,6 @@ shape = SubResource("SphereShape3D_rs5my")
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("2_2270j")
+current_health = 50
+
+[connection signal="health_depleted" from="Health" to="." method="_on_health_health_depleted"]

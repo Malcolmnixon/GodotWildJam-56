@@ -1,5 +1,6 @@
 extends Node3D
 
+@export var damage: int = 50
 @export var rotation_speed = 0.3
 var x_rand = 0.0
 var z_rand = 0.0
@@ -18,6 +19,12 @@ func _process(delta):
 
 
 func _on_area_3d_body_entered(body):
+	
+	if body is XRToolsPlayerBody: 
+		body.get_node("Health").apply_damage(damage)
+	
+	if body.get_node("Health"): 
+		body.get_node("Health").apply_damage(damage)
+	
 	## TODO: Do da damage 
-	pass
-	#queue_free()
+	queue_free()
