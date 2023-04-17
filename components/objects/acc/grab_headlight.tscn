@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://clr0j3a71qlg7"]
+[gd_scene load_steps=21 format=3]
 
 [ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_yhwxo"]
 [ext_resource type="Script" path="res://components/objects/acc/grab_headlight.gd" id="2_qsodw"]
@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://ce7vysyvondf8" path="res://addons/godot-xr-tools/objects/snap_zone.tscn" id="8_67wci"]
 [ext_resource type="PackedScene" path="res://components/helpers/highlight/highlight_small.tscn" id="9_ln1q8"]
 [ext_resource type="PackedScene" uid="uid://in65c2ayopr3" path="res://assets/digitaln8m4r3/headlight/model/headlight.glb" id="10_ncudn"]
-[ext_resource type="Texture2D" uid="uid://3lut8dwgsb04" path="res://assets/w.forster.1@gmail.com/t_flashlightpattern.png" id="11_byxx5"]
+[ext_resource type="Texture2D" uid="uid://3lut8dwgsb04" path="res://assets/w.forster.1/t_flashlightpattern.png" id="11_byxx5"]
 [ext_resource type="PackedScene" uid="uid://cme66uldrjl2i" path="res://addons/godot-xr-tools/interactables/interactable_area_button.tscn" id="12_7hg1y"]
 [ext_resource type="PackedScene" uid="uid://dc5t2qgmhb2nf" path="res://addons/godot-xr-tools/objects/hand_pose_area.tscn" id="13_7sm5h"]
 [ext_resource type="Resource" uid="uid://qu26e63kl4wg" path="res://components/objects/acc/poses/pose_flashlight_pwr_left.tres" id="14_tbwih"]
