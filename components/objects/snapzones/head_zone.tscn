@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0lpa4kaq1ai5"]
+
+[ext_resource type="PackedScene" uid="uid://ce7vysyvondf8" path="res://addons/godot-xr-tools/objects/snap_zone.tscn" id="1_1fl3k"]
+
+[node name="HeadZone" type="Node3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.125, -0.1)
+
+[node name="SnapZone" parent="." instance=ExtResource("1_1fl3k")]
+snap_require = "Flashlight"

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="XRToolsHandPoseSettings" load_steps=3 format=3 uid="uid://bg30rf4ipfgb5"]
+
+[ext_resource type="Animation" uid="uid://ca21ej1p3g2yt" path="res://addons/godot-xr-tools/hands/animations/right/Pinch Tight.res" id="1_toja6"]
+[ext_resource type="Script" path="res://addons/godot-xr-tools/hands/poses/hand_pose_settings.gd" id="3_l5a1g"]
+
+[resource]
+script = ExtResource("3_l5a1g")
+open_pose = ExtResource("1_toja6")
+closed_pose = ExtResource("1_toja6")

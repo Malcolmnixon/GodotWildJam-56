@@ -1,0 +1,135 @@
+[gd_scene load_steps=21 format=3]
+
+[ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_yhwxo"]
+[ext_resource type="Script" path="res://components/objects/acc/grab_headlight.gd" id="2_qsodw"]
+[ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="3_ca0rp"]
+[ext_resource type="Resource" uid="uid://dicwy58jb52wd" path="res://components/objects/acc/poses/pose_flashlight_left.tres" id="4_pngyr"]
+[ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="5_rs8tb"]
+[ext_resource type="Resource" uid="uid://c7x36u24hi0jb" path="res://components/objects/acc/poses/pose_flashlight_right.tres" id="6_kvapw"]
+[ext_resource type="PackedScene" uid="uid://da2qgxxwwitl6" path="res://addons/godot-xr-tools/objects/highlight/highlight_ring.tscn" id="7_f2gqt"]
+[ext_resource type="PackedScene" uid="uid://ce7vysyvondf8" path="res://addons/godot-xr-tools/objects/snap_zone.tscn" id="8_67wci"]
+[ext_resource type="PackedScene" path="res://components/helpers/highlight/highlight_small.tscn" id="9_ln1q8"]
+[ext_resource type="PackedScene" uid="uid://in65c2ayopr3" path="res://assets/digitaln8m4r3/headlight/model/headlight.glb" id="10_ncudn"]
+[ext_resource type="Texture2D" uid="uid://3lut8dwgsb04" path="res://assets/w.forster.1/t_flashlightpattern.png" id="11_byxx5"]
+[ext_resource type="PackedScene" uid="uid://cme66uldrjl2i" path="res://addons/godot-xr-tools/interactables/interactable_area_button.tscn" id="12_7hg1y"]
+[ext_resource type="PackedScene" uid="uid://dc5t2qgmhb2nf" path="res://addons/godot-xr-tools/objects/hand_pose_area.tscn" id="13_7sm5h"]
+[ext_resource type="Resource" uid="uid://qu26e63kl4wg" path="res://components/objects/acc/poses/pose_flashlight_pwr_left.tres" id="14_tbwih"]
+[ext_resource type="Resource" uid="uid://bcy476ahj5yd6" path="res://components/objects/acc/poses/pose_flashlight_pwr_right.tres" id="15_xunhl"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_0mqya"]
+points = PackedVector3Array(0.00126902, 0.0486683, 0.0314921, 0.00126902, -0.0339717, -0.0747721, 0.0485063, 0.0211386, -0.114156, 0.042815, -0.0185048, 0.115762, 0.0211232, 0.0824865, -0.0288011, -0.00266825, -0.0221715, 0.0944762, 0.0445691, 0.0211386, 0.125968, -0.00266825, 0.0211386, -0.0944762, 0.0406318, -0.0418683, -0.0314921, 0.0101009, 0.0798546, 0.0293035, -0.00266825, 0.0211386, 0.0944762, 0.042815, -0.0185048, -0.115762, 0.0170231, -0.0418683, 0.04328, 0.0288149, 0.0211386, -0.125968, 0.0485063, 0.0211386, 0.114156, -0.00266825, -0.0221715, -0.0944762, 0.0288149, 0.0211386, 0.125968, 0.0463674, -0.0183884, -0.104613, 0.0101009, 0.0798546, -0.0293035, 0.0211232, 0.0824865, 0.0288011, 0.0463674, -0.0183884, 0.104613, 0.0406318, -0.0418683, 0.0314921, 0.00126902, -0.0339717, 0.0747721, 0.0278834, 0.0711362, 0.0265165, 0.0170231, -0.0418683, -0.04328, 0.0445691, 0.0211386, -0.125968, 0.0283256, -0.0184155, 0.115514, 0.0283256, -0.0184155, -0.115514, -0.00266825, 0.0289843, -0.0472258, 0.0278834, 0.0711362, -0.0265165, 0.00126902, 0.0486683, -0.0314921, 0.0139157, 0.082555, 0.0288343)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_0f6ji"]
+points = PackedVector3Array(-0.0701981, -0.00524413, -0.0150288, 0.000776588, 0.0149098, 0.0690504, -0.0107122, 0.025466, 0.0571509, 0.00112283, 0.0150696, -0.0455931, -0.012381, -0.0289365, 0.0683577, -0.0121001, -0.0292735, -0.0450852, -0.0489099, 0.0259452, 0.0561259, -0.0377782, 0.0249668, -0.0430785, -0.0486931, -0.0288146, 0.0554033, -0.0729706, 0.0138771, 0.01015, 0.000597566, -0.0181304, -0.0447851, -0.0377625, -0.0245796, -0.0463, -0.0468016, -0.0178339, 0.0677023, 0.000275893, -0.017982, 0.0682288, -0.06908, -0.0173233, -0.000292327, -0.0139305, 0.0241403, -0.0488086, -0.0486931, -0.0288146, -0.0224428, -0.0575508, -0.0178023, 0.0550066, -0.0448134, 0.0142208, -0.0463, -0.0120619, 0.0260162, 0.0691747, -0.0489099, 0.0259452, -0.0229633, -0.0578, 0.0146785, 0.0555048, -0.0729706, -0.00941591, 0.015951, -0.046425, 0.0157522, 0.0658477, -0.0107176, 0.02546, -0.0440647, -0.0449471, -0.0159572, -0.0470782, -0.0700197, 0.0126665, -0.00774658, -0.0123203, -0.0253565, -0.048213, -0.0360244, -0.0289011, 0.0682823, -0.0689125, -0.0155155, -0.00717891, -0.0729706, 0.000286641, 0.0178968, -0.00308585, 0.0148207, -0.0484333)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_8cu5a"]
+height = 0.015
+radius = 0.015
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_gn2nc"]
+top_radius = 0.015
+bottom_radius = 0.015
+height = 0.01
+radial_segments = 8
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_4ad3h"]
+radius = 0.015
+
+[node name="Headlight" groups=["Flashlight"] instance=ExtResource("1_yhwxo")]
+collision_mask = 131079
+script = ExtResource("2_qsodw")
+trigger_action = "trigger"
+drop_action = "by_button"
+energy_timer_time = 0.25
+current_energy = 0
+energy_drain_rate = 1
+
+[node name="GrabPointHandLeft" parent="." index="0" instance=ExtResource("3_ca0rp")]
+transform = Transform3D(0.963653, -0.101936, 0.246945, -0.246133, 0.0206684, 0.969016, -0.103882, -0.994576, -0.00517275, -0.0563239, -0.0652685, 0.001)
+hand_pose = ExtResource("4_pngyr")
+
+[node name="GrabPointHandRight" parent="." index="1" instance=ExtResource("5_rs8tb")]
+transform = Transform3D(-0.967023, -0.059413, -0.247661, 0.246863, 0.0205306, -0.968833, 0.0626459, -0.998022, -0.00518675, -0.0253781, 0.0599245, 0.00129613)
+hand_pose = ExtResource("6_kvapw")
+
+[node name="GrabPointGripLeft" parent="." index="2" instance=ExtResource("3_ca0rp")]
+transform = Transform3D(0.994521, -0.103812, -0.0122693, 0.0116658, -0.00641885, 0.999912, -0.103882, -0.994576, -0.00517263, -0.045, -0.065, 0.001)
+hand_pose = ExtResource("4_pngyr")
+
+[node name="GrabPointGripRight" parent="." index="3" instance=ExtResource("5_rs8tb")]
+transform = Transform3D(-0.997965, -0.0627023, 0.0115304, -0.0118328, 0.0044538, -0.99992, 0.0626459, -0.998022, -0.00518668, -0.0447088, 0.0599245, 0.00129613)
+hand_pose = ExtResource("6_kvapw")
+
+[node name="CollisionShape3D" parent="." index="4"]
+shape = SubResource("ConvexPolygonShape3D_0mqya")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." index="5"]
+shape = SubResource("ConvexPolygonShape3D_0f6ji")
+
+[node name="HighlightRing" parent="." index="6" instance=ExtResource("7_f2gqt")]
+
+[node name="BatteryZone" parent="." index="7" instance=ExtResource("8_67wci")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.0242706, -0.00100541, -0.0234829)
+snap_require = "Battery_Cell"
+
+[node name="HighlightRing" parent="BatteryZone" index="1" instance=ExtResource("9_ln1q8")]
+transform = Transform3D(0.4, 0, 0, 0, -1.74846e-08, -0.4, 0, 0.4, -1.74846e-08, 0.000631677, -0.0290557, 0.000943469)
+skeleton = NodePath("")
+
+[node name="headlight" parent="." index="8" instance=ExtResource("10_ncudn")]
+
+[node name="Lid" parent="headlight" index="2"]
+visible = false
+
+[node name="SpotLight3D" type="SpotLight3D" parent="headlight" index="3"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.0583045, 0, 0)
+visible = false
+light_energy = 9.0
+light_projector = ExtResource("11_byxx5")
+shadow_enabled = true
+
+[node name="LightTimer" type="Timer" parent="." index="9"]
+
+[node name="BatteryBar" type="Label3D" parent="." index="10"]
+transform = Transform3D(4.37114e-08, 0, -1, -4.37114e-08, 1, -1.91069e-15, 1, 4.37114e-08, 4.37114e-08, -0.0492509, -0.00100541, -0.03634)
+cast_shadow = 1
+gi_mode = 1
+pixel_size = 0.0004
+modulate = Color(1, 0, 0, 1)
+text = "100"
+
+[node name="PowerButton" type="Node3D" parent="." index="11"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.077, 0, 0)
+
+[node name="Button" type="StaticBody3D" parent="PowerButton" index="0"]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PowerButton/Button" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.99347e-11, 0.00228625, 0)
+shape = SubResource("CylinderShape3D_8cu5a")
+
+[node name="DebugMesh" type="MeshInstance3D" parent="PowerButton/Button" index="1"]
+visible = false
+mesh = SubResource("CylinderMesh_gn2nc")
+
+[node name="InteractableAreaButton" parent="PowerButton" index="1" instance=ExtResource("12_7hg1y")]
+button = NodePath("../Button")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PowerButton/InteractableAreaButton" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.99347e-11, 0.00228625, 0)
+shape = SubResource("CylinderShape3D_8cu5a")
+
+[node name="HandPoseArea" parent="PowerButton" index="2" instance=ExtResource("13_7sm5h")]
+left_pose = ExtResource("14_tbwih")
+right_pose = ExtResource("15_xunhl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PowerButton/HandPoseArea" index="0"]
+shape = SubResource("SphereShape3D_4ad3h")
+
+[connection signal="has_dropped" from="BatteryZone" to="." method="_on_battery_zone_has_dropped"]
+[connection signal="has_picked_up" from="BatteryZone" to="." method="_on_battery_zone_has_picked_up"]
+[connection signal="timeout" from="LightTimer" to="." method="_on_light_timer_timeout"]
+[connection signal="button_pressed" from="PowerButton/InteractableAreaButton" to="." method="_on_interactable_area_button_button_pressed"]
+
+[editable path="headlight"]

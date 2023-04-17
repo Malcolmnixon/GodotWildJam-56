@@ -3,11 +3,12 @@
 [ext_resource type="PackedScene" uid="uid://ce7vysyvondf8" path="res://addons/godot-xr-tools/objects/snap_zone.tscn" id="1_iku23"]
 [ext_resource type="PackedScene" uid="uid://da2qgxxwwitl6" path="res://addons/godot-xr-tools/objects/highlight/highlight_ring.tscn" id="2_cce85"]
 
-[node name="HolsterSnapLeft" type="MeshInstance3D"]
+[node name="HolsterSnapLeft" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.069, -0.059, 0.204)
 
 [node name="SnapZone" parent="." instance=ExtResource("1_iku23")]
 grab_distance = 0.0
 snap_require = "KnifeHolster"
+grab_exclude = "LeftHandFunctionPickup"
 
 [node name="HighlightRing" parent="SnapZone" instance=ExtResource("2_cce85")]
