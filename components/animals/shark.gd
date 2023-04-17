@@ -7,13 +7,13 @@ const SHARK_VISION_DISTANCE := 40.0
 const SHARK_VISION_ANGLE := deg_to_rad(70.0)
 
 # How long will the shark remember the player
-const SHARK_MEMORY := 5.0
+const SHARK_MEMORY := 10.0
 
 # Distance at whish shark flees player and is gone
 const SHARK_ESCAPE_DISTANCE := 200.0
 
 # Shark speed when swimming
-const SHARK_SWIM_SPEED := 4.0
+const SHARK_SWIM_SPEED := 6.0
 
 # Shark speed when roaming
 const SHARK_ROAM_SPEED := 2.0
@@ -103,3 +103,7 @@ func _physics_process(delta : float):
 	# Move the shark
 	velocity = (_target - global_position).normalized() * speed
 	move_and_slide()
+
+
+func _on_health_health_depleted():
+	queue_free()

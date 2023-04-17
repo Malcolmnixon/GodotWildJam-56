@@ -95,15 +95,15 @@ func _ready():
 	else:
 		_controller = _right_controller
 
+func _process(delta):
+	# set averagers
+	_left_averager.add_transform(delta, _left_controller.transform)
+	_right_averager.add_transform(delta, _right_controller.transform)
 
 # Process physics movement for flight
 func physics_movement(delta: float, player_body: XRToolsPlayerBody, disabled: bool):
 	
 		if type == SwimmingType.PHYSICAL: 
-			
-			# set averagers
-			_left_averager.add_transform(delta, _left_controller.transform)
-			_right_averager.add_transform(delta, _right_controller.transform)
 			
 			# velocities 
 			var l_vel = _left_averager.linear_velocity()
@@ -113,14 +113,21 @@ func physics_movement(delta: float, player_body: XRToolsPlayerBody, disabled: bo
 			var c_length = l_vel.length() + r_vel.length()
 			
 			# velocity checks for forward and back movement 
-			var back = l_vel.x < -physical_threshold and r_vel.x > physical_threshold
-			var forward = l_vel.x > physical_threshold and r_vel.x < -physical_threshold
-
+			var forward = l_vel.x < -physical_threshold and r_vel.x > physical_threshold
+			var back = l_vel.x > physical_threshold and r_vel.x < -physical_threshold
+	
 			var swim_velocity := player_body.velocity
+			var swim_transform := Transform3D()
+			
+			# rotate swim transform to make vertical movement more comfortable
+			swim_transform = _camera.global_transform.rotated_local(
+				Vector3.RIGHT, 
+				deg_to_rad(15)
+			)
 			
 			# Accelerate swim velocity towards the camera 
 			if forward: 
-				swim_velocity += -_camera.global_transform.basis.z * physical_multiplier * c_length
+				swim_velocity += -swim_transform.basis.z * physical_multiplier * c_length
 			
 			# Apply drag 
 			swim_velocity *= 1.0 - drag * delta
