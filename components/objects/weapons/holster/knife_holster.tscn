@@ -1,0 +1,52 @@
+[gd_scene load_steps=12 format=3 uid="uid://doul5rulmynf7"]
+
+[ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_slhsy"]
+[ext_resource type="PackedScene" uid="uid://b2aahin54am4p" path="res://assets/digitaln8m4r3/scuba_knife/model/holster.glb" id="2_5vwv7"]
+[ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="2_hih05"]
+[ext_resource type="Resource" uid="uid://dr5sytmmpoyb5" path="res://components/objects/weapons/poses/pose_knife_holster_left.tres" id="3_lu3k8"]
+[ext_resource type="PackedScene" uid="uid://ce7vysyvondf8" path="res://addons/godot-xr-tools/objects/snap_zone.tscn" id="3_w71qi"]
+[ext_resource type="PackedScene" path="res://components/helpers/highlight/highlight_long.tscn" id="4_3rs6b"]
+[ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="4_bt8fq"]
+[ext_resource type="Resource" uid="uid://cgbt5uxom1ebu" path="res://components/objects/weapons/poses/pose_knife_holster_right.tres" id="5_y7wt7"]
+[ext_resource type="Material" uid="uid://dc1bg8qgmbxkk" path="res://components/objects/weapons/materials/pallete.tres" id="9_okqm0"]
+[ext_resource type="PackedScene" uid="uid://da2qgxxwwitl6" path="res://addons/godot-xr-tools/objects/highlight/highlight_ring.tscn" id="9_rk0fm"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_62pb0"]
+points = PackedVector3Array(0.00575627, -0.0505871, -0.0310639, 0.00473751, -0.0494871, -0.0310639, 0.0045607, -0.0318188, -0.0701128, 0.0124161, -0.0312977, -0.0683562, 0.0162891, -0.0464475, -0.0354554, 0.0590096, -0.0367979, -0.0310639, 0.00575627, -0.0505871, 0.0081275, -0.00933148, -0.0188016, -0.00395512, -0.00857372, -0.0193033, -0.00839411, 0.00473751, -0.0494871, 0.0081275, 0.0045607, -0.0257203, -0.0739821, 0.0124161, -0.0253053, -0.0722255, -0.011891, -0.00729933, -0.00395512, -0.0111333, -0.00729933, -0.00839411, 0.0709148, -0.024543, -0.0310639, 0.0181582, -0.0459457, -0.0354554, 0.0590096, -0.0367979, 0.0081275, 0.0124161, -0.0312977, 0.115922, 0.0045607, -0.0318188, 0.11737, -0.0032947, -0.0312977, 0.115922, -0.00933148, -0.0188016, 0.0181212, 0.0045607, -0.0196121, -0.0745518, 0.0124161, -0.0193033, -0.0728189, -0.011891, 0.00469503, -0.00395512, -0.011891, -0.00729933, 0.0181212, -0.0111333, 0.00469503, -0.00839411, 0.0741226, -0.00122978, -0.0310639, 0.0709148, -0.024543, 0.0081275, 0.0124161, -0.0193033, 0.160929, 0.0045607, -0.0196121, 0.163136, -0.00102143, -0.0194577, 0.161902, -0.00660356, -0.0193033, 0.154662, 0.0045607, 0.0170078, -0.0745518, 0.0124161, 0.016699, -0.0728189, -0.00933148, 0.0161973, -0.00395512, -0.00857372, 0.016699, -0.00839411, 0.0045607, 0.0292145, -0.0701128, -0.011891, 0.00469503, 0.0181212, -0.00917151, -0.00729933, 0.159362, 0.0045607, 0.023116, -0.0739821, 0.0124161, 0.0227011, -0.0722255, 0.0709569, 0.012241, -0.0310639, 0.0741226, -0.00122978, 0.0081275, 0.0124161, -0.00729933, 0.165629, 0.0045607, -0.00740547, 0.167955, -0.0023012, -0.00735722, 0.16665, 0.00473751, 0.0468828, -0.0310639, -0.00933148, 0.0161973, 0.0181212, 0.00575627, 0.0479925, -0.0310639, 0.0124161, 0.0286934, -0.0683562, -0.00917151, 0.00469503, 0.159362, -0.00660356, 0.016699, 0.154662, 0.0626721, 0.0256635, -0.0310639, 0.0709569, 0.012241, 0.0081275, 0.0124161, 0.016699, 0.160929, 0.0124161, 0.00469503, 0.165629, 0.0045607, 0.00480118, 0.167955, -0.0023012, 0.00475293, 0.16665, 0.00473751, 0.0468828, 0.0081275, -0.0032947, 0.0286934, 0.115922, 0.0466329, 0.0371946, -0.0310639, 0.0162891, 0.0438432, -0.0354554, 0.00575627, 0.0479925, 0.0081275, 0.0181582, 0.0433414, -0.0354554, -0.00102143, 0.0168534, 0.161902, 0.0626721, 0.0256635, 0.0081275, 0.0124161, 0.0286934, 0.115922, 0.0045607, 0.0292145, 0.11737, 0.0045607, 0.0170078, 0.163136, 0.0466329, 0.0371946, 0.0081275)
+
+[node name="KnifeHolster" groups=["KnifeHolster"] instance=ExtResource("1_slhsy")]
+collision_layer = 1048580
+collision_mask = 7
+
+[node name="GrabPointHandLeft" parent="." index="0" instance=ExtResource("2_hih05")]
+transform = Transform3D(1, -1.76196e-08, -3.65199e-08, -1.83755e-08, -0.235651, -0.971838, 2.56202e-09, 0.971838, -0.235651, 0.010206, 0.0697003, 0.149195)
+hand_pose = ExtResource("3_lu3k8")
+
+[node name="GrabPointHandRight" parent="." index="1" instance=ExtResource("4_bt8fq")]
+transform = Transform3D(-1, -8.07084e-08, 5.61836e-08, -3.55823e-08, -0.235651, -0.971838, 9.16751e-08, -0.971838, 0.235651, 0.010206, 0.0697003, 0.0148631)
+hand_pose = ExtResource("5_y7wt7")
+editor_preview_mode = 1
+
+[node name="CollisionShape3D" parent="." index="2"]
+shape = SubResource("ConvexPolygonShape3D_62pb0")
+
+[node name="HolsterZone" type="MeshInstance3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.0270117)
+
+[node name="SnapZone" parent="HolsterZone" index="0" instance=ExtResource("3_w71qi")]
+grab_distance = 0.1
+snap_require = "Knife"
+
+[node name="HighlightRing" parent="HolsterZone/SnapZone" index="1" instance=ExtResource("4_3rs6b")]
+transform = Transform3D(0.115, 0, 0, 0, -5.02681e-09, -0.115, 0, 0.115, -5.02681e-09, -0.00351207, 0.0174383, 2.44064e-05)
+skeleton = NodePath("../../..")
+
+[node name="holster" parent="." index="4" instance=ExtResource("2_5vwv7")]
+
+[node name="Holster" parent="holster" index="0"]
+material_override = ExtResource("9_okqm0")
+
+[node name="HighlightRing" parent="." index="5" instance=ExtResource("9_rk0fm")]
+
+[editable path="HolsterZone/SnapZone/HighlightRing"]
+[editable path="holster"]

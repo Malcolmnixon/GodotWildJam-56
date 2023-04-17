@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://fh40rrqdi8yn"]
+[gd_scene load_steps=21 format=3 uid="uid://br2ht7wahhr66"]
 
 [ext_resource type="PackedScene" uid="uid://qbmx03iibuuu" path="res://addons/godot-xr-tools/staging/scene_base.tscn" id="1_3afb4"]
 [ext_resource type="Environment" uid="uid://dem4338dsghdc" path="res://game/start_level/environment/sunset_environment.tres" id="2_nxj35"]
@@ -6,13 +6,18 @@
 [ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="3_4w8hg"]
 [ext_resource type="PackedScene" uid="uid://l2n30mpbkdyw" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_hand_low.tscn" id="4_a8hos"]
 [ext_resource type="PackedScene" uid="uid://b6bk2pj8vbj28" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="5_1j5wd"]
+[ext_resource type="PackedScene" uid="uid://dgutfpt2bshee" path="res://components/objects/weapons/holster/holster_snap_left.tscn" id="5_4o672"]
+[ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="6_gjg0w"]
 [ext_resource type="PackedScene" uid="uid://c2q5phg8w08o" path="res://addons/godot-xr-tools/functions/movement_jump.tscn" id="6_yy6uu"]
 [ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="7_lqj11"]
+[ext_resource type="PackedScene" uid="uid://doul5rulmynf7" path="res://components/objects/weapons/holster/knife_holster.tscn" id="9_287n1"]
+[ext_resource type="PackedScene" uid="uid://2w6vn1n6hjrf" path="res://components/objects/weapons/holster/holster_snap_right.tscn" id="9_ybim0"]
 [ext_resource type="Script" path="res://addons/godot-xr-tools/overrides/ground_physics_settings.gd" id="10_n160b"]
 [ext_resource type="PackedScene" uid="uid://b0q5vd8k2h61f" path="res://components/objects/boat.tscn" id="11_dlmmx"]
 [ext_resource type="PackedScene" uid="uid://u2lpx3sbcxup" path="res://components/objects/ocean_surface.tscn" id="12_lv1g4"]
 [ext_resource type="AudioStream" uid="uid://dsfwcxyx05hbq" path="res://assets/freesound/674536__nicholasjudy567__water-splash-big-splash-dive-into-water-person-or-animal.mp3" id="12_w2rys"]
 [ext_resource type="PackedScene" path="res://components/helpers/zone_switch_area.tscn" id="13_b57m8"]
+[ext_resource type="PackedScene" uid="uid://dos0ji8ed476c" path="res://components/objects/weapons/scuba_knife.tscn" id="18_0oobb"]
 
 [sub_resource type="Resource" id="Resource_vw6fw"]
 script = ExtResource("10_n160b")
@@ -40,6 +45,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.269177, 0)
 [node name="MovementDirect" parent="XROrigin3D/LeftHand" index="1" instance=ExtResource("3_4w8hg")]
 strafe = true
 
+[node name="FunctionPickup" parent="XROrigin3D/LeftHand" index="2" instance=ExtResource("6_gjg0w")]
+
+[node name="HolsterSnapLeft" parent="XROrigin3D/LeftHand" index="3" instance=ExtResource("5_4o672")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.069, -0.059, 0.204)
+
 [node name="RightHand" parent="XROrigin3D/RightHand" index="0" instance=ExtResource("4_a8hos")]
 
 [node name="MovementDirect" parent="XROrigin3D/RightHand" index="1" instance=ExtResource("3_4w8hg")]
@@ -49,10 +59,18 @@ strafe = true
 [node name="MovementJump" parent="XROrigin3D/RightHand" index="3" instance=ExtResource("6_yy6uu")]
 jump_button_action = "ax_button"
 
+[node name="FunctionPickup" parent="XROrigin3D/RightHand" index="4" instance=ExtResource("6_gjg0w")]
+
+[node name="HolsterSnapRight" parent="XROrigin3D/RightHand" index="5" instance=ExtResource("9_ybim0")]
+transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, 0.0693851, -0.0587159, 0.204011)
+
 [node name="PlayerBody" parent="XROrigin3D" index="3" instance=ExtResource("7_lqj11")]
 physics = SubResource("Resource_vw6fw")
 
 [node name="Boat" parent="." index="1" instance=ExtResource("11_dlmmx")]
+
+[node name="KnifeHolster" parent="Boat" index="2" instance=ExtResource("9_287n1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0287454, 0.782018, 0.381058)
 
 [node name="ZoneSwitchArea" parent="." index="2" instance=ExtResource("13_b57m8")]
 zone_scene = "res://game/swimming_level/SwimmingLevel.tscn"
@@ -65,5 +83,8 @@ shape = SubResource("BoxShape3D_5arlm")
 stream = ExtResource("12_w2rys")
 
 [node name="OceanSurface" parent="." index="3" instance=ExtResource("12_lv1g4")]
+
+[node name="ScubaKnife" parent="." index="4" instance=ExtResource("18_0oobb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.286091, 0.879009, 0.472459)
 
 [connection signal="triggered" from="ZoneSwitchArea" to="ZoneSwitchArea/Splash" method="play"]
