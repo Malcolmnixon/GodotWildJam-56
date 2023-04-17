@@ -8,7 +8,7 @@ extends XRToolsMovementProvider
 ## This script provides swimming movement for the player.
 ##
 
-
+## Enumeration of swimming behaviour
 enum SwimmingType { 
 	PHYSICAL, 	# Use physical mostion for input
 	ANALOG,		# Use joystick for input
@@ -113,8 +113,8 @@ func physics_movement(delta: float, player_body: XRToolsPlayerBody, disabled: bo
 			var c_length = l_vel.length() + r_vel.length()
 			
 			# velocity checks for forward and back movement 
-			var back = l_vel.x > physical_threshold and r_vel.x < -physical_threshold
-			var forward = l_vel.x < -physical_threshold and r_vel.x > physical_threshold
+			var back = l_vel.x < -physical_threshold and r_vel.x > physical_threshold
+			var forward = l_vel.x > physical_threshold and r_vel.x < -physical_threshold
 
 			var swim_velocity := player_body.velocity
 			
