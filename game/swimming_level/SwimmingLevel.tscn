@@ -47,8 +47,6 @@ environment = ExtResource("2_q1xwq")
 
 [node name="EnviromentDepthAffector" type="Node" parent="." index="0" node_paths=PackedStringArray("enviroment", "directional_light")]
 script = ExtResource("3_c5nfx")
-depth_top = 40.0
-depth_bottom = 0.0
 enviroment = NodePath("../WorldEnvironment")
 directional_light = NodePath("../DirectionalLight3D")
 

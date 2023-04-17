@@ -1,8 +1,20 @@
-[gd_resource type="Environment" format=3 uid="uid://duexmj7fck5s2"]
+[gd_resource type="Environment" load_steps=5 format=3 uid="uid://duexmj7fck5s2"]
+
+[sub_resource type="Gradient" id="Gradient_seujs"]
+colors = PackedColorArray(0.0980392, 0.384314, 0.572549, 1, 0.0980392, 0.384314, 0.572549, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_pldel"]
+gradient = SubResource("Gradient_seujs")
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_7tyyt"]
+panorama = SubResource("GradientTexture1D_pldel")
+
+[sub_resource type="Sky" id="Sky_qjbfq"]
+sky_material = SubResource("PanoramaSkyMaterial_7tyyt")
 
 [resource]
-background_mode = 1
+background_mode = 2
 background_color = Color(0.0588235, 0.27451, 0.415686, 1)
-ambient_light_color = Color(0.0588235, 0.27451, 0.415686, 1)
+sky = SubResource("Sky_qjbfq")
 fog_enabled = true
 fog_light_color = Color(0.0980392, 0.384314, 0.572549, 1)

@@ -1,29 +1,41 @@
 extends Node
 
-@export var depth_top = 0.0
-@export var depth_bottom = -10.0
+@export var depth_light_top : float = 40.0
+@export var depth_light_bottom : float = 5.0
+
+@export var light_top : float = 1.0
+@export var light_bottom : float = 0.1
+
+@export var depth_fog_top : float = 20.0
+@export var depth_fog_bottom : float = 5.0
+
+@export var fog_density_top : float = 0.02
+@export var fog_density_bottom : float = 0.1
 
 @export var enviroment: WorldEnvironment
 @export var directional_light: DirectionalLight3D
 
-var init_light_energy = 0.0
-var init_fog_density = 0.0
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	if is_instance_valid(enviroment): 
-		init_fog_density = enviroment.environment.fog_density
-		
-	if is_instance_valid(directional_light): 
-		init_light_energy = directional_light.light_energy
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	
-	var cam_pos = get_viewport().get_camera_3d().global_position
-	var depth_normal = (cam_pos.y - depth_top) / (depth_bottom - depth_top )
-	
-	depth_normal = clamp(depth_normal, 0.01, 1.0)
-	
-	directional_light.light_energy = init_light_energy * (1 - depth_normal)
-	enviroment.environment.fog_density = init_fog_density * depth_normal
+	var cam_pos := get_viewport().get_camera_3d().global_position
+
+	# Calculate the light-coefficient [0.0 .. 1.0]
+	var light_coefficient : float = clamp(
+		inverse_lerp(depth_light_top, depth_light_bottom, cam_pos.y),
+		0.0, 1.0)
+
+	# Apply the light energy to lighting
+	var light_energy : float = lerp(light_top, light_bottom, light_coefficient)
+	directional_light.light_energy = light_energy
+	enviroment.environment.ambient_light_energy = light_energy
+	enviroment.environment.fog_light_energy = light_energy
+
+	# Calculate the fog coefficient
+	var fog_coefficient : float = clamp(
+		inverse_lerp(depth_fog_top, depth_fog_bottom, cam_pos.y),
+		0.0, 1.0)
+
+	# Apply the fog coefficient
+	var fog_density : float = lerp(fog_density_top, fog_density_bottom, fog_coefficient)
+	enviroment.environment.fog_density = fog_density
