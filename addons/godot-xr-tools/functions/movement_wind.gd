@@ -103,6 +103,7 @@ func _on_area_entered(area: Area3D):
 
 
 func _on_area_exited(area: Area3D):
+	print("area entered")
 	# Erase from the wind area
 	_in_wind_areas.erase(area)
 

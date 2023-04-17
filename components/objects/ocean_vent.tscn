@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=3 uid="uid://dqsr3qaq167il"]
+
+[ext_resource type="Script" path="res://addons/godot-xr-tools/objects/wind_area.gd" id="1_ja0hb"]
+[ext_resource type="Script" path="res://components/objects/obstacles/ocean_vent.gd" id="1_m4mig"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_glbw3"]
+size = Vector3(1, 2.13749, 1)
+
+[sub_resource type="Curve" id="Curve_ngutb"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.844961, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_sh5mt"]
+curve = SubResource("Curve_ngutb")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lhgn7"]
+emission_shape = 1
+emission_sphere_radius = 0.2
+gravity = Vector3(0, 4.904, 0)
+scale_min = 0.1
+scale_max = 0.2
+scale_curve = SubResource("CurveTexture_sh5mt")
+
+[sub_resource type="SphereMesh" id="SphereMesh_fqygy"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_4xj1f"]
+top_radius = 0.2
+height = 0.5
+
+[node name="ocean_vent" type="Node3D"]
+script = ExtResource("1_m4mig")
+
+[node name="XRToolsWindArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.550411, 0)
+collision_mask = 524289
+script = ExtResource("1_ja0hb")
+wind_vector = Vector3(0, 99.721, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="XRToolsWindArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.982571, 0)
+shape = SubResource("BoxShape3D_glbw3")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.550411, 0)
+process_material = SubResource("ParticleProcessMaterial_lhgn7")
+draw_pass_1 = SubResource("SphereMesh_fqygy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.261598, 0)
+mesh = SubResource("CylinderMesh_4xj1f")
+
+[connection signal="body_entered" from="XRToolsWindArea" to="." method="_on_xr_tools_wind_area_body_entered"]
+[connection signal="body_exited" from="XRToolsWindArea" to="." method="_on_xr_tools_wind_area_body_exited"]
