@@ -1,0 +1,22 @@
+	Item Highliter shader
+	
+	Source:
+	https://godotshaders.com/shader/collectable-item-shining-highlight/
+
+	Created/distributed by OzMaister
+	https://www.digitalnightmare.eu/en/privacy.html
+	Release Date: March 2022
+
+			------------------------------
+
+	License: MIT License
+	A short and simple permissive license with conditions
+	only requiring preservation of copyright and license notices.
+	Licensed works, modifications,
+	and larger works may be distributed under different terms and without source code.
+	
+	https://opensource.org/license/mit/
+
+	This content is free to use in personal, educational and commercial projects.
+
+			------------------------------
