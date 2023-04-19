@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dpuykcn1jbmsw"]
+
+[ext_resource type="Texture2D" uid="uid://cj0lr55bvruc4" path="res://assets/images/temple.png" id="1_6w5k0"]
+
+[resource]
+albedo_texture = ExtResource("1_6w5k0")
+uv1_scale = Vector3(1.729, 1.729, 1.729)
+uv1_triplanar = true

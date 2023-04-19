@@ -2,6 +2,13 @@
 class_name XRToolsSceneBase
 extends Node3D
 
+
+enum LevelType { 
+	land, 
+	water
+}
+
+
 ## Introduction
 #
 # This is our base scene for all our levels.
@@ -35,13 +42,17 @@ signal request_reset_scene
 # Here we set the environment we need to set as our world environment
 # once our scene is loaded.
 
+
+@export var level_type: LevelType = LevelType.land
 @export var environment : Environment
 
 ## Interface
+func _enter_tree():
+	GameManager.load_player(self)
 
 func _ready() -> void:
 	pass
-
+	
 # Add support for is_xr_class on XRTools classes
 func is_xr_class(name : String) -> bool:
 	return name == "XRToolsSceneBase"
@@ -71,15 +82,18 @@ func scene_loaded():
 	# Called after scene is loaded
 
 	# Make sure our camera becomes the current camera
-	$XROrigin3D/XRCamera3D.current = true
-	$XROrigin3D.current = true
+#	$XROrigin3D/XRCamera3D.current = true
+#	$XROrigin3D.current = true
 
 	# Center our player on our origin point
 	# Note, this means you can place the XROrigin3D point in the start
 	# position where you want the player to spawn, even if the player is
 	# physically halfway across the room.
-	center_player_on($XROrigin3D.global_transform)
-
+#	center_player_on($XROrigin3D.global_transform)
+	
+	if level_type == LevelType.water: 
+		GameManager.player.set_behaviour(GameManager.player.PlayerBehaviour.swim)
+		
 func scene_visible():
 	# Called after the scene becomes fully visible
 	pass
