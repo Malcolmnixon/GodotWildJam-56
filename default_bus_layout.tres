@@ -4,5 +4,6 @@
 resource_name = "Filter"
 
 [resource]
+bus/0/volume_db = 0.267241
 bus/0/effect/0/effect = SubResource("AudioEffectFilter_ol4y5")
 bus/0/effect/0/enabled = true

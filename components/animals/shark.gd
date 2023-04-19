@@ -49,7 +49,9 @@ var _target := Vector3.ZERO
 
 func _ready():
 	_player = get_node(player)
-	$AnimationPlayer.play("Swim")
+	
+	if get_node("AnimationPlayer"): 
+		get_node("AnimationPlayer").play("Swim")
 
 func _physics_process(delta : float):
 	# Update how long ago the player was last seen

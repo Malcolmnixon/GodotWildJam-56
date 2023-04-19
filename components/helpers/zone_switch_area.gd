@@ -34,7 +34,8 @@ func _on_body_entered(body : Node3D):
 
 	# Report triggering
 	triggered.emit()
-
+	
+	
 	# Fire the load_scene signal
 	if zone_scene == "":
 		scene_base.reset_scene()
