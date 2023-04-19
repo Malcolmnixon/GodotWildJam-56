@@ -1,0 +1,35 @@
+[gd_scene load_steps=10 format=3 uid="uid://ddkq4i54e5cfk"]
+
+[ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_6ras4"]
+[ext_resource type="PackedScene" uid="uid://tckqh1t6xb4b" path="res://assets/digitaln8m4r3/knuckles_trident/model/knuckles_trident.glb" id="2_j88qv"]
+[ext_resource type="Resource" uid="uid://cw0xinw7631ba" path="res://components/objects/weapons/poses/pose_knuckles_trident_left.tres" id="3_odcvu"]
+[ext_resource type="Material" uid="uid://dc1bg8qgmbxkk" path="res://components/objects/weapons/materials/pallete.tres" id="3_pi2qd"]
+[ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="4_t3y38"]
+[ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="5_03fwh"]
+[ext_resource type="Resource" uid="uid://bfuwhsg2t1xie" path="res://components/objects/weapons/poses/pose_knuckles_trident_right.tres" id="5_45nm4"]
+[ext_resource type="PackedScene" uid="uid://da2qgxxwwitl6" path="res://addons/godot-xr-tools/objects/highlight/highlight_ring.tscn" id="6_1bjlf"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_0n4nl"]
+points = PackedVector3Array(0.0558071, 0.00644857, 0.00558684, 0.0412157, 0.00644857, 0.0274475, -0.0352564, 0.0137357, -0.172859, -0.0571214, -0.00812143, 0.00558684, 0.03759, -0.00812143, -0.180138, 0.0558071, -0.00812143, 0.00558684, 0.0339422, 0.0137357, -0.172859, -0.0571214, 0.00644857, 0.00558684, -0.0352564, -0.00447572, -0.198348, -0.024335, -0.00812143, 0.0310986, 0.0339422, 0.00280714, -0.202021, -0.0389043, -0.00812143, -0.176487, -0.0425411, 0.00644857, 0.0274475, 0.00114468, 0.0137357, -0.132788, 0.0412157, 0.00280714, -0.176487, -0.0352564, 0.00644857, -0.194696, 0.0412157, -0.00812143, 0.0274475, -0.0571214, 0.00644857, -0.0126228, 0.0266575, 0.00644857, 0.0310986, 0.0558071, -0.00812143, -0.0162739, 0.0558071, 0.00644857, -0.0162739, 0.0339422, -0.00447572, -0.198348, -0.0352564, 0.0137357, -0.158277, 0.0339422, 0.0137357, -0.158277, -0.0425411, -0.00812143, 0.0274475, -0.0571214, -0.00812143, -0.0126228, -0.024335, 0.00644857, 0.0310986, -0.0352564, -0.00812143, -0.183766, 0.0266575, -0.00812143, 0.0310986, 0.0412157, -0.000832149, -0.176487, 0.0339422, 0.00644857, -0.194696, 0.0339422, -0.00812143, -0.183766)
+
+[node name="KnucklesTrident" instance=ExtResource("1_6ras4")]
+
+[node name="GrabPointHandLeft" parent="." index="0" instance=ExtResource("4_t3y38")]
+transform = Transform3D(-4.19222e-08, 0.959067, -0.283179, -1, -4.37114e-08, -1.63583e-15, -1.23781e-08, 0.283178, 0.959067, 0.075185, -0.0187444, -0.063897)
+hand_pose = ExtResource("3_odcvu")
+
+[node name="GrabPointHandRight" parent="." index="1" instance=ExtResource("5_03fwh")]
+transform = Transform3D(-4.19222e-08, 0.959067, -0.283179, -1, -4.37114e-08, 1.0287e-15, -1.23781e-08, 0.283178, 0.959067, 0.075, 0.019, -0.064)
+hand_pose = ExtResource("5_45nm4")
+
+[node name="HighlightRing" parent="." index="2" instance=ExtResource("6_1bjlf")]
+
+[node name="CollisionShape3D" parent="." index="3"]
+shape = SubResource("ConvexPolygonShape3D_0n4nl")
+
+[node name="knuckles_trident" parent="." index="4" instance=ExtResource("2_j88qv")]
+
+[node name="Knuckles" parent="knuckles_trident" index="0"]
+material_override = ExtResource("3_pi2qd")
+
+[editable path="knuckles_trident"]

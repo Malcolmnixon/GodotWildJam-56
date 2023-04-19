@@ -1,6 +1,7 @@
 	
 	Coin 3D Model
 	Headlight 3D Model
+	Knuckles Trident 3D Model
 	Scube Knife and Holster 3D Model
 	Watch 3D Model
 	
