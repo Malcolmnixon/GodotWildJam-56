@@ -1,0 +1,50 @@
+[gd_scene load_steps=11 format=3 uid="uid://ca1w7adrf7bvi"]
+
+[ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_6yd0a"]
+[ext_resource type="PackedScene" uid="uid://cxujhm0psb24w" path="res://assets/digitaln8m4r3/watch/model/watch.glb" id="2_aafda"]
+[ext_resource type="Material" uid="uid://dc1bg8qgmbxkk" path="res://components/objects/weapons/materials/pallete.tres" id="3_2aess"]
+[ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="4_a0gyp"]
+[ext_resource type="Resource" uid="uid://1d2bvavokwmq" path="res://components/objects/acc/poses/pose_watch_left.tres" id="5_dui2m"]
+[ext_resource type="PackedScene" uid="uid://da2qgxxwwitl6" path="res://addons/godot-xr-tools/objects/highlight/highlight_ring.tscn" id="6_4xfpt"]
+[ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="6_blwju"]
+[ext_resource type="Resource" uid="uid://b6dbieuiipn3s" path="res://components/objects/acc/poses/pose_watch_right.tres" id="7_0e67b"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_2bku7"]
+points = PackedVector3Array(0.0171111, 0.00677672, 0.0318323, 0.0157544, -0.0325333, -0.0318778, -0.0146858, -0.0361689, 0.0109866, -0.0167778, 0.0203301, 0.029119, 0.0146439, 0.0402876, -0.0157004, -0.0154177, -0.0325333, -0.0318778, 0.0146944, -0.0366369, 0.00823582, -0.00832668, 0.0379089, 0.0228776, 0.0157544, 0.0325333, -0.0318778, -0.0145909, -0.0153997, 0.027609, -0.0146186, 0.0411536, -0.016052, 0.010886, 0.0353213, 0.022102, -0.0146186, -0.0411536, -0.016052, 0.0157544, -0.0162624, 0.029119, -0.0167778, 0.00135025, 0.0331889, -0.0154177, 0.0325333, -0.0318778, 0.0146439, -0.0402876, -0.0157004, 0.0171111, 0.0189714, 0.029119, -0.0146763, 0.03744, 0.0135642, 0.0147, 0.03791, 0.00823874, -0.0146024, -0.0269765, 0.0212078, 0.0146652, -0.0327799, 0.0145238, -0.0146351, -0.0411995, -0.00963423, 0.0157544, -0.00135025, 0.0331889, 0.0146632, 0.0403414, -0.00815826, 0.0171111, -0.00135025, 0.0250556, -0.0167778, 0.0176212, 0.0304757, -0.0146391, 0.0412106, -0.00834817, 0.00211281, -0.0350784, -0.0292311, 0.00211281, 0.0350784, -0.0292311, -0.0167778, 0.0108444, 0.0223423, 0.0146422, -0.0402829, -0.00940531)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ot63v"]
+transparency = 1
+albedo_color = Color(0, 1, 1, 0.12549)
+
+[node name="Watch" groups=["WatchHolster"] instance=ExtResource("1_6yd0a")]
+
+[node name="GrabPointHandLeft" parent="." index="0" instance=ExtResource("4_a0gyp")]
+transform = Transform3D(2.01255e-08, -0.887703, -0.460417, -3.88027e-08, -0.460417, 0.887703, -1, 0, -4.37114e-08, -0.0155865, -0.0438748, 0.0156464)
+hand_pose = ExtResource("5_dui2m")
+editor_preview_mode = 1
+
+[node name="GrabPointHandRight" parent="." index="1" instance=ExtResource("6_blwju")]
+transform = Transform3D(-9.0328e-08, -0.887703, -0.460417, -6.9521e-08, -0.460417, 0.887703, -1, 1.12193e-07, -2.01254e-08, -0.016, -0.044, -0.016)
+hand_pose = ExtResource("7_0e67b")
+
+[node name="CollisionShape3D" parent="." index="2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_2bku7")
+
+[node name="HighlightRing" parent="." index="3" instance=ExtResource("6_4xfpt")]
+
+[node name="watch" parent="." index="4" instance=ExtResource("2_aafda")]
+
+[node name="Wristband" parent="watch" index="0"]
+material_override = ExtResource("3_2aess")
+
+[node name="Glass" parent="watch" index="1"]
+material_override = SubResource("StandardMaterial3D_ot63v")
+
+[node name="Body" parent="watch" index="2"]
+material_override = ExtResource("3_2aess")
+
+[node name="RTT" parent="watch" index="3"]
+material_override = ExtResource("3_2aess")
+
+[editable path="watch"]

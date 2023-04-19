@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://br2ht7wahhr66"]
+[gd_scene load_steps=26 format=3 uid="uid://br2ht7wahhr66"]
 
 [ext_resource type="PackedScene" uid="uid://qbmx03iibuuu" path="res://addons/godot-xr-tools/staging/scene_base.tscn" id="1_3afb4"]
 [ext_resource type="Environment" uid="uid://dem4338dsghdc" path="res://game/start_level/environment/sunset_environment.tres" id="2_nxj35"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" path="res://components/objects/acc/grab_headlight.tscn" id="19_ddgy7"]
 [ext_resource type="PackedScene" path="res://components/objects/acc/grab_battery_big.tscn" id="20_wa5t8"]
 [ext_resource type="PackedScene" uid="uid://bo11rqpiu0ae7" path="res://components/objects/acc/grab_coin.tscn" id="22_a5h0h"]
+[ext_resource type="PackedScene" uid="uid://ca1w7adrf7bvi" path="res://components/objects/acc/grab_watch.tscn" id="23_tinun"]
 
 [sub_resource type="Resource" id="Resource_vw6fw"]
 script = ExtResource("10_n160b")
@@ -106,5 +107,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.483381, 0.57585, -0.749589
 
 [node name="Coin" parent="." index="8" instance=ExtResource("22_a5h0h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.54934, 0.60428, -0.567589)
+
+[node name="Watch" parent="." index="9" instance=ExtResource("23_tinun")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0323575, 0.683068, -0.937083)
 
 [connection signal="triggered" from="ZoneSwitchArea" to="ZoneSwitchArea/Splash" method="play"]
