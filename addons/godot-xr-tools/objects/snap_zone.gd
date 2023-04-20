@@ -26,6 +26,9 @@ enum SnapMode {
 ## Enable or disable snap-zone
 @export var enabled : bool = true
 
+
+@export var locked : bool = false 
+
 ## Grab distance
 @export var grab_distance : float = 0.3: set = _set_grab_distance
 

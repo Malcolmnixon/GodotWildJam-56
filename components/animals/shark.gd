@@ -35,7 +35,7 @@ enum SharkMode {
 
 
 # Player node
-var _player : XRToolsPlayerBody
+var _player : Node3D
 
 # Duration for sharks current action
 var _memory_age := SHARK_MEMORY
@@ -48,7 +48,7 @@ var _target := Vector3.ZERO
 
 
 func _ready():
-	_player = get_node(player)
+	_player = GameManager.player
 	
 	if get_node("AnimationPlayer"): 
 		get_node("AnimationPlayer").play("Swim")

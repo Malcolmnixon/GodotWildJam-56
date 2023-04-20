@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://xk3eftdl451o"]
+[gd_scene load_steps=47 format=3 uid="uid://boyyj6pmtb74v"]
 
 [ext_resource type="Script" path="res://addons/godot-xr-tools/staging/scene_base.gd" id="1_1q3fw"]
 [ext_resource type="Environment" uid="uid://duexmj7fck5s2" path="res://game/swimming_level/environment/water_environment.tres" id="2_q1xwq"]
@@ -24,13 +24,12 @@
 [ext_resource type="Texture2D" uid="uid://c6dcasgrw5sj7" path="res://assets/images/grass.png" id="16_4r252"]
 [ext_resource type="PackedScene" uid="uid://b0q5vd8k2h61f" path="res://components/objects/boat.tscn" id="16_76w17"]
 [ext_resource type="PackedScene" uid="uid://bbd4xg30drdv3" path="res://components/objects/hazards/mine/hazard_mine.tscn" id="21_6kugg"]
-[ext_resource type="PackedScene" uid="uid://dqsr3qaq167il" path="res://components/objects/ocean_vent.tscn" id="22_k0s30"]
+[ext_resource type="PackedScene" uid="uid://mdrh1pea1kxp" path="res://components/objects/ocean_vent.tscn" id="22_k0s30"]
 [ext_resource type="PackedScene" uid="uid://dimybv0s2jjnt" path="res://assets/bones/bone1.glb" id="25_cu0mx"]
-[ext_resource type="PackedScene" uid="uid://bjahkhn5yph1b" path="res://components/objects/rock_wall.tscn" id="26_f8obk"]
 [ext_resource type="AudioStream" uid="uid://d1df81lb0jpo6" path="res://assets/nub_sfx/song_idle.ogg" id="30_5l8to"]
 [ext_resource type="PackedScene" uid="uid://bg3aa81vmt8x3" path="res://assets/temple/temple.glb" id="30_535ko"]
-[ext_resource type="PackedScene" uid="uid://b3rfmenhu1ivj" path="res://components/objects/rock_bulb.tscn" id="30_xjxdm"]
 [ext_resource type="Material" uid="uid://dpuykcn1jbmsw" path="res://assets/materials/mat_temple.tres" id="31_1bctg"]
+[ext_resource type="PackedScene" uid="uid://hj8yxw1pepxv" path="res://components/animals/shark.tscn" id="31_tghdp"]
 [ext_resource type="AudioStream" uid="uid://dbld744ykmvdc" path="res://assets/freesound/366159__dcsfx__underwater-loop-amb.mp3" id="32_jo6al"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_iegai"]
@@ -123,6 +122,11 @@ size = Vector2(1000, 1000)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2vvth"]
 size = Vector3(1000, 1, 1000)
+
+[sub_resource type="ImageTexture3D" id="ImageTexture3D_chh2u"]
+
+[sub_resource type="FogMaterial" id="FogMaterial_il8n3"]
+density_texture = SubResource("ImageTexture3D_chh2u")
 
 [node name="UnderWater" type="Node3D"]
 script = ExtResource("1_1q3fw")
@@ -739,118 +743,7 @@ skeleton = NodePath("../..")
 [node name="Rocks" type="Node3D" parent="Static"]
 transform = Transform3D(1.92974, 0, 0, 0, 1, 0, 0, 0, 1, 19.076, 0, -48.7422)
 
-[node name="rock_wall" parent="Static/Rocks" instance=ExtResource("26_f8obk")]
-transform = Transform3D(0.992137, 0.12516, 0, -0.12516, 0.992136, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="rock_wall18" parent="Static/Rocks" instance=ExtResource("26_f8obk")]
-transform = Transform3D(0.690657, 0.142649, -0.00462386, 0.00541078, -0.145037, 1.14399, 0.0419288, -2.33099, -0.0714638, 0.646193, 6.50238, -2.88832)
-
-[node name="rock_wall19" parent="Static/Rocks" instance=ExtResource("26_f8obk")]
-transform = Transform3D(-0.690657, -0.142649, 0.00462386, 0.0117842, -0.501212, 1.11946, -0.0406007, 2.28108, 0.246262, 4.3203, 10.8628, -60.4179)
-
-[node name="rock_wall20" parent="Static/Rocks" instance=ExtResource("26_f8obk")]
-transform = Transform3D(-0.418107, -0.140938, -0.264375, -0.0550906, -0.4952, 1.75083, -0.038251, 2.25372, 0.368169, 12.71, 10.9358, -65.7345)
-
-[node name="rock_wall2" parent="Static/Rocks" instance=ExtResource("26_f8obk")]
-transform = Transform3D(0.994828, -0.101577, 0, 0.101577, 0.994827, 0, 0, 0, 0.999999, 10.6865, 0, 0)
-
-[node name="rock_wall3" parent="Static/Rocks" instance=ExtResource("26_f8obk")]
-transform = Transform3D(-0.0403723, -0.608326, 0, 0.943182, -0.0260388, 0, 0, 0, 0.999998, 10.5258, 11.5245, -0.232285)
-
-[node name="rock_wall8" parent="Static/Rocks" instance=ExtResource("26_f8obk")]
-transform = Transform3D(-0.0407164, -0.644569, 0, 0.951221, -0.0275901, 0, 0, 0, 2.36924, 10.5258, 11.5245, -23.75)
-
-[node name="rock_wall21" parent="Static/Rocks" instance=ExtResource("26_f8obk")]
-transform = Transform3D(-0.0407164, -0.644569, 0, 0.929297, -0.0269542, -0.505729, 0.203044, -0.0058893, 2.31463, 10.5258, 13.0736, -36.5915)
-
-[node name="rock_wall22" parent="Static/Rocks" instance=ExtResource("26_f8obk")]
-transform = Transform3D(-0.0541043, -0.642756, -0.153641, 0.929296, -0.0269542, -0.505729, 0.199894, -0.0486617, 2.30952, 11.6908, 16.5138, -53.171)
-
-[node name="rock_wall9" parent="Static/Rocks" instance=ExtResource("26_f8obk")]
-transform = Transform3D(0.877684, -0.361564, 0, 0.347694, 0.912692, 0, 0, 0, 2.36924, 13.6272, 0.782555, -14.7435)
-
-[node name="rock_wall23" parent="Static/Rocks" instance=ExtResource("26_f8obk")]
-transform = Transform3D(0.373186, 0.901686, 0.0234926, -0.820044, 0.370415, -0.760655, -0.281919, 0.116137, 2.24369, 2.23561, 3.19933, -79.7714)
-
-[node name="rock_wall24" parent="Static/Rocks" instance=ExtResource("26_f8obk")]
-transform = Transform3D(0.234665, 0.949969, -0.100689, -0.914309, 0.24312, -0.0612463, -0.0136793, 0.0467149, 2.3663, 5.35649, 25.0044, -90.353)
-
-[node name="rock_wall5" parent="Static/Rocks" instance=ExtResource("26_f8obk")]
-transform = Transform3D(2.14309, -0.144361, 0, 0.218821, 1.41384, 0, 0, 0, 1.45989, 10.6865, 15.8641, -104.043)
-
-[node name="rock_wall6" parent="Static/Rocks" instance=ExtResource("26_f8obk")]
-transform = Transform3D(1.17, -0.0788124, -1.22313, 0.218821, 1.41384, 5.07292e-11, 1.79553, -0.120949, 0.797012, 15.8686, 15.864, -96.2285)
-
-[node name="rock_wall25" parent="Static/Rocks" instance=ExtResource("26_f8obk")]
-transform = Transform3D(-1.61247, 0.108618, -0.961631, 0.218821, 1.41384, 6.03966e-09, 1.41166, -0.0950907, -1.09843, -45.0007, 15.864, -101.1)
-
-[node name="rock_wall7" parent="Static/Rocks" instance=ExtResource("26_f8obk")]
-transform = Transform3D(1.32297, 0.0291631, -0.600482, -0.0856518, 1.99175, -0.00966446, 1.68817, 0.0782007, 0.470089, 29.877, 4.78538, -46.7657)
-
-[node name="rock_wall12" parent="Static/Rocks" instance=ExtResource("26_f8obk")]
-transform = Transform3D(1.32297, 0.0291631, -0.600482, 0.380919, -1.94703, 0.0921056, -1.64686, -0.426921, -0.461078, 29.877, 29.0138, -15.33)
-
-[node name="rock_wall10" parent="Static/Rocks" instance=ExtResource("26_f8obk")]
-transform = Transform3D(1.96538, -0.13239, 0.582057, 0.21882, 1.41384, -1.459e-08, -0.854451, 0.0575568, 1.33883, 15.4768, -7.23787, 118.189)
-
-[node name="rock_wall10" parent="Static/Rocks/rock_wall10" instance=ExtResource("26_f8obk")]
-transform = Transform3D(1.96538, -0.13239, 0.582057, 0.21882, 1.41384, -1.459e-08, -0.854451, 0.0575568, 1.33883, 15.4836, -7.31048, 118.186)
-
-[node name="rock_wall15" parent="Static/Rocks" instance=ExtResource("26_f8obk")]
-transform = Transform3D(1.96538, -0.13239, 0.582057, 0.21882, 1.41384, -1.459e-08, -0.85445, 0.0575567, 1.33883, -68.7885, 8.16296, 18.4624)
-
-[node name="rock_wall10" parent="Static/Rocks/rock_wall15" instance=ExtResource("26_f8obk")]
-transform = Transform3D(1.96538, -0.13239, 0.582057, 0.21882, 1.41384, -1.459e-08, -0.854451, 0.0575568, 1.33883, 15.4836, -7.31048, 118.186)
-
-[node name="rock_wall16" parent="Static/Rocks" instance=ExtResource("26_f8obk")]
-transform = Transform3D(2.31958, -0.156249, -1.44937, -0.497772, 1.97941, -0.591024, 2.09343, 0.64379, 1.46541, -68.7885, 8.16295, 33.3591)
-
-[node name="rock_wall10" parent="Static/Rocks/rock_wall16" instance=ExtResource("26_f8obk")]
-transform = Transform3D(1.96538, -0.13239, 0.582057, 0.21882, 1.41384, -1.459e-08, -0.854451, 0.0575568, 1.33883, 15.4836, -7.31048, 118.186)
-
-[node name="rock_wall17" parent="Static/Rocks" instance=ExtResource("26_f8obk")]
-transform = Transform3D(2.31958, -0.156249, -1.44937, 1.76674, 1.3226, 1.14808, 1.22834, -1.60725, 1.08565, -68.7885, 7.73634, 11.842)
-
-[node name="rock_wall10" parent="Static/Rocks/rock_wall17" instance=ExtResource("26_f8obk")]
-transform = Transform3D(1.96538, -0.13239, 0.582057, 0.21882, 1.41384, -1.459e-08, -0.854451, 0.0575568, 1.33883, 15.4836, -7.31048, 118.186)
-
-[node name="rock_wall13" parent="Static/Rocks" instance=ExtResource("26_f8obk")]
-transform = Transform3D(1.96538, 0.561771, 0.155822, 0.21882, 0.0483558, -1.45148, -0.85445, 1.30455, -0.0132987, 3.35413, -4.73996, 117.288)
-
-[node name="rock_wall10" parent="Static/Rocks/rock_wall13" instance=ExtResource("26_f8obk")]
-transform = Transform3D(1.96538, -0.13239, 0.582057, 0.21882, 1.41384, -1.459e-08, -0.854451, 0.0575568, 1.33883, 15.4836, -7.31048, 118.186)
-
-[node name="rock_wall14" parent="Static/Rocks" instance=ExtResource("26_f8obk")]
-transform = Transform3D(1.45168, 0.561771, -0.911279, -1.48606, 0.0483557, -1.05574, -0.570042, 1.30455, 0.431552, 0.0173454, -0.424362, 132.786)
-
-[node name="rock_wall10" parent="Static/Rocks/rock_wall14" instance=ExtResource("26_f8obk")]
-transform = Transform3D(1.96538, -0.13239, 0.582057, 0.21882, 1.41384, -1.459e-08, -0.854451, 0.0575568, 1.33883, 15.4836, -7.31048, 118.186)
-
-[node name="rock_wall11" parent="Static/Rocks" instance=ExtResource("26_f8obk")]
-transform = Transform3D(2.14198, -0.147597, 0.0341386, 0.223873, 1.41349, -0.0024669, -0.0497267, 0.00584175, 1.45948, 38.4328, 4.3662, 54.5172)
-
-[node name="rock_wall4" parent="Static/Rocks" instance=ExtResource("26_f8obk")]
-transform = Transform3D(-0.02157, -0.325015, -0.845307, 0.943182, -0.0260388, 0, -0.034127, -0.514223, 0.534277, 26.6148, 1.06333, -0.232285)
-
 [node name="Coral" type="Node3D" parent="Static"]
-
-[node name="rock_bulb" parent="Static/Coral" instance=ExtResource("30_xjxdm")]
-transform = Transform3D(1.36374, 0, 0, 0, 1.36374, 0, 0, 0, 1.36374, 53.0783, 1.19181, -25.4921)
-
-[node name="rock_bulb2" parent="Static/Coral" instance=ExtResource("30_xjxdm")]
-transform = Transform3D(1.36374, 0, 0, 0, 1.36374, 0, 0, 0, 1.36374, 53.8681, 1.19181, -27.0482)
-
-[node name="rock_bulb3" parent="Static/Coral" instance=ExtResource("30_xjxdm")]
-transform = Transform3D(1.03964, 0, -1.43954, 0, 1.77571, 0, 1.43954, 0, 1.03964, 51.4498, 1.19181, -28.0938)
-
-[node name="rock_bulb4" parent="Static/Coral" instance=ExtResource("30_xjxdm")]
-transform = Transform3D(1.03964, 0, -1.43954, 0, 1.77571, 0, 1.43954, 0, 1.03964, 53.6944, 1.19181, -28.4464)
-
-[node name="rock_bulb5" parent="Static/Coral" instance=ExtResource("30_xjxdm")]
-transform = Transform3D(0.639097, 0, -2.20749, 0, 1.77571, 0, 0.884925, 0, 1.59426, 62.5763, 2.4425, -52.1077)
-
-[node name="rock_bulb6" parent="Static/Coral" instance=ExtResource("30_xjxdm")]
-transform = Transform3D(1.36053, 0, -2.88517, 0, 1.77571, 0, 1.88385, 0, 2.08369, 65.962, 2.84644, -51.1671)
 
 [node name="TempleCluster" type="Node3D" parent="Static"]
 transform = Transform3D(-0.618451, 0.0559521, 0.357063, 0.0484559, 0.714125, -0.027976, -0.358157, 0, -0.620346, -31.796, 2.1827, 82.9544)
@@ -862,24 +755,10 @@ transform = Transform3D(1, 0, -2.98023e-08, -1.81507e-09, 1, -3.14379e-09, -5.96
 transform = Transform3D(45.0663, 7.25552e-08, 1.90735e-06, -1.34871e-06, 7.49646, 1.16815e-07, -3.8147e-06, 1.25669e-07, 37.1574, 42.7774, 7.27131, 28.7199)
 material_override = ExtResource("31_1bctg")
 
-[node name="Pillar" parent="Static/TempleCluster" instance=ExtResource("26_f8obk")]
-transform = Transform3D(-1.16841, -0.129563, -0.607481, -0.334118, 1.51097, -0.016686, 0.693992, 0.0677015, -0.955588, 25.1414, -4.84913, 89.0642)
-
-[node name="Cube" parent="Static/TempleCluster/Pillar" index="0"]
-transform = Transform3D(1.35735, 1.00117e-08, 1.49012e-08, 2.21116e-08, 6.53767, -4.65661e-09, -9.31323e-09, 7.45058e-09, -2.23415, 1.90735e-06, 6.8388, 1.90735e-06)
-material_override = ExtResource("31_1bctg")
-
-[node name="Pillar2" parent="Static/TempleCluster" instance=ExtResource("26_f8obk")]
-transform = Transform3D(-1.34089, 0.125926, 0.282119, -0.105995, 1.51167, -0.0732709, -0.386287, -0.0585167, -1.0943, 63.2681, -7.44538, 88.8293)
-
-[node name="Cube" parent="Static/TempleCluster/Pillar2" index="0"]
-transform = Transform3D(1.35735, 1.00117e-08, 1.49012e-08, 2.21116e-08, 6.53767, -4.65661e-09, -9.31323e-09, 7.45058e-09, -2.23415, 1.90735e-06, 6.8388, 1.90735e-06)
-material_override = ExtResource("31_1bctg")
-
 [node name="OmniLight3D" type="OmniLight3D" parent="Static/TempleCluster"]
 transform = Transform3D(1.39604, 1.81812e-08, 0, -9.98448e-09, 1.39604, -8.11414e-09, -1.19209e-07, -1.76936e-09, 1.39604, 43.7437, 5.61046, 22.8399)
 light_color = Color(1, 0, 0, 1)
-light_energy = 0.744
+light_energy = 4.502
 omni_range = 20.001
 omni_attenuation = 0.933033
 
@@ -904,12 +783,15 @@ transform = Transform3D(2.19526, 0, 0, 0, 2.19526, 0, 0, 0, 2.19526, 7.59941, 0,
 transform = Transform3D(2.19526, 0, 0, 0, 2.19526, 0, 0, 0, 2.19526, 27.5519, 0.739883, -57.4256)
 
 [node name="ocean_vent4" parent="Props" instance=ExtResource("22_k0s30")]
-transform = Transform3D(0.583704, 0, -2.11624, 0, 2.19526, 0, 2.11624, 0, 0.583704, 34.1804, 1.613, -59.7167)
+transform = Transform3D(-0.269209, 0, -2.17869, 0, 2.19526, 0, 2.17869, 0, -0.269209, 30.2772, 1.613, -58.0598)
 
 [node name="ocean_vent2" parent="Props" instance=ExtResource("22_k0s30")]
 transform = Transform3D(2.19526, 0, 0, 0, 2.19526, 0, 0, 0, 2.19526, 13.6574, 0, 24.3594)
 
 [node name="AI" type="Node3D" parent="."]
+
+[node name="Shark" parent="AI" instance=ExtResource("31_tghdp")]
+transform = Transform3D(2.58401, 0, 0, 0, 2.58401, 0, 0, 0, 2.58401, 0, 8.94745, 22.7773)
 
 [node name="Music" type="Node3D" parent="."]
 
@@ -927,6 +809,11 @@ volume_db = -6.367
 pitch_scale = 0.46
 autoplay = true
 
+[node name="FogVolume" type="FogVolume" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.42714, -3.48947)
+size = Vector3(2, 2, 3.52482)
+material = SubResource("FogMaterial_il8n3")
+
 [editable path="Static/KelpForest/kelp13"]
 [editable path="Static/KelpForest/kelp25"]
 [editable path="Static/KelpForest/kelp49"]
@@ -937,5 +824,3 @@ autoplay = true
 [editable path="Static/KelpForest3/kelp49"]
 [editable path="Static/SeaFloor/terrain"]
 [editable path="Static/TempleCluster/temple"]
-[editable path="Static/TempleCluster/Pillar"]
-[editable path="Static/TempleCluster/Pillar2"]

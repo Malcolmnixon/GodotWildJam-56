@@ -1,16 +1,15 @@
-[gd_scene load_steps=13 format=3 uid="uid://br2ht7wahhr66"]
+[gd_scene load_steps=12 format=3 uid="uid://br2ht7wahhr66"]
 
 [ext_resource type="Script" path="res://addons/godot-xr-tools/staging/scene_base.gd" id="1_yvcqh"]
 [ext_resource type="Environment" uid="uid://dem4338dsghdc" path="res://game/start_level/environment/sunset_environment.tres" id="2_nxj35"]
-[ext_resource type="PackedScene" uid="uid://doul5rulmynf7" path="res://components/objects/weapons/holster/knife_holster.tscn" id="9_287n1"]
+[ext_resource type="PackedScene" uid="uid://bnl8enhgdx1np" path="res://components/objects/weapons/holster/knife_holster.tscn" id="9_287n1"]
 [ext_resource type="PackedScene" uid="uid://b0q5vd8k2h61f" path="res://components/objects/boat.tscn" id="11_dlmmx"]
 [ext_resource type="Script" path="res://components/helpers/spawn_point.gd" id="11_m1jkp"]
 [ext_resource type="PackedScene" uid="uid://u2lpx3sbcxup" path="res://components/objects/ocean_surface.tscn" id="12_lv1g4"]
 [ext_resource type="AudioStream" uid="uid://dsfwcxyx05hbq" path="res://assets/freesound/674536__nicholasjudy567__water-splash-big-splash-dive-into-water-person-or-animal.mp3" id="12_w2rys"]
 [ext_resource type="PackedScene" path="res://components/helpers/zone_switch_area.tscn" id="13_b57m8"]
-[ext_resource type="PackedScene" path="res://components/objects/acc/grab_headlight.tscn" id="19_ddgy7"]
 [ext_resource type="PackedScene" path="res://components/objects/acc/grab_battery_big.tscn" id="20_wa5t8"]
-[ext_resource type="PackedScene" path="res://components/objects/acc/grab_coin.tscn" id="22_a5h0h"]
+[ext_resource type="PackedScene" uid="uid://0yjbl2vc5ry" path="res://components/objects/acc/grab_coin.tscn" id="22_a5h0h"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5arlm"]
 size = Vector3(10, 1, 10)
@@ -35,9 +34,6 @@ shape = SubResource("BoxShape3D_5arlm")
 stream = ExtResource("12_w2rys")
 
 [node name="OceanSurface" parent="." instance=ExtResource("12_lv1g4")]
-
-[node name="Headlight" parent="." instance=ExtResource("19_ddgy7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.161489, 0.638641, -0.54298)
 
 [node name="BatteryBig2" parent="." instance=ExtResource("20_wa5t8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.633068, -0.607934)

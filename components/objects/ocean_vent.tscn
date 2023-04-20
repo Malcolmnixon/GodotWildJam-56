@@ -1,10 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://dqsr3qaq167il"]
+[gd_scene load_steps=12 format=3 uid="uid://mdrh1pea1kxp"]
 
 [ext_resource type="Script" path="res://addons/godot-xr-tools/objects/wind_area.gd" id="1_ja0hb"]
 [ext_resource type="Script" path="res://components/objects/obstacles/ocean_vent.gd" id="1_m4mig"]
 [ext_resource type="PackedScene" uid="uid://bfhj0hf6k3150" path="res://assets/rocks/rock_vent.glb" id="2_e1yoy"]
 [ext_resource type="Material" uid="uid://bxt8f03173mo" path="res://assets/ambientcg/rock028/mat_rock.tres" id="3_r5mdj"]
-[ext_resource type="PackedScene" uid="uid://b3rfmenhu1ivj" path="res://components/objects/rock_bulb.tscn" id="5_0ylgu"]
 [ext_resource type="Texture2D" uid="uid://7lp2suojankf" path="res://assets/images/bubble.png" id="5_rut0b"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_glbw3"]
@@ -79,9 +78,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.250731, 1.01898, -0.0593993
 material_override = SubResource("StandardMaterial3D_rm2ay")
 process_material = SubResource("ParticleProcessMaterial_lhgn7")
 draw_pass_1 = SubResource("QuadMesh_lmstv")
-
-[node name="rock_bulb" parent="." instance=ExtResource("5_0ylgu")]
-transform = Transform3D(1.22546, 0, 0, 0, 1, 0, 0, 0, 0.944867, 0, -0.545127, 0)
 
 [connection signal="body_entered" from="XRToolsWindArea" to="." method="_on_xr_tools_wind_area_body_entered"]
 [connection signal="body_exited" from="XRToolsWindArea" to="." method="_on_xr_tools_wind_area_body_exited"]

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b2e2htiem3uc8"
-path="res://.godot/imported/angler.blend-fbbdb572ed665241ce0e9dafbe3da73f.scn"
+uid="uid://bs23peklc1yvx"
+path="res://.godot/imported/scuba_animations_hand_r.blend-6d4f16d2b6040ab5ffa192db4b7919e5.scn"
 
 [deps]
 
-source_file="res://assets/angler/angler.blend"
-dest_files=["res://.godot/imported/angler.blend-fbbdb572ed665241ce0e9dafbe3da73f.scn"]
+source_file="res://assets/digitaln8m4r3/blend/animations/scuba_animations_hand_r.blend"
+dest_files=["res://.godot/imported/scuba_animations_hand_r.blend-6d4f16d2b6040ab5ffa192db4b7919e5.scn"]
 
 [params]
 

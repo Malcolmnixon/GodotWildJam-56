@@ -28,7 +28,7 @@ var battery_energy : int = 0
 func _ready() -> void:
 	# In Godot 4 we must now manually call our super class ready function
 	super()
-
+	isOn = true
 	# Listen for when this object is picked up or dropped
 	picked_up.connect(_on_picked_up)
 	dropped.connect(_on_dropped)
