@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://br2ht7wahhr66"]
+[gd_scene load_steps=28 format=3 uid="uid://br2ht7wahhr66"]
 
 [ext_resource type="PackedScene" uid="uid://qbmx03iibuuu" path="res://addons/godot-xr-tools/staging/scene_base.tscn" id="1_3afb4"]
 [ext_resource type="Environment" uid="uid://dem4338dsghdc" path="res://game/start_level/environment/sunset_environment.tres" id="2_nxj35"]
@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://bo11rqpiu0ae7" path="res://components/objects/acc/grab_coin.tscn" id="22_a5h0h"]
 [ext_resource type="PackedScene" uid="uid://ca1w7adrf7bvi" path="res://components/objects/acc/grab_watch.tscn" id="23_tinun"]
 [ext_resource type="PackedScene" uid="uid://ddkq4i54e5cfk" path="res://components/objects/weapons/grab_knuckles_trident.tscn" id="24_ws2u6"]
+[ext_resource type="PackedScene" uid="uid://bcdv7mt8u7go4" path="res://components/objects/weapons/grab_scuba_harpoon.tscn" id="25_e3vwx"]
 
 [sub_resource type="Resource" id="Resource_vw6fw"]
 script = ExtResource("10_n160b")
@@ -114,5 +115,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0323575, 0.683068, -0.9370
 
 [node name="KnucklesTrident" parent="." index="10" instance=ExtResource("24_ws2u6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00664129, 1.12988, 0.725544)
+
+[node name="ScubaHarpoon" parent="." index="11" instance=ExtResource("25_e3vwx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.273122, 0.832218, 0.416803)
 
 [connection signal="triggered" from="ZoneSwitchArea" to="ZoneSwitchArea/Splash" method="play"]
