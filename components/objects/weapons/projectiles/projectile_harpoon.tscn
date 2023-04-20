@@ -1,0 +1,50 @@
+[gd_scene load_steps=9 format=3 uid="uid://bujvbb5p6vkdl"]
+
+[ext_resource type="Script" path="res://components/objects/weapons/projectiles/projectile.gd" id="1_f1p10"]
+[ext_resource type="PackedScene" uid="uid://8tkyng02wnnr" path="res://assets/digitaln8m4r3/scuba_harpoon/model/scuba_harpoon_spear.glb" id="1_wreas"]
+[ext_resource type="Texture2D" uid="uid://7lp2suojankf" path="res://assets/images/bubble.png" id="3_t2h00"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0p6ge"]
+transparency = 1
+albedo_color = Color(0.564706, 1, 1, 0.87451)
+albedo_texture = ExtResource("3_t2h00")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_vr6ki"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.844961, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_sh5mt"]
+curve = SubResource("Curve_vr6ki")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_otfyr"]
+emission_shape = 1
+emission_sphere_radius = 0.2
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+angle_min = -680.7
+angle_max = 497.5
+scale_curve = SubResource("CurveTexture_sh5mt")
+
+[sub_resource type="QuadMesh" id="QuadMesh_w130x"]
+size = Vector2(0.02, 0.02)
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_f1p10")
+
+[node name="scuba_harpoon_spear" parent="." instance=ExtResource("1_wreas")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.272432)
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0147478, 0.00247334, -0.00225578)
+material_override = SubResource("StandardMaterial3D_0p6ge")
+visibility_aabb = AABB(-4, -4, -3.73047, 8, 8, 8)
+process_material = SubResource("ParticleProcessMaterial_otfyr")
+draw_pass_1 = SubResource("QuadMesh_w130x")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.169505)
+target_position = Vector3(0, 0, -0.5)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dyvik4qnf71fo"]
+[gd_scene load_steps=11 format=3 uid="uid://dyvik4qnf71fo"]
 
 [ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_1dgxh"]
 [ext_resource type="PackedScene" uid="uid://ccna74ggx7oat" path="res://assets/digitaln8m4r3/scuba_harpoon/model/scuba_harpoon.glb" id="2_1d6x8"]
@@ -7,6 +7,8 @@
 [ext_resource type="Resource" path="res://components/objects/weapons/poses/pose_harpoon_left.tres" id="4_c4ts0"]
 [ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="5_ihbr5"]
 [ext_resource type="Resource" path="res://components/objects/weapons/poses/pose_harpoon_right.tres" id="6_5ql0n"]
+[ext_resource type="Script" path="res://components/helpers/projectile_spawner.gd" id="8_ss08k"]
+[ext_resource type="PackedScene" uid="uid://bujvbb5p6vkdl" path="res://components/objects/weapons/projectiles/projectile_harpoon.tscn" id="9_ke8ee"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_vc347"]
 points = PackedVector3Array(0.00588585, 0.0284126, 0.402916, -0.0160881, -0.173962, 0.425372, 0.0215254, -0.173962, 0.425372, -0.0160881, -0.0159752, -0.402262, 0.0365796, 0.0216604, -0.281864, -0.031135, 0.0216604, 0.432858, -0.0386621, 0.0141333, -0.281864, 0.0365796, 0.00660615, 0.432858, 0.0365796, -0.0234817, -0.281864, -0.0236079, -0.136327, 0.493101, -0.0236079, 0.0367146, -0.281864, -0.0386621, -0.0159752, -0.281864, 0.0215254, -0.121293, 0.500587, 0.0215254, 0.0367146, -0.28935, 0.0140056, -0.0159752, -0.402262, -0.0160881, 0.0216604, -0.379626, -0.0236079, -0.158908, 0.46298, -0.031135, -0.0234817, 0.432858, 0.0365796, -0.00844808, 0.432858, -0.008561, -0.0234817, -0.379626, -0.0236079, -0.0385359, -0.281864, 0.0215254, 0.0141333, -0.379626, 0.0215254, -0.166435, 0.46298, 0.0134977, 0.0258857, 0.427353, 0.0215254, -0.0385359, -0.281864, -0.031135, -0.0310088, -0.281864, -0.031135, 0.0291875, -0.281864, -0.00792972, 0.0278715, 0.400965, 0.0064785, -0.0234817, -0.379626, -0.0236079, -0.121293, 0.493101, -0.0160881, -0.173962, 0.455405, 0.0215254, -0.136327, 0.500587)
@@ -35,5 +37,12 @@ hand_pose = ExtResource("6_5ql0n")
 
 [node name="CollisionShape3D" parent="." index="3"]
 shape = SubResource("ConvexPolygonShape3D_vc347")
+
+[node name="ProjectileSpawner" type="Node3D" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.411034)
+script = ExtResource("8_ss08k")
+projectile = ExtResource("9_ke8ee")
+
+[connection signal="action_pressed" from="." to="ProjectileSpawner" method="_on_scuba_harpoon_action_pressed"]
 
 [editable path="scuba_harpoon"]

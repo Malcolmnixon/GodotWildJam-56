@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dkie88epeaaar"]
+[gd_scene load_steps=23 format=3 uid="uid://dkie88epeaaar"]
 
 [ext_resource type="Material" uid="uid://dc1bg8qgmbxkk" path="res://components/objects/weapons/materials/pallete.tres" id="3_2aess"]
 [ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="4_a0gyp"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="6_blwju"]
 [ext_resource type="Resource" path="res://components/objects/acc/poses/pose_watch_right.tres" id="7_0e67b"]
 [ext_resource type="Texture2D" uid="uid://bp62wate3qehl" path="res://assets/digitaln8m4r3/watch/model/watch_raft_raft_color_pallete.png" id="8_b6a41"]
+[ext_resource type="AudioStream" uid="uid://dthguww6ajji5" path="res://assets/nub_sfx/beep.ogg" id="8_qup5m"]
 [ext_resource type="PackedScene" uid="uid://gb7ma14t0e2i" path="res://components/hud/watch_display.tscn" id="9_lgdpn"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_2bku7"]
@@ -216,3 +217,9 @@ size = Vector2i(128, 128)
 render_target_update_mode = 4
 
 [node name="WatchDisplay" parent="SubViewport" instance=ExtResource("9_lgdpn")]
+
+[node name="Beep" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("8_qup5m")
+volume_db = -29.238
+pitch_scale = 1.04
+max_distance = 1.0

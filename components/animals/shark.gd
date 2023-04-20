@@ -106,6 +106,5 @@ func _physics_process(delta : float):
 	velocity = (_target - global_position).normalized() * speed
 	move_and_slide()
 
-
 func _on_health_health_depleted():
 	queue_free()
