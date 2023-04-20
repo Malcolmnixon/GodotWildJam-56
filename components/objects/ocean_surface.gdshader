@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode cull_disabled;
+render_mode cull_disabled, shadows_disabled;
 
 // Water material properties
 uniform vec3 albedo : source_color = vec3(0.0, 0.0, 0.4);
