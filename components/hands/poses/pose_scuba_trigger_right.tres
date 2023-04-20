@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="XRToolsHandPoseSettings" load_steps=4 format=3 uid="uid://dofvvbya5tlm6"]
+
+[ext_resource type="Animation" uid="uid://dyb737lt00f8x" path="res://components/hands/animations/right/Scuba Trigger.res" id="1_sej7y"]
+[ext_resource type="Animation" uid="uid://ccy3e7a0hvxyl" path="res://addons/godot-xr-tools/hands/animations/right/Sign_Point.res" id="2_dldin"]
+[ext_resource type="Script" path="res://addons/godot-xr-tools/hands/poses/hand_pose_settings.gd" id="3_ktpuk"]
+
+[resource]
+script = ExtResource("3_ktpuk")
+open_pose = ExtResource("2_dldin")
+closed_pose = ExtResource("1_sej7y")

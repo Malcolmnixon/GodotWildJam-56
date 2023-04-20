@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" path="res://components/helpers/zone_switch_area.tscn" id="13_b57m8"]
 [ext_resource type="PackedScene" path="res://components/objects/acc/grab_headlight.tscn" id="19_ddgy7"]
 [ext_resource type="PackedScene" path="res://components/objects/acc/grab_battery_big.tscn" id="20_wa5t8"]
-[ext_resource type="PackedScene" path="res://components/objects/acc/grab_coin.tscn" id="22_a5h0h"]
+
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5arlm"]
 size = Vector3(10, 1, 10)
@@ -51,7 +51,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.483381, 0.57585, -0.749589
 [node name="Coin" parent="." instance=ExtResource("22_a5h0h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.54934, 0.60428, -0.567589)
 
-[node name="Spawn" type="Marker3D" parent="."]
-script = ExtResource("11_m1jkp")
 
 [connection signal="triggered" from="ZoneSwitchArea" to="ZoneSwitchArea/Splash" method="play"]
