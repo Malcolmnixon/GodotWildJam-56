@@ -1,0 +1,61 @@
+[gd_scene load_steps=6 format=3 uid="uid://gb7ma14t0e2i"]
+
+[ext_resource type="Script" path="res://components/hud/watch.gd" id="1_ca3jq"]
+[ext_resource type="Texture2D" uid="uid://do1mjspt2i0l5" path="res://components/hud/panel.png" id="1_p5kaq"]
+[ext_resource type="Texture2D" uid="uid://bs1m00pg5so65" path="res://components/hud/oxygen.png" id="2_vnplx"]
+[ext_resource type="Texture2D" uid="uid://cp2f46x30qs1p" path="res://components/hud/heart.png" id="3_68ecq"]
+[ext_resource type="AudioStream" uid="uid://dthguww6ajji5" path="res://assets/nub_sfx/beep.ogg" id="5_pghbr"]
+
+[node name="WatchDisplay" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_ca3jq")
+
+[node name="Black" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 512.0
+color = Color(0, 0, 0, 1)
+
+[node name="OxygenProgress" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 128.0
+value = 100.0
+fill_mode = 3
+texture_progress = ExtResource("1_p5kaq")
+tint_over = Color(0, 1, 1, 1)
+tint_progress = Color(0, 0.619608, 0.627451, 1)
+
+[node name="HealthProgress" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_right = 128.0
+offset_bottom = 128.0
+value = 100.0
+fill_mode = 3
+texture_progress = ExtResource("1_p5kaq")
+tint_progress = Color(1, 0.462745, 0.392157, 1)
+
+[node name="Oxygen" type="Sprite2D" parent="."]
+position = Vector2(48, 64)
+texture = ExtResource("2_vnplx")
+
+[node name="Heart" type="Sprite2D" parent="."]
+position = Vector2(80, 64)
+scale = Vector2(0.852941, 0.78125)
+texture = ExtResource("3_68ecq")
+
+[node name="Divider" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 63.0
+offset_right = 65.0
+offset_bottom = 128.0
+
+[node name="Beep" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_pghbr")
+volume_db = -29.238
+pitch_scale = 1.04
+max_distance = 1.0

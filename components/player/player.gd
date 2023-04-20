@@ -5,14 +5,25 @@ enum PlayerBehaviour {
 	land
 }
 
+
+
 @export var player_behaviour: PlayerBehaviour = PlayerBehaviour.land
+
+@onready var health: Health = $Health
 var swim_node = preload("res://game/swimming_level/movement/movement_swimming.tscn")
+var current_oxygen: float = 100.0
+
 
 func _enter_tree():
 	GameManager.player = self
 
 func _ready():
 	set_behaviour(player_behaviour)
+
+func _process(delta):
+	if player_behaviour == PlayerBehaviour.swim: 
+		current_oxygen -= delta * 5.0
+		
 
 func set_behaviour(behaviour: PlayerBehaviour):
 	player_behaviour = behaviour

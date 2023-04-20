@@ -1,0 +1,135 @@
+[gd_scene load_steps=29 format=3 uid="uid://bv1nbfh4msd6e"]
+
+[ext_resource type="Script" path="res://components/player/player.gd" id="1_poo41"]
+[ext_resource type="PackedScene" uid="uid://ceb25cst7u1iu" path="res://game/swimming_level/movement/movement_swimming.tscn" id="2_1k3co"]
+[ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="3_m033w"]
+[ext_resource type="Script" path="res://components/helpers/holster.gd" id="4_yrd1n"]
+[ext_resource type="Script" path="res://components/helpers/locked_snap_zone.gd" id="5_2vkoa"]
+[ext_resource type="PackedScene" uid="uid://dyvik4qnf71fo" path="res://components/objects/weapons/grab_scuba_harpoon.tscn" id="6_4nxxv"]
+[ext_resource type="PackedScene" uid="uid://c0lpa4kaq1ai5" path="res://components/objects/snapzones/head_zone.tscn" id="7_i8apn"]
+[ext_resource type="PackedScene" uid="uid://f6h03u14s8md" path="res://components/objects/acc/grab_headlight.tscn" id="8_kqoks"]
+[ext_resource type="Script" path="res://components/helpers/random_stream_player.gd" id="9_6svq3"]
+[ext_resource type="AudioStream" uid="uid://digr67r048bwp" path="res://assets/nub_sfx/splash_1.ogg" id="10_wpi3q"]
+[ext_resource type="AudioStream" uid="uid://32j3dyfy1861" path="res://assets/nub_sfx/splash_2.ogg" id="11_ll5o0"]
+[ext_resource type="AudioStream" uid="uid://cviw24spdhv8f" path="res://assets/nub_sfx/splash_3.ogg" id="12_833et"]
+[ext_resource type="AudioStream" uid="uid://cex5jxqyecvv" path="res://assets/nub_sfx/splash_4.ogg" id="13_t68n8"]
+[ext_resource type="AudioStream" uid="uid://12wuwm5o5j84" path="res://assets/nub_sfx/splash_5.ogg" id="14_ngyjn"]
+[ext_resource type="AudioStream" uid="uid://dsktos7y3wfrl" path="res://assets/nub_sfx/breath.ogg" id="15_wnou7"]
+[ext_resource type="PackedScene" uid="uid://bdwmserhqai5h" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_physics_hand_low.tscn" id="16_2w1o2"]
+[ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="17_u0k33"]
+[ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="18_j3cq7"]
+[ext_resource type="PackedScene" uid="uid://dgutfpt2bshee" path="res://components/objects/snapzones/holster_snap_left.tscn" id="19_3uj0w"]
+[ext_resource type="PackedScene" uid="uid://bnl8enhgdx1np" path="res://components/objects/weapons/holster/knife_holster.tscn" id="20_5q72e"]
+[ext_resource type="PackedScene" uid="uid://bft3xyxs31ci3" path="res://addons/godot-xr-tools/functions/function_pose_detector.tscn" id="21_yiacj"]
+[ext_resource type="PackedScene" uid="uid://dkie88epeaaar" path="res://components/objects/acc/grab_watch.tscn" id="22_jio5p"]
+[ext_resource type="PackedScene" uid="uid://btf05hjpw6k05" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_physics_hand_low.tscn" id="23_st0ym"]
+[ext_resource type="PackedScene" uid="uid://b6bk2pj8vbj28" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="24_0kpg5"]
+[ext_resource type="PackedScene" uid="uid://c2q5phg8w08o" path="res://addons/godot-xr-tools/functions/movement_jump.tscn" id="25_1qnv4"]
+[ext_resource type="PackedScene" uid="uid://2w6vn1n6hjrf" path="res://components/objects/snapzones/holster_snap_right.tscn" id="26_oe8fv"]
+[ext_resource type="Script" path="res://components/helpers/health.gd" id="27_16rmy"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rdwf7"]
+radius = 0.2
+height = 1.4
+
+[node name="Player" type="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.269177, 0)
+current = true
+script = ExtResource("1_poo41")
+
+[node name="MovementSwimming" parent="." instance=ExtResource("2_1k3co")]
+drag = 1.0
+
+[node name="PlayerBody" parent="." instance=ExtResource("3_m033w")]
+collision_mask = 1019
+
+[node name="39947" type="CollisionShape3D" parent="PlayerBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+shape = SubResource("CapsuleShape3D_rdwf7")
+
+[node name="ChestHolster" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
+script = ExtResource("4_yrd1n")
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="ChestHolster" node_paths=PackedStringArray("pickable")]
+transform = Transform3D(0.171018, -0.705245, 0.688028, 0, 0.698315, 0.71579, -0.985268, -0.122413, 0.119424, -0.152079, -0.575395, -0.194751)
+remote_path = NodePath("../ScubaHarpoon")
+script = ExtResource("5_2vkoa")
+pickable = NodePath("../ScubaHarpoon")
+
+[node name="ScubaHarpoon" parent="ChestHolster" instance=ExtResource("6_4nxxv")]
+transform = Transform3D(0.171018, -0.705245, 0.688028, 0, 0.698315, 0.71579, -0.985268, -0.122413, 0.119424, -0.152079, -0.575395, -0.194751)
+freeze = true
+freeze_mode = 0
+
+[node name="XRCamera3D" type="XRCamera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
+current = true
+far = 300.0
+
+[node name="HeadZone" parent="XRCamera3D" instance=ExtResource("7_i8apn")]
+
+[node name="Headlight" parent="XRCamera3D/HeadZone" instance=ExtResource("8_kqoks")]
+
+[node name="RandomStreamPlayer" type="AudioStreamPlayer3D" parent="XRCamera3D"]
+attenuation_model = 3
+volume_db = -27.234
+pitch_scale = 0.32
+script = ExtResource("9_6svq3")
+streams = Array[AudioStream]([ExtResource("10_wpi3q"), ExtResource("11_ll5o0"), ExtResource("12_833et"), ExtResource("13_t68n8"), ExtResource("14_ngyjn")])
+
+[node name="Breath" type="AudioStreamPlayer" parent="XRCamera3D"]
+stream = ExtResource("15_wnou7")
+volume_db = -13.443
+pitch_scale = 0.57
+autoplay = true
+
+[node name="SpotLight3D" type="SpotLight3D" parent="XRCamera3D"]
+spot_range = 10.0948
+spot_angle = 34.5724
+
+[node name="LeftHand" type="XRController3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, -0.5)
+tracker = &"left_hand"
+pose = &"aim"
+
+[node name="LeftPhysicsHand" parent="LeftHand" instance=ExtResource("16_2w1o2")]
+
+[node name="MovementDirect" parent="LeftHand" instance=ExtResource("17_u0k33")]
+strafe = true
+
+[node name="FunctionPickup" parent="LeftHand" groups=["LeftHandFunctionPickup"] instance=ExtResource("18_j3cq7")]
+
+[node name="HolsterSnapLeft" parent="LeftHand" instance=ExtResource("19_3uj0w")]
+transform = Transform3D(0.996659, 0, -0.0816776, 0, 1, 0, 0.0816776, 0, 0.996659, -0.0715931, -0.044798, 0.188965)
+
+[node name="KnifeHolster" parent="LeftHand/HolsterSnapLeft" instance=ExtResource("20_5q72e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0148039, 0, 0.0502717)
+
+[node name="FunctionPoseDetector" parent="LeftHand" instance=ExtResource("21_yiacj")]
+
+[node name="Watch" parent="LeftHand" instance=ExtResource("22_jio5p")]
+transform = Transform3D(-0.807964, -0.177421, 0.119985, -0.179277, 0.816419, 6.80301e-08, -0.117192, -0.0257342, -0.827214, -0.032348, -0.050189, 0.188032)
+
+[node name="RightHand" type="XRController3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, -0.5)
+tracker = &"right_hand"
+pose = &"aim"
+
+[node name="RightPhysicsHand" parent="RightHand" instance=ExtResource("23_st0ym")]
+
+[node name="MovementDirect" parent="RightHand" instance=ExtResource("17_u0k33")]
+
+[node name="MovementTurn" parent="RightHand" instance=ExtResource("24_0kpg5")]
+
+[node name="MovementJump" parent="RightHand" instance=ExtResource("25_1qnv4")]
+jump_button_action = "ax_button"
+
+[node name="FunctionPickup" parent="RightHand" groups=["RightHandFunctionPickup"] instance=ExtResource("18_j3cq7")]
+
+[node name="HolsterSnapRight" parent="RightHand" instance=ExtResource("26_oe8fv")]
+
+[node name="FunctionPoseDetector" parent="RightHand" instance=ExtResource("21_yiacj")]
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("27_16rmy")
