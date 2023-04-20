@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 XRToolsUserSettings="*res://addons/godot-xr-tools/user_settings/user_settings.gd"
 GameManager="*res://components/helpers/globals/game_manager.gd"
+GlobalEzcfg="*res://components/helpers/ezcfg.gd"
 
 [editor_plugins]
 

@@ -1,10 +1,12 @@
 extends Node
 
-
 var player = null 
 var player_path = "res://save/player.tscn"
 var spawn_point: Vector3 = Vector3.ZERO
 
+var collected_coins : int = 0
+var collected_cocaine : int = 0
+var current_level_root: Node3D = null 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -26,3 +28,31 @@ func load_player(o):
 	
 func set_spawn_point(pos): 
 	spawn_point = pos
+
+func collect_coin(): 
+	var current_coins: int = GlobalEzcfg.get_value(
+		"collectables", 
+		"coins",
+	)
+	
+	var new_amount: int = current_coins + 1
+	
+	GlobalEzcfg.save_value(
+		"collectables", 
+		"coins", 
+		new_amount
+	)
+
+func collect_cocaine(): 
+	var current_cocain: int = GlobalEzcfg.get_value(
+		"collectables", 
+		"cocaine",
+	)
+	
+	var new_amount: int = current_cocain + 1
+	
+	GlobalEzcfg.save_value(
+		"collectables", 
+		"cocaine", 
+		new_amount
+	)

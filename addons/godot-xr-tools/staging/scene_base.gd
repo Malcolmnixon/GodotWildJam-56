@@ -49,9 +49,9 @@ signal request_reset_scene
 ## Interface
 func _enter_tree():
 	GameManager.load_player(self)
-
+	
 func _ready() -> void:
-	pass
+	GameManager.current_level_root = self 
 	
 # Add support for is_xr_class on XRTools classes
 func is_xr_class(name : String) -> bool:

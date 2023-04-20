@@ -107,8 +107,6 @@ func physics_movement(delta: float, player_body: XRToolsPlayerBody, disabled: bo
 			
 			var swim_player: AudioStreamPlayer3D = $"../XRCamera3D/RandomStreamPlayer"
 			
-			
-			
 			# velocities 
 			var l_vel = _left_averager.linear_velocity()
 			var r_vel = _right_averager.linear_velocity()
@@ -134,6 +132,7 @@ func physics_movement(delta: float, player_body: XRToolsPlayerBody, disabled: bo
 				
 				if !swim_player.playing: 
 					swim_player.play_random()
+					
 			# Apply drag 
 			swim_velocity *= 1.0 - drag * delta
 			
