@@ -1,0 +1,40 @@
+[gd_scene load_steps=11 format=3 uid="uid://cxcp6s75dd68b"]
+
+[ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_0idfc"]
+[ext_resource type="PackedScene" uid="uid://bv7h56hv7p251" path="res://assets/digitaln8m4r3/cocapack/model/cocapack.glb" id="2_flm3c"]
+[ext_resource type="Script" path="res://components/objects/acc/coca.gd" id="2_vvqg1"]
+[ext_resource type="Material" uid="uid://c5qn24sb1c14n" path="res://assets/digitaln8m4r3/cocapack/material/cocapack.material" id="3_wgy00"]
+[ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="4_6s8qq"]
+[ext_resource type="Resource" uid="uid://c3cyf4dx7tfy" path="res://components/objects/acc/poses/pose_package_left.tres" id="5_orn2p"]
+[ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="7_cu0gc"]
+[ext_resource type="Resource" uid="uid://cn2yr5gf7ampk" path="res://components/objects/acc/poses/pose_package_right.tres" id="7_qpcv8"]
+[ext_resource type="PackedScene" uid="uid://da2qgxxwwitl6" path="res://addons/godot-xr-tools/objects/highlight/highlight_ring.tscn" id="8_sd3gn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n7mby"]
+size = Vector3(0.107271, 0.0572759, 0.17802)
+
+[node name="Package" instance=ExtResource("1_0idfc")]
+script = ExtResource("2_vvqg1")
+coca = 1
+
+[node name="GrabPointHandLeft" parent="." index="0" instance=ExtResource("4_6s8qq")]
+transform = Transform3D(0.876368, -0.437416, -0.201608, 0.463617, 0.652673, 0.59923, -0.130529, -0.618615, 0.774776, -0.0351244, -0.0275841, -0.0227487)
+hand_pose = ExtResource("5_orn2p")
+editor_preview_mode = 1
+
+[node name="GrabPointHandRight" parent="." index="1" instance=ExtResource("7_cu0gc")]
+transform = Transform3D(0.876368, -0.437416, -0.201608, 0.463617, 0.652673, 0.59923, -0.130529, -0.618615, 0.774776, 0.035, -0.028, -0.023)
+hand_pose = ExtResource("7_qpcv8")
+editor_preview_mode = 1
+
+[node name="HighlightRing" parent="." index="2" instance=ExtResource("8_sd3gn")]
+
+[node name="CollisionShape3D" parent="." index="3"]
+shape = SubResource("BoxShape3D_n7mby")
+
+[node name="cocapack" parent="." index="4" instance=ExtResource("2_flm3c")]
+
+[node name="coca" parent="cocapack" index="0"]
+material_override = ExtResource("3_wgy00")
+
+[editable path="cocapack"]

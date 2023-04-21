@@ -1,5 +1,6 @@
 	
 	Coin 3D Model
+	Cocapack 3D Model
 	Headlight 3D Model
 	Knuckles Trident 3D Model
 	Scuba Harpoon and Spear 3D Model
