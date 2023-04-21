@@ -2,14 +2,14 @@
 
 [ext_resource type="Script" path="res://addons/godot-xr-tools/staging/scene_base.gd" id="1_yvcqh"]
 [ext_resource type="Environment" uid="uid://dem4338dsghdc" path="res://game/start_level/environment/sunset_environment.tres" id="2_nxj35"]
-[ext_resource type="PackedScene" uid="uid://bnl8enhgdx1np" path="res://components/objects/weapons/holster/knife_holster.tscn" id="9_287n1"]
+[ext_resource type="Script" path="res://addons/godot-xr-tools/objects/return_to_snap_zone.gd" id="4_yhmpo"]
+[ext_resource type="PackedScene" uid="uid://ce7vysyvondf8" path="res://addons/godot-xr-tools/objects/snap_zone.tscn" id="5_mxi82"]
+[ext_resource type="PackedScene" uid="uid://054nw3pmox72" path="res://components/objects/acc/grab_pad.tscn" id="6_q160l"]
 [ext_resource type="PackedScene" uid="uid://b0q5vd8k2h61f" path="res://components/objects/boat.tscn" id="11_dlmmx"]
 [ext_resource type="Script" path="res://components/helpers/spawn_point.gd" id="11_m1jkp"]
 [ext_resource type="PackedScene" uid="uid://u2lpx3sbcxup" path="res://components/objects/ocean_surface.tscn" id="12_lv1g4"]
 [ext_resource type="AudioStream" uid="uid://dsfwcxyx05hbq" path="res://assets/freesound/674536__nicholasjudy567__water-splash-big-splash-dive-into-water-person-or-animal.mp3" id="12_w2rys"]
 [ext_resource type="PackedScene" path="res://components/helpers/zone_switch_area.tscn" id="13_b57m8"]
-[ext_resource type="PackedScene" path="res://components/objects/acc/grab_battery_big.tscn" id="20_wa5t8"]
-[ext_resource type="PackedScene" uid="uid://0yjbl2vc5ry" path="res://components/objects/acc/grab_coin.tscn" id="22_a5h0h"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5arlm"]
 size = Vector3(100, 10, 100)
@@ -18,10 +18,21 @@ size = Vector3(100, 10, 100)
 script = ExtResource("1_yvcqh")
 environment = ExtResource("2_nxj35")
 
+[node name="Pad" parent="." instance=ExtResource("6_q160l")]
+transform = Transform3D(-1.48939e-09, 3.10068e-08, 1, 0.866026, 0.5, -4.40159e-08, -0.5, 0.866025, -7.92166e-08, 0, 0.977733, -0.098218)
+freeze = true
+
+[node name="XRToolsReturnToSnapZone2" type="Node" parent="Pad"]
+script = ExtResource("4_yhmpo")
+snap_zone_path = NodePath("../../Boat/PadZone")
+
 [node name="Boat" parent="." instance=ExtResource("11_dlmmx")]
 
-[node name="KnifeHolster" parent="Boat" instance=ExtResource("9_287n1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0287454, 0.782018, 0.381058)
+[node name="PadZone" parent="Boat" instance=ExtResource("5_mxi82")]
+transform = Transform3D(-1.48939e-09, 3.10068e-08, 1, 0.866026, 0.5, -4.40159e-08, -0.5, 0.866025, -7.92166e-08, 0, 0.977733, -0.098218)
+collision_mask = 196615
+locked = false
+snap_require = "Pad"
 
 [node name="ZoneSwitchArea" parent="." instance=ExtResource("13_b57m8")]
 zone_scene = "res://game/swimming_level/SwimmingLevel.tscn"
@@ -34,18 +45,6 @@ shape = SubResource("BoxShape3D_5arlm")
 stream = ExtResource("12_w2rys")
 
 [node name="OceanSurface" parent="." instance=ExtResource("12_lv1g4")]
-
-[node name="BatteryBig2" parent="." instance=ExtResource("20_wa5t8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.633068, -0.607934)
-
-[node name="BatteryBig" parent="." instance=ExtResource("20_wa5t8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.343961, 0.72249, -0.340481)
-
-[node name="Coin2" parent="." instance=ExtResource("22_a5h0h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.483381, 0.57585, -0.749589)
-
-[node name="Coin" parent="." instance=ExtResource("22_a5h0h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.54934, 0.60428, -0.567589)
 
 [node name="Spawn" type="Marker3D" parent="."]
 script = ExtResource("11_m1jkp")

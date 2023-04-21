@@ -1,0 +1,84 @@
+[gd_scene load_steps=3 format=3 uid="uid://dq1sbnd6esygt"]
+
+[ext_resource type="Texture2D" uid="uid://b2fle67ypyx2g" path="res://components/hud/scorpio.png" id="1_m24ej"]
+[ext_resource type="Texture2D" uid="uid://bbkijshw4rbay" path="res://icon.svg" id="2_g5kgg"]
+
+[node name="ShopDisplay" type="MarginContainer"]
+custom_minimum_size = Vector2(512, 512)
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 113.0
+offset_right = 511.0
+offset_bottom = 114.0
+color = Color(0.219608, 0.219608, 0.219608, 1)
+
+[node name="Control" type="Control" parent="ColorRect"]
+layout_mode = 2
+anchors_preset = 0
+offset_right = 512.0
+offset_bottom = 512.0
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect/Control"]
+layout_mode = 0
+offset_left = 109.0
+offset_right = 203.0
+offset_bottom = 113.0
+texture = ExtResource("1_m24ej")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="ColorRect/Control"]
+modulate = Color(0, 1, 0, 1)
+layout_mode = 0
+offset_top = 15.0
+offset_right = 512.0
+offset_bottom = 52.0
+theme_override_font_sizes/font_size = 24
+text = "SCORPIO INC.
+"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="ColorRect/Control"]
+modulate = Color(0, 1, 0, 1)
+layout_mode = 0
+offset_top = 52.0
+offset_right = 512.0
+offset_bottom = 89.0
+text = "MEMBER SHOP"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="ColorRect/Control"]
+modulate = Color(0, 1, 0, 1)
+layout_mode = 0
+offset_left = 347.0
+offset_top = 87.0
+offset_right = 508.0
+offset_bottom = 113.0
+text = "CREDITS:"
+vertical_alignment = 1
+
+[node name="ItemList" type="ItemList" parent="ColorRect"]
+layout_mode = 0
+offset_top = 114.0
+offset_right = 1024.0
+offset_bottom = 910.0
+scale = Vector2(0.5, 0.5)
+item_count = 4
+item_0/text = "Pneumatic Harpoon"
+item_0/icon = ExtResource("2_g5kgg")
+item_0/disabled = true
+item_1/text = "Scuba Knife"
+item_1/icon = ExtResource("2_g5kgg")
+item_1/disabled = true
+item_2/text = "Triton Knuckles"
+item_2/icon = ExtResource("2_g5kgg")
+item_2/disabled = true
+item_3/text = "Battery"
+item_3/icon = ExtResource("2_g5kgg")

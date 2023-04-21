@@ -1,0 +1,93 @@
+[gd_scene load_steps=20 format=3 uid="uid://054nw3pmox72"]
+
+[ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_e5wt1"]
+[ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="2_vbwn0"]
+[ext_resource type="PackedScene" uid="uid://dq1sbnd6esygt" path="res://components/hud/shop_display.tscn" id="3_0m6be"]
+[ext_resource type="PackedScene" uid="uid://d4ja6051c21lr" path="res://assets/digitaln8m4r3/pad/model/pad.glb" id="5_7q2ih"]
+[ext_resource type="PackedScene" uid="uid://dc5t2qgmhb2nf" path="res://addons/godot-xr-tools/objects/hand_pose_area.tscn" id="6_gk2ix"]
+[ext_resource type="Material" uid="uid://dc1bg8qgmbxkk" path="res://components/objects/weapons/materials/pallete.tres" id="6_r35qi"]
+[ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="7_45wvh"]
+[ext_resource type="Resource" uid="uid://dknaliuvx7aa6" path="res://components/objects/acc/poses/pose_pad_touch_left.tres" id="7_gbamc"]
+[ext_resource type="Resource" uid="uid://b7bhbq68vwbf4" path="res://components/objects/acc/poses/pose_pad_touch_right.tres" id="8_a1avb"]
+[ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="8_lgngh"]
+[ext_resource type="PackedScene" uid="uid://da2qgxxwwitl6" path="res://addons/godot-xr-tools/objects/highlight/highlight_ring.tscn" id="9_lcayn"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_00wng"]
+viewport_path = NodePath("pad/Plane/Viewport2Din3D/Viewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ak6no"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_00wng")
+
+[sub_resource type="QuadMesh" id="QuadMesh_4qq7q"]
+resource_local_to_scene = true
+size = Vector2(3, 2)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_mabfy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_10dsr"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_mabfy")
+texture_filter = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ouyrt"]
+resource_local_to_scene = true
+size = Vector3(3, 2, 0.02)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bi7pl"]
+size = Vector3(0.216408, 0.0120884, 0.294686)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eusfb"]
+size = Vector3(0.205, 0.053, 0.299558)
+
+[node name="Pad" groups=["Pad"] instance=ExtResource("1_e5wt1")]
+collision_layer = 0
+collision_mask = 0
+picked_up_layer = 0
+
+[node name="pad" parent="." index="0" instance=ExtResource("5_7q2ih")]
+
+[node name="Plane" parent="pad" index="0"]
+surface_material_override/0 = ExtResource("6_r35qi")
+surface_material_override/1 = SubResource("StandardMaterial3D_ak6no")
+
+[node name="Viewport2Din3D" parent="pad/Plane" index="0" instance=ExtResource("2_vbwn0")]
+viewport_size = Vector2(512, 398)
+scene = ExtResource("3_0m6be")
+
+[node name="Viewport" parent="pad/Plane/Viewport2Din3D" index="0"]
+size = Vector2i(512, 398)
+
+[node name="Screen" parent="pad/Plane/Viewport2Din3D" index="1"]
+visible = false
+mesh = SubResource("QuadMesh_4qq7q")
+surface_material_override/0 = SubResource("StandardMaterial3D_10dsr")
+
+[node name="StaticBody3D" parent="pad/Plane/Viewport2Din3D" index="2"]
+viewport_size = Vector2(512, 398)
+
+[node name="CollisionShape3D" parent="pad/Plane/Viewport2Din3D/StaticBody3D" index="0"]
+shape = SubResource("BoxShape3D_ouyrt")
+
+[node name="CollisionShape3D" parent="." index="1"]
+shape = SubResource("BoxShape3D_bi7pl")
+
+[node name="HandPoseArea" parent="." index="2" instance=ExtResource("6_gk2ix")]
+left_pose = ExtResource("7_gbamc")
+right_pose = ExtResource("8_a1avb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HandPoseArea" index="0"]
+shape = SubResource("BoxShape3D_eusfb")
+
+[node name="GrabPointHandLeft" parent="." index="3" instance=ExtResource("7_45wvh")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.0101967, -0.135325)
+
+[node name="GrabPointHandRight" parent="." index="4" instance=ExtResource("8_lgngh")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.01, 0.135)
+
+[node name="HighlightRing" parent="." index="5" instance=ExtResource("9_lcayn")]
+
+[editable path="pad"]
+[editable path="pad/Plane/Viewport2Din3D"]
