@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvslbj273l80x"]
+
+[ext_resource type="Script" path="res://components/objects/hazards/mine/hazard_mine.gd" id="1_hdgea"]
+[ext_resource type="PackedScene" uid="uid://dadiycqcgyavm" path="res://assets/digitaln8m4r3/underwater_mine/model/underwater_mine.glb" id="2_dm1yx"]
+[ext_resource type="Material" uid="uid://b8e16bdpflt7t" path="res://assets/digitaln8m4r3/underwater_mine/material/mine.material" id="3_xa1xr"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_tlyre"]
+radius = 0.52
+
+[node name="hazard_underwater_mine" type="Node3D"]
+transform = Transform3D(1.43618, 0, 0, 0, 1.43618, 0, 0, 0, 1.43618, 0, 0, 0)
+script = ExtResource("1_hdgea")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_mask = 524289
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+shape = SubResource("SphereShape3D_tlyre")
+
+[node name="underwater_mine" parent="Area3D" instance=ExtResource("2_dm1yx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.99278, 0)
+
+[node name="mine" parent="Area3D/underwater_mine" index="0"]
+material_override = ExtResource("3_xa1xr")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+
+[editable path="Area3D/underwater_mine"]
