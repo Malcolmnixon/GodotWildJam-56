@@ -51,7 +51,7 @@ func _ready():
 	_player = GameManager.player
 	
 	if get_node("AnimationPlayer"): 
-		get_node("AnimationPlayer").play("Swim")
+		get_node("AnimationPlayer").play("swim")
 
 func _physics_process(delta : float):
 	# Update how long ago the player was last seen

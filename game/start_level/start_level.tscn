@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://0yjbl2vc5ry" path="res://components/objects/acc/grab_coin.tscn" id="22_a5h0h"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5arlm"]
-size = Vector3(10, 1, 10)
+size = Vector3(100, 10, 100)
 
 [node name="StartLevel" type="Node3D"]
 script = ExtResource("1_yvcqh")
@@ -27,7 +27,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0287454, 0.782018, 0.381058
 zone_scene = "res://game/swimming_level/SwimmingLevel.tscn"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ZoneSwitchArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.5, 0)
 shape = SubResource("BoxShape3D_5arlm")
 
 [node name="Splash" type="AudioStreamPlayer" parent="ZoneSwitchArea"]

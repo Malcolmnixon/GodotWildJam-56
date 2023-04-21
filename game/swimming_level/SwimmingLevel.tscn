@@ -25,10 +25,10 @@
 [ext_resource type="PackedScene" uid="uid://b0q5vd8k2h61f" path="res://components/objects/boat.tscn" id="16_76w17"]
 [ext_resource type="PackedScene" uid="uid://bbd4xg30drdv3" path="res://components/objects/hazards/mine/hazard_mine.tscn" id="21_6kugg"]
 [ext_resource type="PackedScene" uid="uid://dimybv0s2jjnt" path="res://assets/bones/bone1.glb" id="25_cu0mx"]
+[ext_resource type="PackedScene" uid="uid://cbta87xla17m7" path="res://components/animals/cocaine_shark.tscn" id="29_j8wu8"]
 [ext_resource type="AudioStream" uid="uid://d1df81lb0jpo6" path="res://assets/nub_sfx/song_idle.ogg" id="30_5l8to"]
 [ext_resource type="PackedScene" uid="uid://bg3aa81vmt8x3" path="res://assets/temple/temple.glb" id="30_535ko"]
 [ext_resource type="Material" uid="uid://dpuykcn1jbmsw" path="res://assets/materials/mat_temple.tres" id="31_1bctg"]
-[ext_resource type="PackedScene" uid="uid://hj8yxw1pepxv" path="res://components/animals/shark.tscn" id="31_tghdp"]
 [ext_resource type="AudioStream" uid="uid://dbld744ykmvdc" path="res://assets/freesound/366159__dcsfx__underwater-loop-amb.mp3" id="32_jo6al"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_iegai"]
@@ -778,8 +778,8 @@ transform = Transform3D(2.17317, 0, 0, 0, 2.17317, 0, 0, 0, 2.17317, 79.3049, 2.
 
 [node name="AI" type="Node3D" parent="."]
 
-[node name="Shark" parent="AI" instance=ExtResource("31_tghdp")]
-transform = Transform3D(2.58401, 0, 0, 0, 2.58401, 0, 0, 0, 2.58401, 0, 8.94745, 22.7773)
+[node name="CocaineShark" parent="AI" instance=ExtResource("29_j8wu8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 19, 19)
 
 [node name="Music" type="Node3D" parent="."]
 

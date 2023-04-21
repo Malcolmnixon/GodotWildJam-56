@@ -1,9 +1,11 @@
 	
 	Coin 3D Model
+	Cocapack 3D Model
 	Headlight 3D Model
 	Knuckles Trident 3D Model
 	Scuba Harpoon and Spear 3D Model
 	Scube Knife and Holster 3D Model
+	Shark Gibs 3D Model based on https://www.blendswap.com/blend/29678
 	Watch 3D Model
 	
 	Created/distributed by DigitalN8m4r3 aka Miodrag Sejic
