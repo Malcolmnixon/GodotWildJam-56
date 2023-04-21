@@ -1,0 +1,219 @@
+[gd_scene load_steps=4 format=3 uid="uid://dew8mrv6astl2"]
+
+[ext_resource type="PackedScene" uid="uid://bf1a8v6y0s5h8" path="res://assets/digitaln8m4r3/shark_gibs/model/shark_gibs.glb" id="1_lsexw"]
+[ext_resource type="Material" uid="uid://dccn7afx60pfu" path="res://assets/digitaln8m4r3/shark_gibs/materials/gore_shark.material" id="2_lr337"]
+[ext_resource type="Material" uid="uid://qcm5hi0c0apu" path="res://assets/digitaln8m4r3/shark_gibs/materials/gibs_shark.material" id="3_v01nd"]
+
+[node name="Gibs" type="Node3D"]
+
+[node name="shark_gibs" parent="." instance=ExtResource("1_lsexw")]
+
+[node name="shark_cell" parent="shark_gibs" index="0"]
+surface_material_override/0 = ExtResource("2_lr337")
+surface_material_override/1 = ExtResource("3_v01nd")
+
+[node name="shark_cell002" parent="shark_gibs" index="1"]
+surface_material_override/0 = ExtResource("2_lr337")
+surface_material_override/1 = ExtResource("3_v01nd")
+
+[node name="shark_cell003" parent="shark_gibs" index="2"]
+surface_material_override/0 = ExtResource("2_lr337")
+surface_material_override/1 = ExtResource("3_v01nd")
+
+[node name="shark_cell005" parent="shark_gibs" index="3"]
+surface_material_override/0 = ExtResource("2_lr337")
+surface_material_override/1 = ExtResource("3_v01nd")
+
+[node name="shark_cell008" parent="shark_gibs" index="4"]
+surface_material_override/0 = ExtResource("2_lr337")
+surface_material_override/1 = ExtResource("3_v01nd")
+
+[node name="shark_cell010" parent="shark_gibs" index="5"]
+surface_material_override/0 = ExtResource("2_lr337")
+surface_material_override/1 = ExtResource("3_v01nd")
+
+[node name="shark_cell012" parent="shark_gibs" index="6"]
+surface_material_override/0 = ExtResource("2_lr337")
+surface_material_override/1 = ExtResource("3_v01nd")
+
+[node name="shark_cell013" parent="shark_gibs" index="7"]
+surface_material_override/0 = ExtResource("2_lr337")
+surface_material_override/1 = ExtResource("3_v01nd")
+
+[node name="shark_cell014" parent="shark_gibs" index="8"]
+surface_material_override/0 = ExtResource("2_lr337")
+surface_material_override/1 = ExtResource("3_v01nd")
+
+[node name="shark_cell015" parent="shark_gibs" index="9"]
+surface_material_override/0 = ExtResource("2_lr337")
+surface_material_override/1 = ExtResource("3_v01nd")
+
+[node name="shark_cell016" parent="shark_gibs" index="10"]
+surface_material_override/0 = ExtResource("2_lr337")
+surface_material_override/1 = ExtResource("3_v01nd")
+
+[node name="shark_cell017" parent="shark_gibs" index="11"]
+surface_material_override/0 = ExtResource("2_lr337")
+surface_material_override/1 = ExtResource("3_v01nd")
+
+[node name="shark_cell018" parent="shark_gibs" index="12"]
+surface_material_override/0 = ExtResource("2_lr337")
+surface_material_override/1 = ExtResource("3_v01nd")
+
+[node name="shark_cell019" parent="shark_gibs" index="13"]
+surface_material_override/0 = ExtResource("2_lr337")
+surface_material_override/1 = ExtResource("3_v01nd")
+
+[node name="shark_cell020" parent="shark_gibs" index="14"]
+surface_material_override/0 = ExtResource("2_lr337")
+surface_material_override/1 = ExtResource("3_v01nd")
+
+[node name="shark_cell022" parent="shark_gibs" index="15"]
+surface_material_override/0 = ExtResource("2_lr337")
+surface_material_override/1 = ExtResource("3_v01nd")
+
+[node name="shark_cell025" parent="shark_gibs" index="16"]
+surface_material_override/0 = ExtResource("2_lr337")
+surface_material_override/1 = ExtResource("3_v01nd")
+
+[node name="shark_cell029" parent="shark_gibs" index="17"]
+surface_material_override/0 = ExtResource("2_lr337")
+surface_material_override/1 = ExtResource("3_v01nd")
+
+[node name="shark_cell032" parent="shark_gibs" index="18"]
+surface_material_override/0 = ExtResource("2_lr337")
+surface_material_override/1 = ExtResource("3_v01nd")
+
+[node name="shark_cell034" parent="shark_gibs" index="19"]
+surface_material_override/0 = ExtResource("2_lr337")
+surface_material_override/1 = ExtResource("3_v01nd")
+
+[node name="shark_cell035" parent="shark_gibs" index="20"]
+surface_material_override/0 = ExtResource("2_lr337")
+surface_material_override/1 = ExtResource("3_v01nd")
+
+[node name="shark_cell038" parent="shark_gibs" index="21"]
+surface_material_override/0 = ExtResource("2_lr337")
+surface_material_override/1 = ExtResource("3_v01nd")
+
+[node name="shark_cell039" parent="shark_gibs" index="22"]
+surface_material_override/0 = ExtResource("2_lr337")
+surface_material_override/1 = ExtResource("3_v01nd")
+
+[node name="shark_cell042" parent="shark_gibs" index="23"]
+surface_material_override/0 = ExtResource("2_lr337")
+surface_material_override/1 = ExtResource("3_v01nd")
+
+[node name="shark_cell044" parent="shark_gibs" index="24"]
+surface_material_override/0 = ExtResource("2_lr337")
+surface_material_override/1 = ExtResource("3_v01nd")
+
+[node name="shark_cell045" parent="shark_gibs" index="25"]
+surface_material_override/0 = ExtResource("2_lr337")
+surface_material_override/1 = ExtResource("3_v01nd")
+
+[node name="shark_cell048" parent="shark_gibs" index="26"]
+surface_material_override/0 = ExtResource("2_lr337")
+surface_material_override/1 = ExtResource("3_v01nd")
+
+[node name="shark_cell049" parent="shark_gibs" index="27"]
+surface_material_override/0 = ExtResource("2_lr337")
+surface_material_override/1 = ExtResource("3_v01nd")
+
+[node name="shark_cell050" parent="shark_gibs" index="28"]
+surface_material_override/0 = ExtResource("2_lr337")
+surface_material_override/1 = ExtResource("3_v01nd")
+
+[node name="shark_cell051" parent="shark_gibs" index="29"]
+surface_material_override/0 = ExtResource("2_lr337")
+surface_material_override/1 = ExtResource("3_v01nd")
+
+[node name="shark_cell054" parent="shark_gibs" index="30"]
+surface_material_override/0 = ExtResource("2_lr337")
+surface_material_override/1 = ExtResource("3_v01nd")
+
+[node name="shark_cell055" parent="shark_gibs" index="31"]
+surface_material_override/0 = ExtResource("2_lr337")
+surface_material_override/1 = ExtResource("3_v01nd")
+
+[node name="shark_cell058" parent="shark_gibs" index="32"]
+surface_material_override/0 = ExtResource("2_lr337")
+surface_material_override/1 = ExtResource("3_v01nd")
+
+[node name="shark_cell061" parent="shark_gibs" index="33"]
+surface_material_override/0 = ExtResource("2_lr337")
+surface_material_override/1 = ExtResource("3_v01nd")
+
+[node name="shark_cell063" parent="shark_gibs" index="34"]
+surface_material_override/0 = ExtResource("2_lr337")
+surface_material_override/1 = ExtResource("3_v01nd")
+
+[node name="shark_cell065" parent="shark_gibs" index="35"]
+surface_material_override/0 = ExtResource("2_lr337")
+surface_material_override/1 = ExtResource("3_v01nd")
+
+[node name="shark_cell066" parent="shark_gibs" index="36"]
+surface_material_override/0 = ExtResource("2_lr337")
+surface_material_override/1 = ExtResource("3_v01nd")
+
+[node name="shark_cell068" parent="shark_gibs" index="37"]
+surface_material_override/0 = ExtResource("2_lr337")
+surface_material_override/1 = ExtResource("3_v01nd")
+
+[node name="shark_cell069" parent="shark_gibs" index="38"]
+surface_material_override/0 = ExtResource("2_lr337")
+surface_material_override/1 = ExtResource("3_v01nd")
+
+[node name="shark_cell070" parent="shark_gibs" index="39"]
+surface_material_override/0 = ExtResource("2_lr337")
+surface_material_override/1 = ExtResource("3_v01nd")
+
+[node name="shark_cell072" parent="shark_gibs" index="40"]
+surface_material_override/0 = ExtResource("2_lr337")
+surface_material_override/1 = ExtResource("3_v01nd")
+
+[node name="shark_cell073" parent="shark_gibs" index="41"]
+surface_material_override/0 = ExtResource("2_lr337")
+surface_material_override/1 = ExtResource("3_v01nd")
+
+[node name="shark_cell074" parent="shark_gibs" index="42"]
+surface_material_override/0 = ExtResource("2_lr337")
+surface_material_override/1 = ExtResource("3_v01nd")
+
+[node name="shark_cell076" parent="shark_gibs" index="43"]
+surface_material_override/0 = ExtResource("2_lr337")
+surface_material_override/1 = ExtResource("3_v01nd")
+
+[node name="shark_cell078" parent="shark_gibs" index="44"]
+surface_material_override/0 = ExtResource("2_lr337")
+surface_material_override/1 = ExtResource("3_v01nd")
+
+[node name="shark_cell079" parent="shark_gibs" index="45"]
+surface_material_override/0 = ExtResource("2_lr337")
+surface_material_override/1 = ExtResource("3_v01nd")
+
+[node name="shark_cell080" parent="shark_gibs" index="46"]
+surface_material_override/0 = ExtResource("2_lr337")
+surface_material_override/1 = ExtResource("3_v01nd")
+
+[node name="shark_cell082" parent="shark_gibs" index="47"]
+surface_material_override/0 = ExtResource("2_lr337")
+surface_material_override/1 = ExtResource("3_v01nd")
+
+[node name="shark_cell085" parent="shark_gibs" index="48"]
+surface_material_override/0 = ExtResource("2_lr337")
+surface_material_override/1 = ExtResource("3_v01nd")
+
+[node name="shark_cell088" parent="shark_gibs" index="49"]
+surface_material_override/0 = ExtResource("2_lr337")
+surface_material_override/1 = ExtResource("3_v01nd")
+
+[node name="shark_cell089" parent="shark_gibs" index="50"]
+surface_material_override/0 = ExtResource("2_lr337")
+surface_material_override/1 = ExtResource("3_v01nd")
+
+[node name="shark_cell001" parent="shark_gibs" index="51"]
+surface_material_override/0 = ExtResource("2_lr337")
+surface_material_override/1 = ExtResource("3_v01nd")
+
+[editable path="shark_gibs"]
