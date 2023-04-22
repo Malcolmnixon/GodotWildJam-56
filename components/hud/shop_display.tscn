@@ -101,7 +101,49 @@ text = "Harpoon
 [node name="CreditsLabel" type="Label" parent="ColorRect/VBoxContainer/HarpoonContainer"]
 modulate = Color(0, 1, 0, 1)
 layout_mode = 2
+text = "5 credits"
+vertical_alignment = 1
+
+[node name="HeadlampContainer" type="HBoxContainer" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="HeadlampButton" type="Button" parent="ColorRect/VBoxContainer/HeadlampContainer"]
+custom_minimum_size = Vector2(60, 50)
+layout_mode = 2
+text = "BUY"
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer/HeadlampContainer"]
+layout_mode = 2
+text = "Headlamp"
+
+[node name="CreditsLabel" type="Label" parent="ColorRect/VBoxContainer/HeadlampContainer"]
+modulate = Color(0, 1, 0, 1)
+layout_mode = 2
 text = "3 credits"
 vertical_alignment = 1
 
+[node name="KnifeContainer" type="HBoxContainer" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="KnifeButton" type="Button" parent="ColorRect/VBoxContainer/KnifeContainer"]
+custom_minimum_size = Vector2(60, 50)
+layout_mode = 2
+text = "BUY"
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer/KnifeContainer"]
+layout_mode = 2
+text = "Knife
+"
+
+[node name="CreditsLabel" type="Label" parent="ColorRect/VBoxContainer/KnifeContainer"]
+modulate = Color(0, 1, 0, 1)
+layout_mode = 2
+text = "2 credits"
+vertical_alignment = 1
+
 [connection signal="pressed" from="ColorRect/VBoxContainer/HarpoonContainer/HarpoonButton" to="." method="_on_harpoon_button_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/HeadlampContainer/HeadlampButton" to="." method="_on_headlamp_button_pressed"]
+[connection signal="button_down" from="ColorRect/VBoxContainer/KnifeContainer/KnifeButton" to="." method="_on_knifelamp_button_button_down"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/KnifeContainer/KnifeButton" to="." method="_on_harpoon_button_pressed"]
