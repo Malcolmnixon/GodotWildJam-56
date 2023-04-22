@@ -52,8 +52,8 @@ func get_value(section, key, default=0):
 		# if no value is found save a new value with the given params
 		# TODO: may not be desired outcome so make an option to not save 
 		if !file.has_section_key(section, key): 
-			file.set_value(section, key, default)
-			save_file()
+			save_value(section, key, default)
+			
 		return file.get_value(section, key, default)
 
 func save_value(section, key, value): 

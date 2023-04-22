@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bv1nbfh4msd6e"]
+[gd_scene load_steps=30 format=3 uid="uid://bv1nbfh4msd6e"]
 
 [ext_resource type="Script" path="res://components/player/player.gd" id="1_poo41"]
 [ext_resource type="PackedScene" uid="uid://ceb25cst7u1iu" path="res://game/swimming_level/movement/movement_swimming.tscn" id="2_1k3co"]
@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://c2q5phg8w08o" path="res://addons/godot-xr-tools/functions/movement_jump.tscn" id="25_1qnv4"]
 [ext_resource type="PackedScene" uid="uid://2w6vn1n6hjrf" path="res://components/objects/snapzones/holster_snap_right.tscn" id="26_oe8fv"]
 [ext_resource type="Script" path="res://components/helpers/health.gd" id="27_16rmy"]
+[ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="27_cspbx"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rdwf7"]
 radius = 0.2
@@ -59,7 +60,6 @@ pickable = NodePath("../ScubaHarpoon")
 
 [node name="ScubaHarpoon" parent="ChestHolster" instance=ExtResource("6_4nxxv")]
 transform = Transform3D(0.171018, -0.705245, 0.688028, 0, 0.698315, 0.71579, -0.985268, -0.122413, 0.119424, -0.152079, -0.575395, -0.194751)
-freeze = true
 freeze_mode = 0
 
 [node name="XRCamera3D" type="XRCamera3D" parent="."]
@@ -130,6 +130,11 @@ jump_button_action = "ax_button"
 [node name="HolsterSnapRight" parent="RightHand" instance=ExtResource("26_oe8fv")]
 
 [node name="FunctionPoseDetector" parent="RightHand" instance=ExtResource("21_yiacj")]
+
+[node name="FunctionPointer" parent="RightHand" instance=ExtResource("27_cspbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0484737, -0.0142174)
+show_laser = 2
+laser_length = 1
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("27_16rmy")

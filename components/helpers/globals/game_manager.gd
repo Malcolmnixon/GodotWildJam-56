@@ -8,6 +8,8 @@ var collected_coins : int = 0
 var collected_cocaine : int = 0
 var current_level_root: Node3D = null 
 
+signal item_bought
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
@@ -33,8 +35,8 @@ func collect_coin():
 	var current_coins: int = GlobalEzcfg.get_value(
 		"collectables", 
 		"coins",
+		0
 	)
-	
 	var new_amount: int = current_coins + 1
 	
 	GlobalEzcfg.save_value(
@@ -43,6 +45,20 @@ func collect_coin():
 		new_amount
 	)
 
+func remove_coins(amount): 
+	var current_coins: int = GlobalEzcfg.get_value(
+			"collectables", 
+			"coins",
+			0
+		)
+	var new_amount: int = current_coins - amount
+	
+	GlobalEzcfg.save_value(
+		"collectables", 
+		"coins", 
+		new_amount
+	)
+	
 func collect_cocaine(): 
 	var current_cocain: int = GlobalEzcfg.get_value(
 		"collectables", 
@@ -56,3 +72,25 @@ func collect_cocaine():
 		"cocaine", 
 		new_amount
 	)
+
+func buy_shop_item(item: String, price): 
+	var shop_item: int = GlobalEzcfg.get_value(
+		"shop", 
+		item,
+	)
+	
+	remove_coins(price)
+	
+	GlobalEzcfg.save_value(
+		"shop", 
+		item, 
+		true
+	)
+	
+func get_shop_item(item): 
+	var has_item = GlobalEzcfg.get_value(
+		"shop", 
+		str(item)
+	)
+
+	return has_item

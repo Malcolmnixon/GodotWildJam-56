@@ -268,7 +268,7 @@ bone_idx = 1
 remote_path = NodePath("../../../../Spine1Collision")
 
 [node name="Spine2BoneAttachment" type="BoneAttachment3D" parent="Armature/Skeleton3D"]
-transform = Transform3D(0.997023, 0.0771004, 0.000471648, 0.00155959, -0.026283, 0.999653, 0.077086, -0.996677, -0.026325, 0.00386481, 0.235046, 0.577033)
+transform = Transform3D(0.997023, 0.0771003, 0.000471646, 0.00155958, -0.0262829, 0.999653, 0.077086, -0.996677, -0.0263249, 0.00386481, 0.235046, 0.577033)
 bone_name = "Spine2"
 bone_idx = 2
 
@@ -276,7 +276,7 @@ bone_idx = 2
 remote_path = NodePath("../../../../Spine2Collision")
 
 [node name="Spine3BoneAttachment" type="BoneAttachment3D" parent="Armature/Skeleton3D"]
-transform = Transform3D(0.983318, 0.181866, -0.00331028, 0.00164709, 0.00929544, 0.999955, 0.181889, -0.983279, 0.00884081, 0.328942, 0.12423, -3.62524)
+transform = Transform3D(0.983318, 0.181866, -0.00331028, 0.00164707, 0.00929551, 0.999955, 0.181889, -0.983279, 0.00884089, 0.328941, 0.12423, -3.62524)
 bone_name = "Spine3"
 bone_idx = 3
 
@@ -302,7 +302,7 @@ transform = Transform3D(0.827144, -0.192746, -0.527903, 0.172987, 0.98106, -0.08
 remote_path = NodePath("../../../../RightFinCollision")
 
 [node name="TailBoneAttachment" type="BoneAttachment3D" parent="Armature/Skeleton3D"]
-transform = Transform3D(0.970355, 0.241613, 0.0058796, 0.00168458, -0.0310885, 0.999515, 0.241679, -0.969874, -0.0305739, 0.756529, 0.146084, -5.93703)
+transform = Transform3D(0.970355, 0.241613, 0.00587959, 0.00168457, -0.0310884, 0.999515, 0.241679, -0.969875, -0.0305738, 0.756528, 0.146085, -5.93703)
 bone_name = "Tail"
 bone_idx = 4
 
@@ -329,11 +329,11 @@ transform = Transform3D(-1, 9.26462e-08, 2.44009e-07, 2.37792e-07, -0.0620384, 0
 shape = SubResource("CapsuleShape3D_fqctp")
 
 [node name="Spine2Collision" type="CollisionShape3D" parent="."]
-transform = Transform3D(-0.997023, -0.0771003, -0.000471646, 0.00155959, -0.026283, 0.999653, -0.0770859, 0.996677, 0.026325, -0.00386486, 0.235046, -0.130676)
+transform = Transform3D(-0.997023, -0.0771002, -0.000471644, 0.00155958, -0.0262829, 0.999653, -0.0770859, 0.996677, 0.0263249, -0.00386486, 0.235046, -0.130676)
 shape = SubResource("CapsuleShape3D_tmbu5")
 
 [node name="Spine3Collision" type="CollisionShape3D" parent="."]
-transform = Transform3D(-0.983318, -0.181866, 0.00331028, 0.00164709, 0.00929544, 0.999955, -0.181889, 0.983279, -0.00884081, -0.328941, 0.12423, 4.07159)
+transform = Transform3D(-0.983318, -0.181866, 0.00331028, 0.00164707, 0.00929551, 0.999955, -0.181889, 0.983279, -0.00884089, -0.328941, 0.12423, 4.07159)
 shape = SubResource("CapsuleShape3D_6aaie")
 
 [node name="LeftFinCollision" type="CollisionShape3D" parent="."]
@@ -345,11 +345,11 @@ transform = Transform3D(-0.388172, 0.73001, 0.562502, 0.350486, -0.447563, 0.822
 shape = SubResource("BoxShape3D_7yaoy")
 
 [node name="TailTopCollision" type="CollisionShape3D" parent="."]
-transform = Transform3D(-0.970355, -0.206303, -0.125898, 0.00168458, -0.526681, 0.850061, -0.241679, 0.82465, 0.511415, -1.05117, 0.90839, 7.5717)
+transform = Transform3D(-0.970355, -0.206303, -0.125898, 0.00168457, -0.526681, 0.850061, -0.241679, 0.82465, 0.511415, -1.05117, 0.908391, 7.5717)
 shape = SubResource("BoxShape3D_pet5q")
 
 [node name="TailBottomCollision" type="CollisionShape3D" parent="."]
-transform = Transform3D(-0.970355, -0.175004, 0.166689, 0.00168458, 0.684781, 0.728747, -0.241679, 0.707424, -0.664186, -0.995201, -0.384762, 7.33798)
+transform = Transform3D(-0.970355, -0.175004, 0.166689, 0.00168457, 0.684781, 0.728747, -0.241679, 0.707424, -0.664186, -0.995201, -0.384761, 7.33798)
 shape = SubResource("BoxShape3D_sdu5e")
 
 [node name="Mouth" type="Area3D" parent="." groups=["SharkMouth"]]
