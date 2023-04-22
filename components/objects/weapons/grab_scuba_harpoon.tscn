@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://dyvik4qnf71fo"]
+[gd_scene load_steps=12 format=3 uid="uid://dyvik4qnf71fo"]
 
 [ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_1dgxh"]
 [ext_resource type="PackedScene" uid="uid://ccna74ggx7oat" path="res://assets/digitaln8m4r3/scuba_harpoon/model/scuba_harpoon.glb" id="2_1d6x8"]
+[ext_resource type="Script" path="res://components/helpers/shop_item.gd" id="2_i8il2"]
 [ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="3_he04i"]
 [ext_resource type="Material" uid="uid://dc1bg8qgmbxkk" path="res://components/objects/weapons/materials/pallete.tres" id="3_waq8w"]
 [ext_resource type="Resource" path="res://components/objects/weapons/poses/pose_harpoon_left.tres" id="4_c4ts0"]
@@ -15,6 +16,9 @@ points = PackedVector3Array(0.00588585, 0.0284126, 0.402916, -0.0160881, -0.1739
 
 [node name="ScubaHarpoon" instance=ExtResource("1_1dgxh")]
 collision_mask = 7
+freeze = true
+script = ExtResource("2_i8il2")
+shop_item_name = "harpoon"
 
 [node name="scuba_harpoon" parent="." index="0" instance=ExtResource("2_1d6x8")]
 

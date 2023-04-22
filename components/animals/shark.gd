@@ -48,12 +48,16 @@ var _target := Vector3.ZERO
 
 
 func _ready():
-	_player = GameManager.player
+
 	
 	if get_node("AnimationPlayer"): 
 		get_node("AnimationPlayer").play("swim")
 
 func _physics_process(delta : float):
+	
+	if !_player and GameManager.player: 
+		_player = GameManager.player 
+	
 	# Update how long ago the player was last seen
 	_memory_age += delta
 

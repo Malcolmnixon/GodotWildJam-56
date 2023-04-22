@@ -1,15 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://dq1sbnd6esygt"]
+[gd_scene load_steps=3 format=3 uid="uid://cuyu678jb7f62"]
 
 [ext_resource type="Texture2D" uid="uid://b2fle67ypyx2g" path="res://components/hud/scorpio.png" id="1_m24ej"]
-[ext_resource type="Texture2D" uid="uid://bbkijshw4rbay" path="res://icon.svg" id="2_g5kgg"]
+[ext_resource type="Script" path="res://components/ui/ui_shop.gd" id="1_oun36"]
 
-[node name="ShopDisplay" type="MarginContainer"]
-custom_minimum_size = Vector2(512, 512)
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="ShopDisplay" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 512.0
+offset_bottom = 512.0
+script = ExtResource("1_oun36")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+offset_right = 512.0
+offset_bottom = 512.0
+text = "asdfasdfasdf"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 2
+offset_right = 512.0
+offset_bottom = 512.0
 color = Color(0, 0, 0, 1)
 
 [node name="ColorRect" type="ColorRect" parent="ColorRect"]
@@ -54,7 +64,7 @@ offset_bottom = 89.0
 text = "MEMBER SHOP"
 horizontal_alignment = 1
 
-[node name="Label3" type="Label" parent="ColorRect/Control"]
+[node name="CreditsLabel" type="Label" parent="ColorRect/Control"]
 modulate = Color(0, 1, 0, 1)
 layout_mode = 0
 offset_left = 347.0
@@ -64,21 +74,34 @@ offset_bottom = 113.0
 text = "CREDITS:"
 vertical_alignment = 1
 
-[node name="ItemList" type="ItemList" parent="ColorRect"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
 layout_mode = 0
-offset_top = 114.0
-offset_right = 1024.0
-offset_bottom = 910.0
-scale = Vector2(0.5, 0.5)
-item_count = 4
-item_0/text = "Pneumatic Harpoon"
-item_0/icon = ExtResource("2_g5kgg")
-item_0/disabled = true
-item_1/text = "Scuba Knife"
-item_1/icon = ExtResource("2_g5kgg")
-item_1/disabled = true
-item_2/text = "Triton Knuckles"
-item_2/icon = ExtResource("2_g5kgg")
-item_2/disabled = true
-item_3/text = "Battery"
-item_3/icon = ExtResource("2_g5kgg")
+anchor_left = 0.015625
+anchor_top = 0.234375
+anchor_right = 0.984375
+anchor_bottom = 0.4375
+offset_bottom = -64.0
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="HarpoonContainer" type="HBoxContainer" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="HarpoonButton" type="Button" parent="ColorRect/VBoxContainer/HarpoonContainer"]
+custom_minimum_size = Vector2(60, 50)
+layout_mode = 2
+text = "BUY"
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer/HarpoonContainer"]
+layout_mode = 2
+text = "Harpoon
+"
+
+[node name="CreditsLabel" type="Label" parent="ColorRect/VBoxContainer/HarpoonContainer"]
+modulate = Color(0, 1, 0, 1)
+layout_mode = 2
+text = "3 credits"
+vertical_alignment = 1
+
+[connection signal="pressed" from="ColorRect/VBoxContainer/HarpoonContainer/HarpoonButton" to="." method="_on_harpoon_button_pressed"]

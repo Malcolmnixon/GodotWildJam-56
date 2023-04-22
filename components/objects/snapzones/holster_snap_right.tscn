@@ -6,7 +6,6 @@
 transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, 0.0693851, -0.0587159, 0.204011)
 
 [node name="SnapZone" parent="." instance=ExtResource("1_5jqk0")]
-locked = false
 grab_distance = 0.0
 snap_require = "KnifeHolster"
 snap_exclude = "WatchHolster"
@@ -14,7 +13,6 @@ grab_exclude = "RightHandFunctionPickup"
 
 [node name="SnapZone2" parent="." instance=ExtResource("1_5jqk0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.044, -0.004, -0.021)
-locked = false
 grab_distance = 0.0
 snap_require = "WatchHolster"
 snap_exclude = "KnifeHolster"

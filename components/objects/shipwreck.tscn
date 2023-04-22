@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dq0gl3oy36tcm"]
+[gd_scene load_steps=5 format=3 uid="uid://rbhtu1vl3sau"]
 
 [ext_resource type="PackedScene" uid="uid://kxiqmttunm8m" path="res://assets/GarageGames/Pacific Demo/models/beached_boat_base_a/beached_boat_base_a.glb" id="1_c3g0m"]
 [ext_resource type="Material" uid="uid://dsp3h2vaahvxn" path="res://assets/GarageGames/Pacific Demo/materials/boat.material" id="2_tuk1x"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://4w1po0lk56te"]
+[gd_scene load_steps=48 format=3 uid="uid://4w1po0lk56te"]
 
 [ext_resource type="Script" path="res://addons/godot-xr-tools/staging/scene_base.gd" id="1_1q3fw"]
 [ext_resource type="Environment" uid="uid://duexmj7fck5s2" path="res://game/swimming_level/environment/water_environment.tres" id="2_q1xwq"]
@@ -24,12 +24,14 @@
 [ext_resource type="Texture2D" uid="uid://c6dcasgrw5sj7" path="res://assets/images/grass.png" id="16_4r252"]
 [ext_resource type="PackedScene" uid="uid://b0q5vd8k2h61f" path="res://components/objects/boat.tscn" id="16_76w17"]
 [ext_resource type="PackedScene" uid="uid://bbd4xg30drdv3" path="res://components/objects/hazards/mine/hazard_mine.tscn" id="21_6kugg"]
-[ext_resource type="PackedScene" uid="uid://dimybv0s2jjnt" path="res://assets/bones/bone1.glb" id="25_cu0mx"]
 [ext_resource type="PackedScene" uid="uid://cbta87xla17m7" path="res://components/animals/cocaine_shark.tscn" id="29_j8wu8"]
 [ext_resource type="AudioStream" uid="uid://d1df81lb0jpo6" path="res://assets/nub_sfx/song_idle.ogg" id="30_5l8to"]
 [ext_resource type="PackedScene" uid="uid://bg3aa81vmt8x3" path="res://assets/temple/temple.glb" id="30_535ko"]
 [ext_resource type="Material" uid="uid://dpuykcn1jbmsw" path="res://assets/materials/mat_temple.tres" id="31_1bctg"]
+[ext_resource type="PackedScene" uid="uid://bjahkhn5yph1b" path="res://components/objects/rocks/rock_wall.tscn" id="31_bqlj2"]
+[ext_resource type="PackedScene" uid="uid://rbhtu1vl3sau" path="res://components/objects/shipwreck.tscn" id="31_wdbth"]
 [ext_resource type="AudioStream" uid="uid://dbld744ykmvdc" path="res://assets/freesound/366159__dcsfx__underwater-loop-amb.mp3" id="32_jo6al"]
+[ext_resource type="PackedScene" uid="uid://bq3v5y5qv15bw" path="res://components/objects/cocaine.tscn" id="32_kl56c"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_iegai"]
 size = Vector3(1000, 1, 1000)
@@ -665,33 +667,6 @@ transform = Transform3D(0.0236645, 0, 0.99972, 0, 1, 0, -0.99972, 0, 0.0236645, 
 [node name="kelp83" parent="Static/KelpForest3" instance=ExtResource("13_beejj")]
 transform = Transform3D(0.646004, 0, 0.763334, 0, 1, 0, -0.763334, 0, 0.646004, -5.10259, -2.34521, -62.1691)
 
-[node name="BoneCluster" type="Node3D" parent="Static"]
-transform = Transform3D(-1.01982, 0.846458, 4.01711, 0.219098, 4.14453, -0.817684, -4.09947, 0.0109331, -1.04304, 23.2566, -2.65102, -16.6531)
-
-[node name="bone1" parent="Static/BoneCluster" instance=ExtResource("25_cu0mx")]
-transform = Transform3D(1, 0, 7.45058e-08, -1.39698e-08, 1, 3.74857e-08, -7.45058e-08, 1.18744e-08, 1, 0.0660429, -0.0548154, -0.260143)
-
-[node name="bone3" parent="Static/BoneCluster" instance=ExtResource("25_cu0mx")]
-transform = Transform3D(0.991253, -0.0251002, -0.129567, 0.0259904, 0.999649, 0.00518377, 0.129391, -0.00850593, 0.991557, 1.21481, 0.292036, 0.263755)
-
-[node name="bone2" parent="Static/BoneCluster" instance=ExtResource("25_cu0mx")]
-transform = Transform3D(-0.965926, 0.051795, 0.253584, 3.33104e-09, 0.979771, -0.20012, -0.258819, -0.193301, -0.946386, -0.767496, 0.605684, 2.86433)
-
-[node name="bone4" parent="Static/BoneCluster" instance=ExtResource("25_cu0mx")]
-transform = Transform3D(-0.982518, 0.051795, 0.178817, 0.0153356, 0.979771, -0.199532, -0.185535, -0.193301, -0.963437, 0.62156, 0.767812, 3.20225)
-
-[node name="bone5" parent="Static/BoneCluster" instance=ExtResource("25_cu0mx")]
-transform = Transform3D(0.890524, 0.053142, 0.00598736, -0.053142, 0.868179, 0.198328, 0.00598733, -0.198328, 0.869783, 2.17908, 0.0326682, 0.749465)
-
-[node name="bone6" parent="Static/BoneCluster" instance=ExtResource("25_cu0mx")]
-transform = Transform3D(0.748711, 0.0482737, -0.0856538, -0.0157712, 0.708301, 0.261334, 0.0970474, -0.257321, 0.70328, 3.3661, 0.308441, 1.20565)
-
-[node name="bone7" parent="Static/BoneCluster" instance=ExtResource("25_cu0mx")]
-transform = Transform3D(-0.861729, 0.0462078, 0.226229, 2.79397e-09, 0.874081, -0.178533, -0.2309, -0.17245, -0.844298, 1.46371, 0.991345, 3.4297)
-
-[node name="bone8" parent="Static/BoneCluster" instance=ExtResource("25_cu0mx")]
-transform = Transform3D(-0.740959, -0.0791015, 0.1223, -0.0234206, 0.690527, 0.304726, -0.143756, 0.295211, -0.680014, 2.91901, 0.68475, 3.42126)
-
 [node name="SeaFloor" type="Node3D" parent="Static"]
 
 [node name="SmallRockMultiMesh" type="MultiMeshInstance3D" parent="Static/SeaFloor"]
@@ -779,7 +754,7 @@ transform = Transform3D(2.17317, 0, 0, 0, 2.17317, 0, 0, 0, 2.17317, 79.3049, 2.
 [node name="AI" type="Node3D" parent="."]
 
 [node name="CocaineShark" parent="AI" instance=ExtResource("29_j8wu8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 19, 19)
+transform = Transform3D(1.51724, 0, 0, 0, 1.51724, 0, 0, 0, 1.51724, 0, 19, 19)
 
 [node name="Music" type="Node3D" parent="."]
 
@@ -801,6 +776,39 @@ autoplay = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.42714, -3.48947)
 size = Vector3(2, 2, 3.52482)
 material = SubResource("FogMaterial_il8n3")
+
+[node name="Shipwreck" parent="." instance=ExtResource("31_wdbth")]
+transform = Transform3D(2.85396, -1.15154, 0.574112, -1.12892, -2.91113, -0.227098, 0.617396, 0, -3.06913, 126.303, 6.98416, -85.4353)
+
+[node name="Shipwreck2" parent="." instance=ExtResource("31_wdbth")]
+transform = Transform3D(-1.35028, 2.82208, -0.115425, -0.616489, -0.169627, 3.06462, 2.75634, 1.34455, 0.628895, 94.065, 8.77738, -126.466)
+
+[node name="Shipwreck3" parent="." instance=ExtResource("31_wdbth")]
+transform = Transform3D(-2.26484, -1.55418, -1.50192, -1.86899, 2.50089, 0.230468, 1.0854, 1.06339, -2.73712, 122.322, 4.58435, -113.717)
+
+[node name="rock_wall4" parent="." instance=ExtResource("31_bqlj2")]
+transform = Transform3D(2.239, 0.703319, 1.2144, 0.0601472, 1.35519, -1.1534, -2.48797, 0.6657, 1.06499, 61.2542, 9.42578, -158.177)
+
+[node name="rock_wall3" parent="." instance=ExtResource("31_bqlj2")]
+transform = Transform3D(1.29988, 0.272864, 0.691299, -0.733669, 0.925956, 0, -1.24362, -0.261056, 0.722569, 8.4333, -1.9116, -78.1763)
+
+[node name="rock_wall5" parent="." instance=ExtResource("31_bqlj2")]
+transform = Transform3D(2.48383, 0.00949791, 1.40631, -0.081129, 0.556948, 0, -2.37633, -0.00908688, 1.46993, 13.8416, 9.14906, -92.712)
+
+[node name="rock_wall6" parent="." instance=ExtResource("31_bqlj2")]
+transform = Transform3D(2.48383, 0.00949791, 1.40631, -0.081129, 0.556948, 0, -2.37633, -0.00908688, 1.46993, 1.27368, 9.14906, -105.848)
+
+[node name="rock_wall2" parent="." instance=ExtResource("31_bqlj2")]
+transform = Transform3D(-0.175861, -0.557042, 0.825537, 1.93485, -0.049878, 0.0755419, -0.00175592, 0.828985, 0.55927, 31.7059, 4.18994, -97.7477)
+
+[node name="rock_wall7" parent="." instance=ExtResource("31_bqlj2")]
+transform = Transform3D(1.95275, -0.0956476, 1.19805, 0.207335, 0.995393, 0.109629, -2.91046, 0.00673553, 0.811634, 107.375, 5.77149, 2.7102)
+
+[node name="XRToolsPickable" parent="." instance=ExtResource("32_kl56c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 99.3866, 21.9407, -118.032)
+
+[node name="XRToolsPickable2" parent="." instance=ExtResource("32_kl56c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 127.385, 9.68747, -109.5)
 
 [editable path="Static/KelpForest/kelp13"]
 [editable path="Static/KelpForest/kelp25"]

@@ -1,21 +1,23 @@
 [gd_scene load_steps=11 format=3 uid="uid://0yjbl2vc5ry"]
 
 [ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_3sh1a"]
-[ext_resource type="Script" path="res://components/objects/acc/coin.gd" id="2_rsrna"]
+[ext_resource type="Script" path="res://components/helpers/collectable.gd" id="2_uhor6"]
 [ext_resource type="PackedScene" uid="uid://c56pv513g0skc" path="res://assets/digitaln8m4r3/coin/model/coin.glb" id="2_vxo4d"]
 [ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="6_i7s5k"]
 [ext_resource type="Resource" path="res://components/objects/acc/poses/pose_coin_left.tres" id="7_6um68"]
 [ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="8_07ehs"]
+[ext_resource type="Script" path="res://addons/godot-xr-tools/objects/highlight/highlight_ring.gd" id="9_dhbtv"]
 [ext_resource type="Resource" path="res://components/objects/acc/poses/pose_coin_right.tres" id="9_gfihf"]
 [ext_resource type="Material" uid="uid://bpdxnic2cgbgo" path="res://components/objects/acc/materials/coin.material" id="9_mer2t"]
-[ext_resource type="PackedScene" uid="uid://da2qgxxwwitl6" path="res://addons/godot-xr-tools/objects/highlight/highlight_ring.tscn" id="10_ck4tl"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_m2ote"]
 points = PackedVector3Array(0.0147463, 0.00414828, 0.0194444, -0.00692324, -0.00130285, -0.0330114, -0.0281427, -0.00354849, 0.0161442, 0.0323429, -0.00354849, 0.00074548, -0.0248425, 0.00414828, -0.00914828, 0.0169442, 0.00304849, -0.0278403, -0.00284333, -0.00244871, 0.0348362, -0.018242, 0.00194871, 0.0304405, -0.0259379, -0.00464828, -0.00694354, 0.0301382, 0.00194871, 0.018342, 0.0169442, -0.00354849, -0.0278403, 0.0158418, -0.00354849, 0.0271403, -0.0171397, 0.00194871, -0.0311405, 0.0279403, 0.00304849, -0.0157418, -0.0314429, 0.00304849, -0.00364332, 0.0180466, 0.00194871, 0.0304405, -0.0281427, -0.00354849, -0.0168442, 0.0224422, -0.00464828, 0.00184785, 0.00484569, 0.00414828, -0.0223422, -0.0160442, 0.00414828, 0.0194444, 0.0312405, -0.00244871, -0.019042, -0.0171397, -0.00354849, -0.0278403, -0.0281427, 0.00304849, 0.0161442, -0.00174785, 0.00304849, 0.0315429, -0.0149418, -0.00354849, 0.0271403, 0.0312405, 0.00304849, -0.00254785, 0.0235446, 0.00414828, -0.00914828, -0.0326527, -0.00128385, 0.0017177, 0.00264785, 0.00304849, -0.0322429, -0.0281427, 0.00304849, -0.0168442, 0.00264785, -0.00354849, -0.0322429, -0.0226446, -0.00464828, 0.0040457)
 
 [node name="Coin" instance=ExtResource("1_3sh1a")]
-script = ExtResource("2_rsrna")
-coin = 0
+freeze = true
+script = ExtResource("2_uhor6")
+stream = null
+type = 0
 
 [node name="GrabPointHandLeft" parent="." index="0" instance=ExtResource("6_i7s5k")]
 transform = Transform3D(1, 0, 0, 0, 0.906308, 0.422618, 0, -0.422618, 0.906308, -0.0190629, -0.00637263, -0.0459898)
@@ -36,13 +38,16 @@ hand_pose = ExtResource("9_gfihf")
 [node name="CollisionShape3D" parent="." index="4"]
 shape = SubResource("ConvexPolygonShape3D_m2ote")
 
-[node name="HighlightRing" parent="." index="5" instance=ExtResource("10_ck4tl")]
-
-[node name="coin" parent="." index="6" instance=ExtResource("2_vxo4d")]
+[node name="coin" parent="." index="5" instance=ExtResource("2_vxo4d")]
 transform = Transform3D(1, -0.000322836, 0.000393767, 0.000322777, 1, 0.000182978, -0.000393815, -0.000182874, 1, 0, 0, 0)
 
 [node name="Coin" parent="coin" index="0"]
 surface_material_override/0 = ExtResource("9_mer2t")
 surface_material_override/1 = ExtResource("9_mer2t")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="6"]
+
+[node name="XRToolsHighlightRing" type="MeshInstance3D" parent="." index="7"]
+script = ExtResource("9_dhbtv")
 
 [editable path="coin"]
