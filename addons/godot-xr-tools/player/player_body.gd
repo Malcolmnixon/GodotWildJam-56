@@ -300,7 +300,6 @@ func _physics_process(delta: float):
 	# Orient the player towards (potentially modified) gravity
 	slew_up(-gravity.normalized(), 5.0 * delta)
 
-
 ## Request a jump
 func request_jump(skip_jump_velocity := false):
 	# Skip if cooling down from a previous jump

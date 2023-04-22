@@ -221,5 +221,5 @@ render_target_update_mode = 4
 [node name="Beep" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("8_qup5m")
 volume_db = -29.238
-pitch_scale = 1.04
+pitch_scale = 1.32
 max_distance = 1.0

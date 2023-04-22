@@ -20,8 +20,11 @@ color = Color(0, 0, 0, 1)
 
 [node name="OxygenProgress" type="TextureProgressBar" parent="."]
 layout_mode = 0
-offset_right = 64.0
-offset_bottom = 128.0
+offset_left = -1.0
+offset_top = 32.0
+offset_right = 63.0
+offset_bottom = 160.0
+scale = Vector2(1, 0.479999)
 value = 100.0
 fill_mode = 3
 texture_progress = ExtResource("1_p5kaq")
@@ -31,12 +34,15 @@ tint_progress = Color(0, 0.619608, 0.627451, 1)
 [node name="HealthProgress" type="TextureProgressBar" parent="."]
 layout_mode = 0
 offset_left = 64.0
+offset_top = 32.0
 offset_right = 128.0
-offset_bottom = 128.0
+offset_bottom = 160.0
+scale = Vector2(1, 0.479999)
 value = 100.0
 fill_mode = 3
 texture_progress = ExtResource("1_p5kaq")
-tint_progress = Color(1, 0.462745, 0.392157, 1)
+tint_over = Color(0, 1, 1, 1)
+tint_progress = Color(1, 0.505882, 0.529412, 1)
 
 [node name="Oxygen" type="Sprite2D" parent="."]
 position = Vector2(48, 64)
