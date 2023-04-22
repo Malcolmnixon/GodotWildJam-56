@@ -20,11 +20,17 @@ func _enter_tree():
 func _ready():
 	set_behaviour(player_behaviour)
 	center_player_on(global_transform)
+	
 func _process(delta):
 	if player_behaviour == PlayerBehaviour.swim: 
-		current_oxygen -= delta
+		current_oxygen -= delta * 2
+	
+	
+	if health.current_health < 50: 
+		$XRCamera3D/HurtScreen.visible = true
+	else: 
+		$XRCamera3D/HurtScreen.visible = false
 		
-
 func set_behaviour(behaviour: PlayerBehaviour):
 	player_behaviour = behaviour
 	
@@ -34,14 +40,13 @@ func set_behaviour(behaviour: PlayerBehaviour):
 		$RightHand/MovementJump.enabled = false 
 		$RightHand/MovementTurn.enabled = true 
 		$MovementSwimming.enabled = true
-	
 	else: 
 		$LeftHand/MovementDirect.enabled = true 
 		$RightHand/MovementDirect.enabled = true 
 		$RightHand/MovementJump.enabled = true 
 		$RightHand/MovementTurn.enabled = true 
 		$MovementSwimming.enabled = false
-
+		
 func center_player_on(p_transform : Transform3D):
 	# In order to center our player so the players feet are at the location
 	# indicated by p_transform, and having our player looking in the required
@@ -62,3 +67,14 @@ func center_player_on(p_transform : Transform3D):
 
 	# And now update our origin point
 	global_transform = (p_transform * transform.inverse()).orthonormalized()
+
+func _on_oxygen_timer_timeout():
+	if current_oxygen <= 0: 
+		health.apply_damage(5)
+
+func _on_health_health_depleted():
+	$XRCamera3D/YouDied.visible = true 
+	
+	await  get_tree().create_timer(2).timeout
+	
+	GameManager.current_level_root.load_scene("res://game/start_level/start_level.tscn")
