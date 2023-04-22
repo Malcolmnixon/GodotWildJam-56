@@ -24,13 +24,13 @@ albedo_texture = SubResource("ViewportTexture_00wng")
 resource_local_to_scene = true
 size = Vector2(0.277, 0.193)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_0cghy"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_raije"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vtt1v"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_npdus"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_0cghy")
+albedo_texture = SubResource("ViewportTexture_raije")
 texture_filter = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g2qng"]
@@ -73,7 +73,7 @@ render_target_update_mode = 1
 [node name="Screen" type="MeshInstance3D" parent="pad/Plane/Viewport2Din3D" index="1"]
 visible = false
 mesh = SubResource("QuadMesh_4qq7q")
-surface_material_override/0 = SubResource("StandardMaterial3D_vtt1v")
+surface_material_override/0 = SubResource("StandardMaterial3D_npdus")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="pad/Plane/Viewport2Din3D" index="2"]
 transform = Transform3D(1.91069e-15, 1, -4.37114e-08, 4.37114e-08, -4.37114e-08, -1, -1, 0, -4.37114e-08, 0, 0.0107198, 0)
