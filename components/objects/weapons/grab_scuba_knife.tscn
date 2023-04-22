@@ -18,6 +18,7 @@ size = Vector3(0.0191103, 0.152472, 0.0427504)
 freeze = true
 script = ExtResource("2_a8iep")
 damage = 2
+physical_threshold = 0.1
 
 [node name="GrabPointHandLeft" parent="." index="0" instance=ExtResource("4_o8oq5")]
 transform = Transform3D(1, 0, 0, 0, 0.986286, -0.165048, 0, 0.165048, 0.986286, 0.0119725, 0.00754302, -0.0829605)
