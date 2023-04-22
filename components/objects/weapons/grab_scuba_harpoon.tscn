@@ -5,9 +5,9 @@
 [ext_resource type="Script" path="res://components/helpers/shop_item.gd" id="2_i8il2"]
 [ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="3_he04i"]
 [ext_resource type="Material" uid="uid://dc1bg8qgmbxkk" path="res://components/objects/weapons/materials/pallete.tres" id="3_waq8w"]
-[ext_resource type="Resource" path="res://components/objects/weapons/poses/pose_harpoon_left.tres" id="4_c4ts0"]
+[ext_resource type="Resource" uid="uid://c6qwrnopcqn3x" path="res://components/objects/weapons/poses/pose_harpoon_left.tres" id="4_c4ts0"]
 [ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="5_ihbr5"]
-[ext_resource type="Resource" path="res://components/objects/weapons/poses/pose_harpoon_right.tres" id="6_5ql0n"]
+[ext_resource type="Resource" uid="uid://bxfffxxl37nxl" path="res://components/objects/weapons/poses/pose_harpoon_right.tres" id="6_5ql0n"]
 [ext_resource type="Script" path="res://components/helpers/projectile_spawner.gd" id="8_ss08k"]
 [ext_resource type="PackedScene" uid="uid://bujvbb5p6vkdl" path="res://components/objects/weapons/projectiles/projectile_harpoon.tscn" id="9_ke8ee"]
 

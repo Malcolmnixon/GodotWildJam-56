@@ -1,9 +1,11 @@
 extends XRToolsPickable
 
+@export var damage = 1
 
 # Current controller holding this object
 var _current_controller : XRController3D
 
+@onready var hitbox = $Hitbox
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -14,7 +16,15 @@ func _ready() -> void:
 	picked_up.connect(_on_picked_up)
 	dropped.connect(_on_dropped)
 
-
+func _physics_process(delta):
+	melee()
+		
+func melee():	
+	if _current_controller:
+			for body in hitbox.get_overlapping_bodies():
+				if body.get_node("Health"): 
+					body.get_node("Health").apply_damage(damage) # how is this working, would like to multiply by the current XRToolsVelocityAverager
+					$BloodSplatter.emitting = true
 # Called when this object is picked up
 func _on_picked_up(_pickable) -> void:
 	# Listen for button events on the associated controller
