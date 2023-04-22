@@ -89,6 +89,7 @@ func _physics_process(delta : float):
 			mode = SharkMode.HUNTING
 			_memory_age = 0.0
 			_target = _player.global_position
+			get_node("AnimationPlayer").play("attack")
 		elif _memory_age >= SHARK_MEMORY:
 			# Roam to a new random position
 			mode = SharkMode.ROAMING
