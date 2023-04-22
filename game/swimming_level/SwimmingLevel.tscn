@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://4w1po0lk56te"]
+[gd_scene load_steps=49 format=3 uid="uid://4w1po0lk56te"]
 
 [ext_resource type="Script" path="res://addons/godot-xr-tools/staging/scene_base.gd" id="1_1q3fw"]
 [ext_resource type="Environment" uid="uid://duexmj7fck5s2" path="res://game/swimming_level/environment/water_environment.tres" id="2_q1xwq"]
@@ -32,6 +32,7 @@
 [ext_resource type="PackedScene" uid="uid://rbhtu1vl3sau" path="res://components/objects/shipwreck.tscn" id="31_wdbth"]
 [ext_resource type="AudioStream" uid="uid://dbld744ykmvdc" path="res://assets/freesound/366159__dcsfx__underwater-loop-amb.mp3" id="32_jo6al"]
 [ext_resource type="PackedScene" uid="uid://bq3v5y5qv15bw" path="res://components/objects/cocaine.tscn" id="32_kl56c"]
+[ext_resource type="Material" uid="uid://bxt8f03173mo" path="res://assets/ambientcg/rock028/mat_rock.tres" id="33_trvm1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_iegai"]
 size = Vector3(1000, 1, 1000)
@@ -809,6 +810,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 99.3866, 21.9407, -118.032)
 
 [node name="XRToolsPickable2" parent="." instance=ExtResource("32_kl56c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 127.385, 9.68747, -109.5)
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 2.69256, 0, 0, 0, 1, 32.5801, 0, -43.2807)
+use_collision = true
+inner_radius = 134.023
+outer_radius = 174.826
+material = ExtResource("33_trvm1")
 
 [editable path="Static/KelpForest/kelp13"]
 [editable path="Static/KelpForest/kelp25"]

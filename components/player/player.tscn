@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bv1nbfh4msd6e"]
+[gd_scene load_steps=31 format=3 uid="uid://bv1nbfh4msd6e"]
 
 [ext_resource type="Script" path="res://components/player/player.gd" id="1_poo41"]
 [ext_resource type="PackedScene" uid="uid://ceb25cst7u1iu" path="res://game/swimming_level/movement/movement_swimming.tscn" id="2_1k3co"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://c0lpa4kaq1ai5" path="res://components/objects/snapzones/head_zone.tscn" id="7_i8apn"]
 [ext_resource type="PackedScene" uid="uid://f6h03u14s8md" path="res://components/objects/acc/grab_headlight.tscn" id="8_kqoks"]
 [ext_resource type="Script" path="res://components/helpers/random_stream_player.gd" id="9_6svq3"]
+[ext_resource type="Script" path="res://components/helpers/shop_item.gd" id="9_828qv"]
 [ext_resource type="AudioStream" uid="uid://digr67r048bwp" path="res://assets/nub_sfx/splash_1.ogg" id="10_wpi3q"]
 [ext_resource type="AudioStream" uid="uid://32j3dyfy1861" path="res://assets/nub_sfx/splash_2.ogg" id="11_ll5o0"]
 [ext_resource type="AudioStream" uid="uid://cviw24spdhv8f" path="res://assets/nub_sfx/splash_3.ogg" id="12_833et"]
@@ -70,6 +71,8 @@ far = 300.0
 [node name="HeadZone" parent="XRCamera3D" instance=ExtResource("7_i8apn")]
 
 [node name="Headlight" parent="XRCamera3D/HeadZone" instance=ExtResource("8_kqoks")]
+script = ExtResource("9_828qv")
+shop_item_name = "headlamp"
 
 [node name="RandomStreamPlayer" type="AudioStreamPlayer3D" parent="XRCamera3D"]
 attenuation_model = 3
@@ -105,6 +108,8 @@ transform = Transform3D(0.996659, 0, -0.0816776, 0, 1, 0, 0.0816776, 0, 0.996659
 
 [node name="KnifeHolster" parent="LeftHand/HolsterSnapLeft" instance=ExtResource("20_5q72e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0148039, 0, 0.0502717)
+script = ExtResource("9_828qv")
+shop_item_name = "knife"
 
 [node name="FunctionPoseDetector" parent="LeftHand" instance=ExtResource("21_yiacj")]
 
