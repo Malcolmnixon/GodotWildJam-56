@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bbd4xg30drdv3"]
+[gd_scene load_steps=9 format=3 uid="uid://bbd4xg30drdv3"]
 
 [ext_resource type="Script" path="res://components/objects/hazards/mine/hazard_mine.gd" id="1_wh8n4"]
 [ext_resource type="Material" uid="uid://b8e16bdpflt7t" path="res://assets/digitaln8m4r3/underwater_mine/material/mine.material" id="2_jajtv"]
+[ext_resource type="PackedScene" uid="uid://db3agfxgra68s" path="res://sFX/explosion/mine_explosion.tscn" id="3_vqaol"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3wmif"]
 
@@ -72,5 +73,9 @@ visible = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
 shape = SubResource("SphereShape3D_tlyre")
+
+[node name="MineExplosion" parent="." instance=ExtResource("3_vqaol")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.99606, 0)
+visible = false
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
