@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bujvbb5p6vkdl"]
+[gd_scene load_steps=11 format=3 uid="uid://bujvbb5p6vkdl"]
 
 [ext_resource type="Script" path="res://components/objects/weapons/projectiles/projectile.gd" id="1_f1p10"]
 [ext_resource type="PackedScene" uid="uid://8tkyng02wnnr" path="res://assets/digitaln8m4r3/scuba_harpoon/model/scuba_harpoon_spear.glb" id="1_wreas"]
+[ext_resource type="Material" uid="uid://dc1bg8qgmbxkk" path="res://components/objects/weapons/materials/pallete.tres" id="3_d6bs2"]
 [ext_resource type="Texture2D" uid="uid://7lp2suojankf" path="res://assets/images/bubble.png" id="3_t2h00"]
+[ext_resource type="PackedScene" uid="uid://brk5mt2rljj47" path="res://components/objects/blood_splatter.tscn" id="5_bj07k"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0p6ge"]
 transparency = 1
@@ -36,7 +38,10 @@ size = Vector2(0.02, 0.02)
 script = ExtResource("1_f1p10")
 
 [node name="scuba_harpoon_spear" parent="." instance=ExtResource("1_wreas")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.272432)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -0.272432)
+
+[node name="Spear" parent="scuba_harpoon_spear" index="0"]
+surface_material_override/0 = ExtResource("3_d6bs2")
 
 [node name="GPUParticles3D2" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0147478, 0.00247334, -0.00225578)
@@ -46,5 +51,12 @@ process_material = SubResource("ParticleProcessMaterial_otfyr")
 draw_pass_1 = SubResource("QuadMesh_w130x")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.169505)
-target_position = Vector3(0, 0, -0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.276)
+target_position = Vector3(0, 0, -1.1)
+
+[node name="BloodSplatter" parent="." instance=ExtResource("5_bj07k")]
+transform = Transform3D(0.577915, 0.805622, 0.130338, -0.816097, 0.570496, 0.0922982, 0, -0.159709, 0.987164, 0, 0, -0.800543)
+emitting = false
+one_shot = true
+
+[editable path="scuba_harpoon_spear"]

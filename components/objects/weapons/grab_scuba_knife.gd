@@ -1,9 +1,21 @@
 extends XRToolsPickable
 
+@export var damage = 1
+
+## Minimum velocity to reach before physical swimming starts
+@export var physical_threshold: float = 0.1
 
 # Current controller holding this object
 var _current_controller : XRController3D
 
+@onready var hitbox = $Hitbox
+
+@onready var _left_controller := XRHelpers.get_left_controller(self)
+@onready var _right_controller := XRHelpers.get_right_controller(self)
+
+var velocity_percision = 5 
+@onready var _left_averager = XRToolsVelocityAverager.new(velocity_percision)
+@onready var _right_averager = XRToolsVelocityAverager.new(velocity_percision)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -14,7 +26,32 @@ func _ready() -> void:
 	picked_up.connect(_on_picked_up)
 	dropped.connect(_on_dropped)
 
+func _process(delta):
+	# set averagers
+	_left_averager.add_transform(delta, _left_controller.transform)
+	_right_averager.add_transform(delta, _right_controller.transform)
+	
+func _physics_process(delta):
+	# velocities 
+	var l_vel = _left_averager.linear_velocity()
+	var r_vel = _right_averager.linear_velocity()
+	
+	# combined velocity lengths 
+	var c_length = l_vel.length() + r_vel.length()
+	
+	# velocity checks for forward and back movement 
+	var swim_input = Vector3(l_vel.x, 0, l_vel.z).dot(Vector3(r_vel.x, 0, r_vel.z)) < -physical_threshold
+	# Accelerate swim velocity towards the camera 
+	if swim_input:
+		_melee()
 
+
+func _melee():
+	if _current_controller:
+			for body in hitbox.get_overlapping_bodies():
+				if body.get_node("Health"): 
+					body.get_node("Health").apply_damage(damage) # how is this working, would like to multiply by the current XRToolsVelocityAverager
+					$BloodSplatter.emitting = true
 # Called when this object is picked up
 func _on_picked_up(_pickable) -> void:
 	# Listen for button events on the associated controller

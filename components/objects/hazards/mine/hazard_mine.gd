@@ -21,8 +21,8 @@ func _process(delta):
 
 func _on_area_3d_body_entered(body):
 	
-	if body is XRToolsPlayerBody: 
-		body.get_node("Health").apply_damage(damage)
+	#if body is XRToolsPlayerBody: 
+	#	body.get_node("Health").apply_damage(damage)
 	if body.get_node("Health"): 
 		body.get_node("Health").apply_damage(damage)
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cbf1rvdo8ic4s"]
+[gd_scene load_steps=10 format=3 uid="uid://cbf1rvdo8ic4s"]
 
 [ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_nm22y"]
 [ext_resource type="Script" path="res://components/objects/weapons/grab_scuba_knife.gd" id="2_a8iep"]
@@ -6,13 +6,19 @@
 [ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="4_o8oq5"]
 [ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="5_3kkmt"]
 [ext_resource type="Material" uid="uid://dc1bg8qgmbxkk" path="res://components/objects/weapons/materials/pallete.tres" id="6_yayxu"]
+[ext_resource type="PackedScene" uid="uid://brk5mt2rljj47" path="res://components/objects/blood_splatter.tscn" id="7_tp7tl"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_42qgu"]
 points = PackedVector3Array(-0.00913571, -0.118936, 0.00795697, 0.00487857, 0.0212145, 0.0313214, 0.00955, 0.0212145, 0.0266463, -0.00446246, 0.170671, -0.015391, 0.00955, -0.109571, -0.0200606, -0.00913571, -0.109571, -0.0200606, -0.00913571, 0.0212145, 0.0313214, 0.00487857, 0.180036, -0.00137674, 0.00487857, -0.104918, 0.0266463, 0.00955, 0.0212145, -0.0247357, -0.00913571, 0.0212145, -0.0247357, -0.00446246, 0.147288, 0.0173071, 0.00955, -0.118936, 0.00795697, -0.00446246, -0.0815643, 0.0313214, 0.00487857, 0.147288, 0.0173071, -0.00446246, -0.104918, -0.0247357, 0.00487857, 0.170671, -0.015391, -0.00913571, -0.109571, 0.0219767, 0.00955, -0.0815643, 0.0266463, -0.00446246, 0.180036, -0.00137674, -0.00913571, -0.118936, -0.0107214, 0.00487857, -0.104918, -0.0247357, 0.00487857, -0.0815643, 0.0313214, 0.00955, -0.118936, -0.0107214, -0.00446246, 0.170671, 0.00795697, 0.00487857, -0.114253, 0.0219767, -0.00446246, 0.180036, -0.0107214, -0.00913571, -0.0908998, 0.0266463, 0.00487857, 0.170671, 0.00795697, 0.00487857, 0.109917, 0.0219767, 0.00955, -0.104918, 0.0219767, 0.00487857, 0.180036, -0.0107214)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_fp8d7"]
+size = Vector3(0.0191103, 0.152472, 0.0427504)
+
 [node name="ScubaKnife" groups=["Knife"] instance=ExtResource("1_nm22y")]
 freeze = true
 script = ExtResource("2_a8iep")
+damage = 2
+physical_threshold = 0.1
 
 [node name="GrabPointHandLeft" parent="." index="0" instance=ExtResource("4_o8oq5")]
 transform = Transform3D(1, 0, 0, 0, 0.986286, -0.165048, 0, 0.165048, 0.986286, 0.0119725, 0.00754302, -0.0829605)
@@ -33,5 +39,16 @@ shape = SubResource("ConvexPolygonShape3D_42qgu")
 
 [node name="Knife" parent="knife" index="0"]
 material_override = ExtResource("6_yayxu")
+
+[node name="Hitbox" type="Area3D" parent="." index="6"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0995433, 0)
+shape = SubResource("BoxShape3D_fp8d7")
+
+[node name="BloodSplatter" parent="." index="7" instance=ExtResource("7_tp7tl")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.171836, 0)
+emitting = false
+one_shot = true
 
 [editable path="knife"]

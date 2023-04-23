@@ -1,5 +1,8 @@
 extends CharacterBody3D
 
+# gore scene
+var scene = preload("res://components/animals/shark_gibs.tscn")
+
 # How far can the shark see
 const SHARK_VISION_DISTANCE := 40.0
 
@@ -48,16 +51,13 @@ var _target := Vector3.ZERO
 
 
 func _ready():
-
-	
 	if get_node("AnimationPlayer"): 
 		get_node("AnimationPlayer").play("swim")
 
 func _physics_process(delta : float):
-	
 	if !_player and GameManager.player: 
 		_player = GameManager.player 
-	
+
 	# Update how long ago the player was last seen
 	_memory_age += delta
 
@@ -89,6 +89,7 @@ func _physics_process(delta : float):
 			mode = SharkMode.HUNTING
 			_memory_age = 0.0
 			_target = _player.global_position
+			get_node("AnimationPlayer").play("attack")
 		elif _memory_age >= SHARK_MEMORY:
 			# Roam to a new random position
 			mode = SharkMode.ROAMING
@@ -110,5 +111,14 @@ func _physics_process(delta : float):
 	velocity = (_target - global_position).normalized() * speed
 	move_and_slide()
 
+
 func _on_health_health_depleted():
+	gore()
 	queue_free()
+
+
+func gore():
+	var gibs = scene.instantiate()
+	var parent = self.get_parent()
+	parent.add_child(gibs)
+	gibs.global_position = self.global_position
