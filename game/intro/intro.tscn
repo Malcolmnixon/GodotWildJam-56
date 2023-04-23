@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://ceyn04w5y4tqu"]
+
+[ext_resource type="PackedScene" uid="uid://qbmx03iibuuu" path="res://addons/godot-xr-tools/staging/scene_base.tscn" id="1_8rkfq"]
+[ext_resource type="Environment" uid="uid://dem4338dsghdc" path="res://game/start_level/environment/sunset_environment.tres" id="2_xeyyu"]
+[ext_resource type="PackedScene" uid="uid://u2lpx3sbcxup" path="res://components/objects/ocean_surface.tscn" id="3_bco63"]
+[ext_resource type="PackedScene" uid="uid://dppxkvb5vrfrd" path="res://assets/digitaln8m4r3/shark_intro/intro_shark.glb" id="4_h548w"]
+[ext_resource type="Material" uid="uid://dmui7kqfjx7cc" path="res://assets/lar/shark/material/shark.material" id="5_l44qa"]
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_fot42"]
+shading_mode = 0
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_craui"]
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 1)
+
+[node name="Intro" instance=ExtResource("1_8rkfq")]
+environment = ExtResource("2_xeyyu")
+
+[node name="OceanSurface" parent="." index="1" instance=ExtResource("3_bco63")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.02554, 0)
+
+[node name="shark_holder" type="Node3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.26463, -2.533)
+
+[node name="intro_shark" parent="shark_holder" index="0" instance=ExtResource("4_h548w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.445918, 7.533)
+
+[node name="Text" parent="shark_holder/intro_shark" index="0"]
+surface_material_override/0 = SubResource("ORMMaterial3D_fot42")
+
+[node name="Text002" parent="shark_holder/intro_shark" index="1"]
+surface_material_override/0 = SubResource("ORMMaterial3D_craui")
+
+[node name="Skeleton3D" parent="shark_holder/intro_shark/shark_armature" index="0"]
+bones/0/position = Vector3(8.42545e-08, 0.227413, 1.76297)
+bones/0/rotation = Quaternion(-0.677722, -9.9863e-07, 1.02274e-06, 0.735319)
+bones/1/rotation = Quaternion(0.0495225, -0.0105291, -0.131941, 0.989964)
+bones/2/rotation = Quaternion(0.0199425, 0.00620073, -0.0825848, 0.996365)
+bones/3/rotation = Quaternion(0.103515, 0.00779191, -0.0473616, 0.993469)
+bones/4/rotation = Quaternion(0.096971, 0.00210136, -0.0218108, 0.995046)
+bones/5/rotation = Quaternion(-0.599546, 0.00479485, 0.0871137, 0.79557)
+bones/13/position = Vector3(8.42545e-08, 0.227413, 1.76297)
+bones/13/rotation = Quaternion(0.719753, 9.61621e-07, 8.88291e-07, 0.69423)
+bones/14/rotation = Quaternion(5.80766e-09, 0.999991, -0.00429636, 1.26758e-06)
+bones/15/rotation = Quaternion(-6.28163e-09, -0.999992, 0.00395035, 1.506e-06)
+bones/16/position = Vector3(9.96531e-07, 0.0280258, 7.8047)
+bones/16/rotation = Quaternion(0.692008, -1.23351e-06, -1.28695e-06, 0.72189)
+bones/17/position = Vector3(2.05099, 1.94521, -2.76879)
+bones/17/rotation = Quaternion(-0.714219, 2.72337e-06, -2.67115e-06, 0.699922)
+
+[node name="shark" parent="shark_holder/intro_shark/shark_armature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("5_l44qa")
+
+[editable path="shark_holder/intro_shark"]
