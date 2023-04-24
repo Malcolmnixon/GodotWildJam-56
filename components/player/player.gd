@@ -26,7 +26,7 @@ func _process(delta):
 		current_oxygen -= delta * 2
 	
 	
-	if health.current_health < 50: 
+	if health.current_health <= 50: 
 		$XRCamera3D/HurtScreen.visible = true
 	else: 
 		$XRCamera3D/HurtScreen.visible = false

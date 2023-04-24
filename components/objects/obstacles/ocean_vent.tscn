@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://7lp2suojankf" path="res://assets/images/bubble.png" id="5_7t5vd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_glbw3"]
-size = Vector3(1, 2.13749, 1)
+size = Vector3(1, 6.78, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rm2ay"]
 transparency = 1
@@ -58,7 +58,7 @@ script = ExtResource("4_duyk1")
 wind_vector = Vector3(0, 99.721, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="XRToolsWindArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.982571, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.22142, 0)
 shape = SubResource("BoxShape3D_glbw3")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]

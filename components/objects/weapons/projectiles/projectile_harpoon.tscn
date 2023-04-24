@@ -36,6 +36,7 @@ size = Vector2(0.02, 0.02)
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_f1p10")
+damage = 10
 
 [node name="scuba_harpoon_spear" parent="." instance=ExtResource("1_wreas")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -0.272432)

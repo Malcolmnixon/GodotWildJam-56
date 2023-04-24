@@ -1,8 +1,9 @@
-[gd_scene load_steps=27 format=3 uid="uid://cbta87xla17m7"]
+[gd_scene load_steps=28 format=3 uid="uid://cbta87xla17m7"]
 
 [ext_resource type="Script" path="res://components/animals/shark.gd" id="1_dkx52"]
 [ext_resource type="Script" path="res://components/helpers/health.gd" id="2_al8b3"]
 [ext_resource type="Material" uid="uid://dmui7kqfjx7cc" path="res://assets/lar/shark/material/shark.material" id="3_hupt6"]
+[ext_resource type="AudioStream" uid="uid://h61msximmvw8" path="res://assets/nub_sfx/spook.ogg" id="4_wlalo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gv362"]
 resource_name = "grey"
@@ -392,7 +393,7 @@ size = Vector3(2.2, 1, 0.2)
 size = Vector3(0.3, 0.8, 1.2)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_rs5my"]
-radius = 1.0
+radius = 1.30232
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5nqtc"]
 albedo_color = Color(1, 0, 0, 1)
@@ -651,13 +652,15 @@ shape = SubResource("BoxShape3D_7bk04")
 
 [node name="Mouth" type="Area3D" parent="." groups=["SharkMouth"]]
 transform = Transform3D(0.995077, -0.0957865, -0.0254127, -0.00524687, -0.306997, 0.951696, -0.0989612, -0.946878, -0.305989, -0.426035, -0.33446, -2.95062)
+collision_layer = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mouth"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 1.86265e-09, 0, 1, -0.0348423, -0.333377, -0.107732)
 shape = SubResource("SphereShape3D_rs5my")
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("2_al8b3")
-current_health = 50
+current_health = 150
 
 [node name="CPUParticles3D" type="CPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.987164, 0.159709, 0, -0.159709, 0.987164, -0.00521404, -0.635721, -2.91498)
@@ -672,4 +675,12 @@ gravity = Vector3(0, 0, 0)
 initial_velocity_min = 1.0
 initial_velocity_max = 1.0
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(0.55846, 0, 0, 0, 0.55846, 0, 0, 0, 0.55846, -0.408863, 0, -3.16881)
+stream = ExtResource("4_wlalo")
+pitch_scale = 0.95
+autoplay = true
+max_distance = 25.0
+
+[connection signal="body_entered" from="Mouth" to="." method="_on_mouth_body_entered"]
 [connection signal="health_depleted" from="Health" to="." method="_on_health_health_depleted"]

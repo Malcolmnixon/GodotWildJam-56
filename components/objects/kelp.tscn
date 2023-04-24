@@ -1,12 +1,12 @@
 [gd_scene load_steps=9 format=3 uid="uid://1wt2dgkwoop"]
 
 [ext_resource type="Shader" path="res://assets/shaders/foliage.gdshader" id="1_n4mk2"]
-[ext_resource type="Texture2D" uid="uid://c4uqbsi2f2pha" path="res://assets/kelp/kelp.png" id="2_oyl6t"]
+[ext_resource type="Texture2D" uid="uid://c6dcasgrw5sj7" path="res://assets/images/grass.png" id="2_gdb3e"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wbbne"]
 render_priority = 0
 shader = ExtResource("1_n4mk2")
-shader_parameter/tex = ExtResource("2_oyl6t")
+shader_parameter/tex = ExtResource("2_gdb3e")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_aojq7"]
 _surfaces = [{
@@ -45,7 +45,7 @@ alpha_scissor_threshold = 0.0849057
 alpha_antialiasing_mode = 0
 cull_mode = 2
 vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("2_oyl6t")
+albedo_texture = ExtResource("2_gdb3e")
 roughness = 0.5
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_pacn4"]
