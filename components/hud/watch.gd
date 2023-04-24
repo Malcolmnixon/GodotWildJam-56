@@ -13,7 +13,6 @@ func _process(delta):
 	$OxygenProgress.value = GameManager.player.current_oxygen
 	$HealthProgress.value = GameManager.player.health.current_health
 	
-	print(oxygen)
 	var beep = $"../../Beep"
 	if oxygen < 30.0: 
 		if !beep.playing:

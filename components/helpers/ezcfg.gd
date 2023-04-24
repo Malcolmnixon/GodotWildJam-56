@@ -10,7 +10,7 @@ enum e_root {
 # path root where our file will be saved
 # 0 = project folder 
 # 1 = users folder (persistent data) 
-@export var path_root: e_root = 0
+@export var path_root: e_root = 1
 
 const filename = "settings" # filename for our config file
 
