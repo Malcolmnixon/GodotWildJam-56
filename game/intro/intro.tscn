@@ -31,23 +31,6 @@ surface_material_override/0 = SubResource("ORMMaterial3D_fot42")
 [node name="Text002" parent="shark_holder/intro_shark" index="1"]
 surface_material_override/0 = SubResource("ORMMaterial3D_craui")
 
-[node name="Skeleton3D" parent="shark_holder/intro_shark/shark_armature" index="0"]
-bones/0/position = Vector3(8.42545e-08, 0.227413, 1.76297)
-bones/0/rotation = Quaternion(-0.677722, -9.9863e-07, 1.02274e-06, 0.735319)
-bones/1/rotation = Quaternion(0.0495225, -0.0105291, -0.131941, 0.989964)
-bones/2/rotation = Quaternion(0.0199425, 0.00620073, -0.0825848, 0.996365)
-bones/3/rotation = Quaternion(0.103515, 0.00779191, -0.0473616, 0.993469)
-bones/4/rotation = Quaternion(0.096971, 0.00210136, -0.0218108, 0.995046)
-bones/5/rotation = Quaternion(-0.599546, 0.00479485, 0.0871137, 0.79557)
-bones/13/position = Vector3(8.42545e-08, 0.227413, 1.76297)
-bones/13/rotation = Quaternion(0.719753, 9.61621e-07, 8.88291e-07, 0.69423)
-bones/14/rotation = Quaternion(5.80766e-09, 0.999991, -0.00429636, 1.26758e-06)
-bones/15/rotation = Quaternion(-6.28163e-09, -0.999992, 0.00395035, 1.506e-06)
-bones/16/position = Vector3(9.96531e-07, 0.0280258, 7.8047)
-bones/16/rotation = Quaternion(0.692008, -1.23351e-06, -1.28695e-06, 0.72189)
-bones/17/position = Vector3(2.05099, 1.94521, -2.76879)
-bones/17/rotation = Quaternion(-0.714219, 2.72337e-06, -2.67115e-06, 0.699922)
-
 [node name="shark" parent="shark_holder/intro_shark/shark_armature/Skeleton3D" index="0"]
 surface_material_override/0 = ExtResource("5_l44qa")
 

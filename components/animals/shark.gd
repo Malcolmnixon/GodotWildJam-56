@@ -56,7 +56,9 @@ func _ready():
 
 func _physics_process(delta : float):
 	if !_player and GameManager.player: 
-		_player = GameManager.player 
+		_player = GameManager.player
+		
+	_target = _player.global_position
 
 	# Update how long ago the player was last seen
 	_memory_age += delta
@@ -66,51 +68,18 @@ func _physics_process(delta : float):
 	var to_player_distance := to_player.length()
 	var to_player_direction := to_player.normalized()
 
-	# Handle fleeing
-	if mode == SharkMode.FLEEING:
-		# Detect if shark has escaped
-		if to_player_distance >= SHARK_ESCAPE_DISTANCE:
-			queue_free()
-			return
-
-		# Pick direction away from player
-		_target = global_position - to_player * 100.0
-		_target.y = 30.0
-	else:
-		# Test if the shark can see the player
-		var to_player_angle := global_transform.basis.z.angle_to(to_player_direction)
-		var can_see_player := (
-			to_player_distance < SHARK_VISION_DISTANCE and 
-			to_player_angle < SHARK_VISION_ANGLE)
-
-		# Handle shark update
-		if can_see_player:
-			# Player visible, target player
-			mode = SharkMode.HUNTING
-			_memory_age = 0.0
-			_target = _player.global_position
-			get_node("AnimationPlayer").play("attack")
-		elif _memory_age >= SHARK_MEMORY:
-			# Roam to a new random position
-			mode = SharkMode.ROAMING
-			_memory_age = 0.0
-			_target = Vector3(
-				randf_range(-100.0, 100.0),
-				randf_range(10.0, 30.0),
-				randf_range(-100.0, 100.0))
 
 	# Turn to the target
 	global_transform = global_transform.interpolate_with(
 		global_transform.looking_at(_target),
 		1 * delta)
 
-	# Pick the speed
-	var speed := SHARK_ROAM_SPEED if mode == SharkMode.ROAMING else SHARK_SWIM_SPEED
-	
 	# Move the shark
-	velocity = (_target - global_position).normalized() * speed
+	velocity = (_target - global_position).normalized() * 5.0
 	move_and_slide()
-
+	
+	if $Mouth.global_position.distance_to(_player.global_position) < 2: 
+		_player.health.apply_damage(delta)
 
 func _on_health_health_depleted():
 	gore()
@@ -122,3 +91,10 @@ func gore():
 	var parent = self.get_parent()
 	parent.add_child(gibs)
 	gibs.global_position = self.global_position
+
+
+func _on_mouth_body_entered(body):
+	print(body)
+	if body is XRToolsPlayerBody: 
+		print("chop")
+		body.get_parent().health.apply_damage(60)

@@ -17,7 +17,7 @@ size = Vector3(0.0191103, 0.152472, 0.0427504)
 [node name="ScubaKnife" groups=["Knife"] instance=ExtResource("1_nm22y")]
 freeze = true
 script = ExtResource("2_a8iep")
-damage = 2
+damage = 5
 physical_threshold = 0.1
 
 [node name="GrabPointHandLeft" parent="." index="0" instance=ExtResource("4_o8oq5")]
