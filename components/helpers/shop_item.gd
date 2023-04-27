@@ -77,6 +77,17 @@ func _on_picked_up(_pickable) -> void:
 
 # Called when this object is dropped
 func _on_dropped(_pickable) -> void:
+	# If not using two handed, do nothing
+	if !using_two_handed:
+		return
+	else:
+		using_two_handed = false
+	# Return to single handed mode
+	primary_hand_position.get_node("RemoteTransform3D").remote_path = ""
+	second_hand_position.get_node("RemoteTransform3D").remote_path = ""
+	second_hand.transform = second_hand_original_transform
+	second_hand_controller = null
+	second_hand = null	
 	if by_controller:
 		by_controller = null
 		transform.basis = basis_before_two_handed
